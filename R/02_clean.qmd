@@ -4,26 +4,28 @@ format: html
 editor: visual
 ---
 
-## 
+## Load libraries
 
 ```{r, message=FALSE}
+suppressWarnings({
 library("tidyverse")
 library("here")
 library("broom")
+})
 ```
 
-```{r}
-diabetes_data <- read.csv(here("data/diabetic_data.csv"))
-diabetes_data
-```
+## Clean the meta data
 
 ```{r}
-meta_data <- read.csv(here("data/IDS_mapping.csv"), na.strings = "")
+suppressWarnings({
+meta_data <- read.csv(here("data/IDS_mapping.csv"), 
+                      na.strings = "")
 
 # Remove NA columns and add a column based on admission type, that is numeric. The NA values in this, will be the names of the type of metadata the id describes. Also adds a meta_type column that will be used for storing this name later
 meta_data <- meta_data |> 
   na.omit() |> 
-  mutate(admission_type_id, admission_type_id_as_num = as.numeric(admission_type_id)) |> 
+  mutate(admission_type_id, 
+         admission_type_id_as_num = as.numeric(admission_type_id)) |> 
   mutate(meta_type = NA)
 
 name <- meta_data |> 
@@ -40,12 +42,11 @@ for (i in 1:nrow(meta_data)){
     name <- meta_data |> 
       select(admission_type_id) |> 
       slice(i)
-    
   }
   
   meta_data <- meta_data |> 
-    mutate(meta_type = ifelse(row_number() == i, name ,meta_type))
-    
+    mutate(meta_type = ifelse(row_number() == i, 
+                              name ,meta_type))
 }
 
 #Removes the rows containing the names, drops admission_type_is_as_num and renames the first column to type id.
@@ -54,6 +55,17 @@ meta_data_clean <- meta_data |>
   select(!admission_type_id_as_num) |> 
   rename(type_id = admission_type_id)
 
-
-
+})
 ```
+
+## Clean diabetes data
+
+```{r}
+diabetes_data <- read.csv(here("data/diabetic_data.csv"), 
+                          na.strings = "?")
+diabetes_data
+```
+
+## Add information from metadata to diabetes data
+
+## Output clean data
