@@ -6,19 +6,19 @@ editor: visual
 
 ## 
 
-```{r}
+```{r, message=FALSE}
 library("tidyverse")
 library("here")
 library("broom")
 ```
 
 ```{r}
-diabetes_data <- read.csv(here("data/dataset_diabetes/diabetic_data.csv"))
+diabetes_data <- read.csv(here("data/diabetic_data.csv"))
 diabetes_data
 ```
 
 ```{r}
-meta_data <- read.csv(here("data/dataset_diabetes/IDS_mapping.csv"), na.strings = "")
+meta_data <- read.csv(here("data/IDS_mapping.csv"), na.strings = "")
 
 # Remove NA columns and add a column based on admission type, that is numeric. The NA values in this, will be the names of the type of metadata the id describes. Also adds a meta_type column that will be used for storing this name later
 meta_data <- meta_data |> 
