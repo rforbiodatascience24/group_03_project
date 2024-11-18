@@ -62,10 +62,36 @@ meta_data_clean <- meta_data |>
 
 ```{r}
 diabetes_data <- read.csv(here("data/diabetic_data.csv"), 
-                          na.strings = "?")
-diabetes_data
+                          na.strings = c("?", "None"))
+diabetes_data 
+```
+
+```{r}
+#Change NO in readmitted column to No
+diabetes_data <- diabetes_data |> 
+  mutate(readmitted, 
+         readmitted = str_replace(string = readmitted, 
+                                  "NO", 
+                                  "No"))
+
+#Change Ch in change column to Yes
+diabetes_data <- diabetes_data |> 
+  mutate(change, 
+         change = str_replace(string = change, 
+                                  "Ch", 
+                                  "Yes"))
+
+
 ```
 
 ## Add information from metadata to diabetes data
 
+```{r}
+
+```
+
 ## Output clean data
+
+```{r}
+write_csv(diabetes_data, here("data/02_dat_clean.csv"))
+```
