@@ -4,38 +4,35 @@ format: html
 editor: visual
 ---
 
-```{r}
-library(RCurl)
-library(jsonlite)
-library(dplyr)
-library(here)
-
+``` {r} library(RCurl) library(jsonlite) library(dplyr) library(here)
 
 # Create 'data' directory if it doesn't exist
-if (!dir.exists("data")) {
-  dir.create("data")
-}
+
+if (!dir.exists("data")) { dir.create("data") }
 
 # Fetch dataset
-url <- "https://archive.ics.uci.edu/ml/machine-learning-databases/00296/dataset_diabetes.zip"
-temp <- tempfile()
-download.file(url, temp)
+
+url \<- "https://archive.ics.uci.edu/ml/machine-learning-databases/00296/dataset_diabetes.zip" temp \<- tempfile() download.file(url, temp)
 
 # Unzip files directly into the 'data' directory
+
 unzip(temp, exdir = "data")
 
-setwd(here())
-getwd()
+setwd(here()) getwd()
 
 # Define paths
-path_a <- file.path("data", "dataset_diabetes")
-path_b <- file.path("data")
+
+path_a \<- file.path("data", "dataset_diabetes") path_b \<- file.path("data")
 
 # Get the list of files with their full paths from `path_a`
-my_files <- list.files(path_a, full.names = TRUE)
+
+my_files \<- list.files(path_a, full.names = TRUE)
 
 # Copy files to `path_b`
+
 file.copy(from = my_files, to = path_b, overwrite = TRUE)
 
 # Delete the now-empty folder
-unlink(path_a, recursive = TRUE)
+
+unlink(path_a, recursive = TRUE) 
+```
