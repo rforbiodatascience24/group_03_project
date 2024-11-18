@@ -39,7 +39,3 @@ file.copy(from = my_files, to = path_b, overwrite = TRUE)
 
 # Delete the now-empty folder
 unlink(path_a, recursive = TRUE)
-```
-
-```{}
-```
