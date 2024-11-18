@@ -25,15 +25,13 @@ download.file(url, temp)
 
 # Unzip files directly into the 'data' directory
 
-unzip(temp, exdir = "data")
-
-setwd(here())
+unzip(temp, exdir = here("data"))
 
 # Define paths
 
-path_a <- file.path("data", "dataset_diabetes")
+path_a <- file.path(here("data"), "dataset_diabetes")
 
-path_b <- file.path("data")
+path_b <- file.path(here("data"))
 
 # Get the list of files with their full paths from 'path_a'
 
