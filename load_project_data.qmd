@@ -1,0 +1,18 @@
+---
+title: "Load project data"
+format: html
+editor: visual
+---
+
+## 
+
+```{r}
+library("tidyverse")
+library("here")
+library("broom")
+```
+
+```{r}
+diabetic_data <- read.csv("diabetic_data.csv")
+diabetes_data
+```
