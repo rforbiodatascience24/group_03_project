@@ -17,7 +17,6 @@ download.file(url, temp)
 unzip(temp, exdir = here("data"))
 data_path <- file.path(here("data/dataset_diabetes/diabetic_data.csv"))
 
-# Read the dataset
-diabetes_data_2 <- read.csv(data_path, stringsAsFactors = FALSE)
+
 
 ```
