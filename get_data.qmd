@@ -5,18 +5,23 @@ editor: visual
 ---
 
 ```{r}
-library(RCurl)
-library(jsonlite)
-library(dplyr)
+library("RCurl")
+library("jsonlite")
+library("dplyr")
+library("here")
 
 # Fetch dataset
 url <- "https://archive.ics.uci.edu/ml/machine-learning-databases/00296/dataset_diabetes.zip"
 temp <- tempfile()
 download.file(url, temp)
-unzip(temp, exdir = tempdir())
-data_path <- file.path(tempdir(), "dataset_diabetes/diabetic_data.csv")
+unzip(temp, exdir = here("data"))
+data_path <- file.path(here("data/dataset_diabetes/diabetic_data.csv"))
 
 # Read the dataset
-diabetes_data <- read.csv(data_path, stringsAsFactors = FALSE)
+diabetes_data_2 <- read.csv(data_path, stringsAsFactors = FALSE)
+
+```
+
+```{r}
 
 ```
