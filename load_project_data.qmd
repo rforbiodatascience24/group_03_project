@@ -13,6 +13,11 @@ library("broom")
 ```
 
 ```{r}
-diabetic_data <- read.csv("diabetic_data.csv")
+diabetes_data <- read.csv(here("data/dataset_diabetes/diabetic_data.csv"))
 diabetes_data
+```
+
+```{r}
+meta_data <- read.csv(here("data/dataset_diabetes/IDS_mapping.csv"))
+meta_data
 ```

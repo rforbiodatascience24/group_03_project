@@ -21,7 +21,3 @@ data_path <- file.path(here("data/dataset_diabetes/diabetic_data.csv"))
 diabetes_data_2 <- read.csv(data_path, stringsAsFactors = FALSE)
 
 ```
-
-```{r}
-
-```
