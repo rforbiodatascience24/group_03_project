@@ -18,7 +18,7 @@ library("broom")
 
 ```{r}
 suppressWarnings({
-meta_data <- read.csv(here("data/IDS_mapping.csv"), 
+meta_data <- read.csv(here("data/IDs_mapping.csv"), 
                       na.strings = "")
 
 # Remove NA columns and add a column based on admission type, that is numeric. The NA values in this, will be the names of the type of metadata the id describes. Also adds a meta_type column that will be used for storing this name later
