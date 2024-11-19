@@ -18,15 +18,12 @@ library("broom")
 
 ```{r}
 suppressWarnings({
-#Data is loaded without headers, since the header only corresponds to the first tables header
-meta_data <- read.csv(here("data/IDs_mapping.csv"),
-                      header=FALSE,
-                      na.strings = "")
+#Data is loaded without defined column names
+meta_data <- read_csv(here("data/IDs_mapping.csv"),
+                      na = "", 
+                      col_names = c("type_id", "description"), 
+                      show_col_types = FALSE)
 
-#Rename columns
-meta_data <- meta_data |> 
-  rename(type_id = V1, 
-         description = V2)
 
 # Remove NA columns and add a column based on admission type, that is numeric. The NA values in this, will be the names of the type of metadata the id describes. Also adds a meta_type column, which has the type in the cells that are NAs in the numeric type_id_as_num
 meta_data <- meta_data |> 
@@ -44,17 +41,30 @@ meta_data <- meta_data |>
 #Removes the rows containing the names, drops admission_type_is_as_num
 meta_data_clean <- meta_data |> 
   filter(!is.na(type_id_as_num)) |> 
-  select(!type_id_as_num)
+  select(!type_id) |> 
+  rename(type_id = type_id_as_num)
 
 })
+
+admission_type <- meta_data_clean |> 
+  filter(meta_type == "admission_type_id") |> 
+  select(-meta_type)
+
+discharge_disposition <- meta_data_clean |> 
+  filter(meta_type == "discharge_disposition_id") |> 
+  select(-meta_type)
+
+admission_source <- meta_data_clean |> 
+  filter(meta_type == "admission_source_id") |> 
+  select(-meta_type)
 ```
 
 ## Clean diabetes data
 
 ```{r}
-diabetes_data <- read.csv(here("data/diabetic_data.csv"), 
-                          na.strings = c("?", "None"))
-diabetes_data 
+diabetes_data <- read_csv(here("data/diabetic_data.csv"), 
+                          na = c("?", "None"), 
+                          show_col_types = FALSE)
 ```
 
 ```{r}
@@ -75,18 +85,38 @@ diabetes_data <- diabetes_data |>
 
 ```
 
-## Add information from metadata to diabetes data
+## Join information from metadata to diabetes data
 
 ```{r}
+
+full_data <- diabetes_data |> 
+  left_join(admission_type,
+            join_by('admission_type_id' == 'type_id'), 
+            relationship = "many-to-one") |>
+  rename(admission_type = description) |> 
+  relocate(admission_type, .after = admission_type_id) |> 
+  select(-admission_type_id)
+
+full_data <- full_data |> 
+  left_join(admission_source,
+            join_by('admission_source_id' == 'type_id'), 
+            relationship = "many-to-one") |>
+  rename(admission_source = description) |> 
+  relocate(admission_source, .after = admission_source_id) |> 
+  select(-admission_source_id)
+
+full_data <- full_data |> 
+  left_join(admission_source,
+            join_by('discharge_disposition_id' == 'type_id'), 
+            relationship = "many-to-one") |>
+  rename(discharge_disposition = description) |> 
+  relocate(discharge_disposition, .after = discharge_disposition_id) |> 
+  select(-discharge_disposition_id)
 
 ```
 
 ## Output clean data
 
 ```{r}
-write_csv(diabetes_data, here("data/02_dat_clean.csv"))
-```
-
-```{r}
-read.csv(here("data/02_dat_clean.csv"))
+write_csv(full_data, here("data/02_dat_clean.csv"))
 ```
