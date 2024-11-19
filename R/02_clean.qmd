@@ -199,7 +199,7 @@ full_data <-  full_data |>
              diag_1_long, 
              diag_2_long, 
              diag_3_long), .after = diag_1) |> 
-  select(-diag_1m -diag2, -diag_3)
+  select(-diag_1, -diag_2, -diag_3)
 names(full_data)
 ```
 
