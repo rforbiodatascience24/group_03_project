@@ -18,42 +18,33 @@ library("broom")
 
 ```{r}
 suppressWarnings({
-meta_data <- read.csv(here("data/IDs_mapping.csv"), 
+#Data is loaded without headers, since the header only corresponds to the first tables header
+meta_data <- read.csv(here("data/IDs_mapping.csv"),
+                      header=FALSE,
                       na.strings = "")
 
-# Remove NA columns and add a column based on admission type, that is numeric. The NA values in this, will be the names of the type of metadata the id describes. Also adds a meta_type column that will be used for storing this name later
+#Rename columns
+meta_data <- meta_data |> 
+  rename(type_id = V1, 
+         description = V2)
+
+# Remove NA columns and add a column based on admission type, that is numeric. The NA values in this, will be the names of the type of metadata the id describes. Also adds a meta_type column, which has the type in the cells that are NAs in the numeric type_id_as_num
 meta_data <- meta_data |> 
   na.omit() |> 
-  mutate(admission_type_id, 
-         admission_type_id_as_num = as.numeric(admission_type_id)) |> 
-  mutate(meta_type = NA)
+  mutate(type_id, 
+         type_id_as_num = as.numeric(type_id)) |> 
+  mutate(meta_type = ifelse(is.na(type_id_as_num), 
+                            type_id, 
+                            NA))
 
-name <- meta_data |> 
-  colnames() |> 
-  first()
+#Fills meta_type with the last non-NA cell 
+meta_data <- meta_data |> 
+    fill(meta_type)
 
-#Goes through all rows and adds the defined name to the meta_type column. If the admission_type_id_as_num is NA, the name changes 
-for (i in 1:nrow(meta_data)){
-  row <- meta_data |> 
-    select(admission_type_id_as_num) |> 
-    slice(i)
-  
-  if(is.na(row)){
-    name <- meta_data |> 
-      select(admission_type_id) |> 
-      slice(i)
-  }
-  
-  meta_data <- meta_data |> 
-    mutate(meta_type = ifelse(row_number() == i, 
-                              name ,meta_type))
-}
-
-#Removes the rows containing the names, drops admission_type_is_as_num and renames the first column to type id.
+#Removes the rows containing the names, drops admission_type_is_as_num
 meta_data_clean <- meta_data |> 
-  filter(!is.na(admission_type_id_as_num)) |> 
-  select(!admission_type_id_as_num) |> 
-  rename(type_id = admission_type_id)
+  filter(!is.na(type_id_as_num)) |> 
+  select(!type_id_as_num)
 
 })
 ```
