@@ -78,7 +78,11 @@ diabetes_data <- diabetes_data |>
 ## Add information from metadata to diabetes data
 
 ```{r}
+diabetes_data_2 <- diabetes_data |> 
+  mutate(admission_type_id = ifelse(admission_type_id))
 
+
+#for admissiontypeid hvis admission er lig med type_id, så skriv description
 ```
 
 ## Output clean data
