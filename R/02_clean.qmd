@@ -19,7 +19,7 @@ library("broom")
 ```{r}
 suppressWarnings({
 #Data is loaded without defined column names
-meta_data <- read_csv(here("data/IDs_mapping.csv"),
+meta_data <- read_csv(here("data/_raw/IDs_mapping.csv"),
                       na = "", 
                       col_names = c("type_id", "description"), 
                       show_col_types = FALSE)
@@ -68,7 +68,7 @@ The data is downloaded here as the newest version from 2014:
 From the files the short and long ds are chosen (sg are surgical and dx are diagnosises).
 
 ```{r}
-ICD9_short <- read_csv(here("data/CMS32_DESC_SHORT_DX.txt"), 
+ICD9_short <- read_csv(here("data/_raw/CMS32_DESC_SHORT_DX.txt"), 
                  col_names = "data", 
                  show_col_types = FALSE)
 
@@ -77,7 +77,7 @@ ICD9_short <- ICD9_short |>
            into = c("ID", "Description_short"), 
            extra = "merge")
 
-ICD9_long <- read_csv(here("data/CMS32_DESC_long_DX.txt"), 
+ICD9_long <- read_csv(here("data/_raw/CMS32_DESC_long_DX.txt"), 
                  col_names = "data", 
                  show_col_types = FALSE)
 
@@ -108,10 +108,10 @@ ICD9 <- ICD9 |>
                      as.double(ID)))
 ```
 
-##  Clean diabetes data
+## Clean diabetes data
 
 ```{r}
-diabetes_data <- read_csv(here("data/diabetic_data.csv"), 
+diabetes_data <- read_csv(here("data/_raw/diabetic_data.csv"), 
                           na = c("?", "None"), 
                           show_col_types = FALSE)
 ```
@@ -200,7 +200,6 @@ full_data <-  full_data |>
              diag_2_long, 
              diag_3_long), .after = diag_1) |> 
   select(-diag_1, -diag_2, -diag_3)
-names(full_data)
 ```
 
 ## Output clean data
