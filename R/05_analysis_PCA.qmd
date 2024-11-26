@@ -30,7 +30,7 @@ pca_fit <- numeric_data |>
 data_clean <- data |> 
   filter(row_number() %in% rownames(numeric_data))
 
-pca_fit |> 
+pca_plot <- pca_fit |> 
   augment(data_clean) |>  # add original dataset back in
   ggplot(aes(.fittedPC1, .fittedPC2)) + 
   geom_point(size = 1.5) +
@@ -96,4 +96,24 @@ pca_fit |>
     expand = expansion(mult = c(0, 0.01))
   ) +
   theme_minimal_hgrid(12)
+```
+
+### Exporting the key plots
+
+```{r}
+ggsave(
+  filename = here("results", "pca_plot.png"),  # path to save
+  plot = pca_plot, 
+  width = 8, 
+  height = 6, 
+  dpi = 300
+)
+
+ggsave(
+  filename = here("results", "pca_bar_plot.png"),  # path to save
+  plot = pca_bar_plot, 
+  width = 8, 
+  height = 6, 
+  dpi = 300
+)
 ```
