@@ -77,7 +77,7 @@ ICD9_short <- ICD9_short |>
            into = c("ID", "Description_short"), 
            extra = "merge")
 
-ICD9_long <- read_csv(here("data/_raw/CMS32_DESC_long_DX.txt"), 
+ICD9_long <- read_csv(here("data/_raw/CMS32_DESC_LONG_DX.txt"), 
                  col_names = "data", 
                  show_col_types = FALSE)
 
