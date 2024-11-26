@@ -56,10 +56,6 @@ barplot1 <- data |>
            gender, 
            race) |> 
   summarize(average_diagnoses = mean(number_diagnoses), .groups = "drop") |> 
-  complete(age, 
-           gender, 
-           race, 
-           fill = list(average_diagnoses = NA)) |> 
 ggplot(
   mapping = aes(x = age,
                 y = average_diagnoses,
