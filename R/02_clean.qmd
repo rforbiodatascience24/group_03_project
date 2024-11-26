@@ -67,45 +67,52 @@ The data is downloaded here as the newest version from 2014:
 
 From the files the short and long ds are chosen (sg are surgical and dx are diagnosises).
 
+When running the 01_load.qmd, all the relevant files should be downloaded and placed in data/\_raw
+
 ```{r}
-ICD9_short <- read_csv(here("data/_raw/CMS32_DESC_SHORT_DX.txt"), 
+# First the data will be loaded into a dataframe of one column
+ICD9_short <- read_delim(here("data/_raw/CMS32_DESC_SHORT_DX.txt"), 
                  col_names = "data", 
-                 show_col_types = FALSE)
+                 show_col_types = FALSE, 
+                 delim = "\n")
+
+ICD9_long <- read_delim(here("data/_raw/CMS32_DESC_long_DX.txt"), 
+                 col_names = "data", 
+                 show_col_types = FALSE, 
+                 delim = "\n")
+
+#The long dataset includes é and è in for example Ménière's disease. To deal with this, the data is converted to UTF-8
+ICD9_long <- ICD9_long |> 
+  mutate(data = iconv(data, 
+        from = "latin1", 
+        to = "UTF-8", 
+        sub = "byte"))
+
+# The first value in each row is the ID, but the delimiter is not preserved. Each row is therefore split at the first, and everything else is merged into the second column:
 
 ICD9_short <- ICD9_short |> 
   separate(col = data,
            into = c("ID", "Description_short"), 
            extra = "merge")
 
-ICD9_long <- read_csv(here("data/_raw/CMS32_DESC_long_DX.txt"), 
-                 col_names = "data", 
-                 show_col_types = FALSE)
-
 ICD9_long <- ICD9_long |> 
   separate(col = data,
            into = c("ID", "Description_long"), 
            extra = "merge")
 
-ICD9 <- left_join(ICD9_short, 
-                 ICD9_long)
-```
+# The long and short dataframe, should have identical IDs, however in case there are some differences, we want all data, and therefore use full_join
+ICD9 <- full_join(ICD9_short, 
+                 ICD9_long, 
+                 by = "ID")
 
-```{r}
+suppressWarnings({
 ICD9 <- ICD9 |> 
-  mutate(ID = ifelse(str_starts(ID, 
-                                 'V'),
-                      ID, 
-                      str_c(substr(ID, 
-                                   1, 
-                                   3),
-                            ".",
-                            substr(ID, 
-                                   4, 
-                                   length(ID))))) |> 
-  mutate(ID = ifelse(str_starts(ID, 
-                                 'V'),
-                     ID, 
-                     as.double(ID)))
+  mutate(ID2 = ifelse(str_starts(ID, "[VE]"),
+                     ID,
+                     as.double(str_c(substr(ID,1,3),
+                           ".",
+                           substr(ID,4,length(ID))))))
+})
 ```
 
 ## Clean diabetes data
@@ -130,7 +137,6 @@ diabetes_data <- diabetes_data |>
          change = str_replace(string = change, 
                                   "Ch", 
                                   "Yes"))
-
 
 ```
 
