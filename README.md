@@ -1,12 +1,12 @@
-# group_03_project: Diabetes patient analysis 
+# group_03_project: Diabetes patient analysis
 
-## Group members:
+## Project Contributors
 
-s225049: Ida Sofie Goldschmidt\
-s225074: Annekatrine Kirketerp-Møller\
-s225051: Emil August Dissing Berntsen\
-s224974: Rasmus Kamp Nielsen\
-s215109: Rolf Larsen
+s225049: Ida Sofie Goldschmidt / isgoldsch\
+s225074: Annekatrine Kirketerp-Møller / annekatrinekm\
+s225051: Emil August Dissing Berntsen / EmilBerntsen-ui\
+s224974: Rasmus Kamp Nielsen / rasmuskamp\
+s215109: Rolf Larsen / RolfLarsenGH
 
 ## Installation and use
 
