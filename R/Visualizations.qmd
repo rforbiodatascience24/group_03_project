@@ -1,0 +1,91 @@
+---
+title: "Visualizations"
+format: html
+editor: visual
+---
+
+## Gender/race distribution
+
+Please remember to have the data loaded before running this script.
+
+```{r,message=FALSE,warning=FALSE}
+
+library(tidyverse)
+
+```
+
+```{r}
+
+plot_data <- diabetes_data |>
+  select(patient_nbr,race,gender) |>
+  distinct(patient_nbr, .keep_all = TRUE) |>
+  mutate(race = ifelse(is.na(race), "Other", race)) |>
+  group_by(race, gender) |>
+  summarise(count = n(), .groups = "drop") |>
+  mutate(text_color = ifelse(count > 4000, "white", 
+                             ifelse(gender=='Female','hotpink',
+                                    ifelse(gender=='Male','cornflowerblue','grey35'))))
+  
+ggplot(plot_data, aes(x=race, y=count,
+             fill=gender)) +
+  geom_bar(stat='identity',
+           position = 'stack') +
+   geom_text(data = plot_data |> filter(count > 4000), 
+            aes(label = count, color = text_color, vjust = 0.5),
+            position = position_stack(vjust = 0.5),  
+            size = 4) +
+
+  geom_text(data = plot_data |> filter(count <= 4000), 
+            aes(label = count, color = text_color, vjust = -3),
+            position = position_dodge2(width=0.8),  
+            size = 4) +
+  scale_color_identity() +
+  labs(x = "Race", 
+       y = "Count", 
+       fill = "Gender",
+      title = str_c('Gender/race distribution of dataset, total no. of patients: ',
+                    sum(plot_data$count))) +
+  scale_fill_manual(values = c('hotpink',
+                               'cornflowerblue',
+                               'grey35')) +
+  theme_minimal() +
+  theme(legend.position = 'bottom')
+```
+
+## Visits plot
+
+```{r}
+diabetes_data |>
+  select(patient_nbr,gender) |>
+  group_by(patient_nbr) |>
+  mutate(number_of_visits = n()) |>
+  distinct(patient_nbr,.keep_all = TRUE) |>
+  ungroup() |>
+  select(gender, number_of_visits) |>
+  group_by(number_of_visits,gender) |>
+  summarise(count = n(), .groups = 'drop') |>
+  ggplot(aes(x = number_of_visits, y = gender)) + 
+  geom_count(aes(color = gender, 
+                 size = count,  
+                 shape = factor(count)),
+      position = position_jitter(height = 0.2)) +
+  labs(x = "Number of visits",
+       y = "Gender",
+       title = "Number of visits by gender") +
+  scale_color_manual(values = c("hotpink", "cornflowerblue", "grey35")) +
+  scale_size_continuous(
+    range = c(2, 10), 
+    trans = 'sqrt',  
+    breaks = c(1, 5, 100, 1000, 10000, 20000),
+    labels = c('1', '5', '100', '1000', '10000', '20000+')) +
+  scale_shape_manual(values=c(17,rep(16, 28))) +  
+  theme_minimal() +
+  theme(legend.position = 'bottom',
+        legend.justification = "center") +
+        guides( color = guide_none(),
+          size = guide_legend(title = "Counts", 
+                        override.aes = list(shape = c(17,rep(16,5))),
+                        ncol = 6),  
+          shape = guide_none()) +
+  coord_flip()
+```
