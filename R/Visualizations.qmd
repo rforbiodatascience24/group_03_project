@@ -51,3 +51,41 @@ ggplot(plot_data, aes(x=race, y=count,
   theme_minimal() +
   theme(legend.position = 'bottom')
 ```
+
+## Visits plot
+
+```{r}
+diabetes_data |>
+  select(patient_nbr,gender) |>
+  group_by(patient_nbr) |>
+  mutate(number_of_visits = n()) |>
+  distinct(patient_nbr,.keep_all = TRUE) |>
+  ungroup() |>
+  select(gender, number_of_visits) |>
+  group_by(number_of_visits,gender) |>
+  summarise(count = n(), .groups = 'drop') |>
+  ggplot(aes(x = number_of_visits, y = gender)) + 
+  geom_count(aes(color = gender, 
+                 size = count,  
+                 shape = factor(count)),
+      position = position_jitter(height = 0.2)) +
+  labs(x = "Number of visits",
+       y = "Gender",
+       title = "Number of visits by gender") +
+  scale_color_manual(values = c("hotpink", "cornflowerblue", "grey35")) +
+  scale_size_continuous(
+    range = c(2, 10), 
+    trans = 'sqrt',  
+    breaks = c(1, 5, 100, 1000, 10000, 20000),
+    labels = c('1', '5', '100', '1000', '10000', '20000+')) +
+  scale_shape_manual(values=c(17,rep(16, 28))) +  
+  theme_minimal() +
+  theme(legend.position = 'bottom',
+        legend.justification = "center") +
+        guides( color = guide_none(),
+          size = guide_legend(title = "Counts", 
+                        override.aes = list(shape = c(17,rep(16,5))),
+                        ncol = 6),  
+          shape = guide_none()) +
+  coord_flip()
+```
