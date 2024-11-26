@@ -76,7 +76,7 @@ ICD9_short <- read_delim(here("data/_raw/CMS32_DESC_SHORT_DX.txt"),
                  show_col_types = FALSE, 
                  delim = "\n")
 
-ICD9_long <- read_delim(here("data/_raw/CMS32_DESC_long_DX.txt"), 
+ICD9_long <- read_delim(here("data/_raw/CMS32_DESC_LONG_DX.txt"), 
                  col_names = "data", 
                  show_col_types = FALSE, 
                  delim = "\n")
