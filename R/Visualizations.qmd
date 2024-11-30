@@ -172,9 +172,10 @@ diagnosis |>
                      na.value = 'forestgreen',
                      guide = guide_colorbar(title = "Amount of people")
                      ) +
+  theme_minimal() +
   theme(axis.text.x=element_text(angle=90,hjust=1)) + 
   labs(title = 'Average number of diagnosis by maximum amount of visits by patient',
-       subtitle = 'Green dots signify 1 person',
+       subtitle = '- Green dots signify 1 person',
        x = 'Maximum amount of visits by patients',
        y = 'Average number of diagnoses') 
     
