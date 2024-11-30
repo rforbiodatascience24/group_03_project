@@ -68,4 +68,3 @@ The data is analysed to show BLA BLA BLA BLA BLA BLA BLA BLA BLA BLA BLA BLA BLA
 ## How to Install and Run the Project
 
 Here we insert the needed packages and installations, which are needed to run the code (if neccessary).
->>>>>>> 577b41fb523665b655d61a8d2cd16f42850ddc26
