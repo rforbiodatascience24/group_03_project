@@ -8,11 +8,17 @@ https://archive.ics.uci.edu/dataset/296/diabetes+130-us+hospitals+for+years+1999
 
 Content of repository:
 
-01_laod_data.R
-loading the data
+01_laod_data.qmd
+Getting and loading the data, and joining raw dataframes together
 
-02_clean_data.R
+02_clean_data.qmd
 Cleaning the data set
+
+03_augment.qmd
+Augment the dataset, adding columns for amount of entries pr patient and total days in hospital.
+
+04_description.qmd
+Information about dataset, such as distribution of age and gender, and patient with most days spend in hostpital.
 
 03visualize_data.R
 Vizualization of the data set
