@@ -89,3 +89,93 @@ diabetes_data |>
           shape = guide_none()) +
   coord_flip()
 ```
+
+## Diagnosis vs. visits
+
+```{r}
+
+diagnosis <- diabetes_data |>
+  select(patient_nbr, number_diagnoses) |>
+  group_by(patient_nbr) |>
+  mutate(visit_num = row_number()) |>  # Create a visit number for each patient
+  ungroup() |>
+  pivot_wider(
+    names_from = visit_num,                # Visit number will be the new column names
+    values_from = number_diagnoses,        # Number of diagnoses for each visit
+    names_prefix = "visit_",               # Prefix for new column names (e.g., visit_1, visit_2)
+    values_fill = list(number_diagnoses = NA)  # Fill missing values with NA
+  )
+```
+
+```{r}
+diagnosis |>
+  filter(if_all(c(-patient_nbr,-visit_1), is.na)) |>
+  ggplot(aes(x=visit_1)) +
+  geom_boxplot() +
+  labs(title = 'Amount of diagnoses for people with only 1 visit',
+       x ='Number of diagnoses') 
+```
+
+```{r}
+diagnosis |>
+  filter(if_all(c(-patient_nbr,-visit_1,-visit_2), is.na)) |>
+  filter(!if_all(visit_2,is.na)) |>
+  select(patient_nbr,visit_1,visit_2) |>
+  pivot_longer(cols = c(visit_1,visit_2),
+               names_to = 'visit') |>
+  ggplot(aes(x=value,fill=visit)) +
+  geom_boxplot() +
+  labs(title = 'Amount of diagnoses for people with 2 visits',
+       x ='Number of diagnoses') 
+```
+
+```{r}
+diagnosis |>
+  filter(if_all(c(-patient_nbr,-visit_1,-visit_2,-visit_3), is.na)) |>
+  filter(!if_all(visit_3,is.na)) |>
+  select(patient_nbr,visit_1,visit_2,visit_3) |>
+  pivot_longer(cols = c(visit_1,visit_2,visit_3),
+               names_to = 'visit') |>
+  ggplot(aes(x=value,fill=visit)) +
+  geom_boxplot() +
+  labs(title = str_c('Amount of diagnoses for people with 3 visits (',
+                     diagnosis |>
+                       filter(if_all(c(-patient_nbr,-visit_1,-visit_2,-visit_3), is.na)) |>
+                       filter(!if_all(c(visit_3),is.na)) |>
+                       pull(patient_nbr) |>
+                       length(),
+                     ' people)'),
+       x ='Number of diagnoses') 
+```
+
+## Plot of average of number of diagnosis per patient per visit:
+
+```{r}
+diagnosis |>
+  pivot_longer(cols = !patient_nbr,
+               names_to = 'visit',
+               values_to = 'diagnosis') |>
+  drop_na(diagnosis) |>
+  group_by(visit) |>
+  summarise(mean_diagnosis = mean(diagnosis), no_people = n()) |>
+  mutate(visit = str_extract(visit, "\\d+"),
+         visit = factor(visit,levels=sort(as.numeric(visit)))) |>
+  ggplot(aes(x=visit,y=mean_diagnosis)) +
+  geom_point(aes(color=no_people),size=3) +
+  scale_color_gradient2(low='hotpink',
+                     mid='orange',
+                     high='cornflowerblue',
+                     midpoint=12000,
+                     limits=c(2,NA),
+                     n.breaks=5,
+                     transform = 'sqrt',
+                     na.value = 'forestgreen',
+                     guide = guide_colorbar(title = "Amount of people")
+                     ) +
+  theme(axis.text.x=element_text(angle=90,hjust=1)) + 
+  labs(title = 'Average number of diagnosis by maximum amount of visits by patient',
+       subtitle = 'Green dots signify 1 person',
+       x = 'Maximum amount of visits by patients',
+       y = 'Average number of diagnoses') 
+    
+```

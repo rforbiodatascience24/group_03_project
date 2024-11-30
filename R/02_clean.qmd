@@ -108,7 +108,7 @@ ICD9 <- ICD9 |>
                      as.double(ID)))
 ```
 
-##  Clean diabetes data
+## Clean diabetes data
 
 ```{r}
 diabetes_data <- read_csv(here("data/diabetic_data.csv"), 
