@@ -1,12 +1,41 @@
-# group_03_project: Diabetes patient analysis 
+# group_03_project: Diabetes patient analysis
 
-## Group members:
+<<<<<<< HEAD
+Link to data retrieval:
+https://archive.ics.uci.edu/dataset/296/diabetes+130-us+hospitals+for+years+1999-2008
 
-s225049: Ida Sofie Goldschmidt\
-s225074: Annekatrine Kirketerp-Møller\
-s225051: Emil August Dissing Berntsen\
-s224974: Rasmus Kamp Nielsen\
-s215109: Rolf Larsen
+
+
+Content of repository:
+
+01_laod_data.R
+loading the data
+
+02_clean_data.R
+Cleaning the data set
+
+03visualize_data.R
+Vizualization of the data set
+
+04_PCA_analysis.R
+PCA-analysis
+We will perform a PCA analysis on the data set to see if we can reduce the dimensionality of the data set.
+We will then plot the data set in 2D and 3D to see if we can see any patterns in the data set.
+
+Vizualization of the data set
+
+
+Shiny:
+
+
+=======
+## Project Contributors
+
+s225049: Ida Sofie Goldschmidt / isgoldsch\
+s225074: Annekatrine Kirketerp-Møller / annekatrinekm\
+s225051: Emil August Dissing Berntsen / EmilBerntsen-ui\
+s224974: Rasmus Kamp Nielsen / rasmuskamp\
+s215109: Rolf Larsen / RolfLarsenGH
 
 ## Installation and use
 
@@ -33,3 +62,4 @@ The data is analysed to show BLA BLA BLA BLA BLA BLA BLA BLA BLA BLA BLA BLA BLA
 ## How to Install and Run the Project
 
 Here we insert the needed packages and installations, which are needed to run the code (if neccessary).
+>>>>>>> 577b41fb523665b655d61a8d2cd16f42850ddc26

@@ -19,7 +19,7 @@ library("broom")
 ```{r}
 suppressWarnings({
 #Data is loaded without defined column names
-meta_data <- read_csv(here("data/IDs_mapping.csv"),
+meta_data <- read_csv(here("data/_raw/IDs_mapping.csv"),
                       na = "", 
                       col_names = c("type_id", "description"), 
                       show_col_types = FALSE)
@@ -48,15 +48,21 @@ meta_data_clean <- meta_data |>
 
 admission_type <- meta_data_clean |> 
   filter(meta_type == "admission_type_id") |> 
-  select(-meta_type)
+  select(-meta_type) |> 
+  mutate(description = case_when(description %in% c("NULL", "Not Mapped", "Not Available") ~ NA, 
+                                 TRUE ~ description))
 
 discharge_disposition <- meta_data_clean |> 
   filter(meta_type == "discharge_disposition_id") |> 
-  select(-meta_type)
+  select(-meta_type) |> 
+  mutate(description = case_when(description %in% c("NULL", "Not Mapped", "Unknown/Invalid") ~ NA, 
+                                 TRUE ~ description))
 
 admission_source <- meta_data_clean |> 
   filter(meta_type == "admission_source_id") |> 
-  select(-meta_type)
+  select(-meta_type) |> 
+  mutate(description = case_when(description %in% c("NULL", "Not Mapped", "Unknown/Invalid", "Not Available") ~ NA, 
+                                 TRUE ~ description))
 ```
 
 ## Clean ICD9 data
@@ -67,56 +73,61 @@ The data is downloaded here as the newest version from 2014:
 
 From the files the short and long ds are chosen (sg are surgical and dx are diagnosises).
 
+When running the 01_load.qmd, all the relevant files should be downloaded and placed in data/\_raw
+
 ```{r}
-ICD9_short <- read_csv(here("data/CMS32_DESC_SHORT_DX.txt"), 
+# First the data will be loaded into a dataframe of one column
+ICD9_short <- read_delim(here("data/_raw/CMS32_DESC_SHORT_DX.txt"), 
                  col_names = "data", 
-                 show_col_types = FALSE)
+                 show_col_types = FALSE, 
+                 delim = "\n")
+
+ICD9_long <- read_delim(here("data/_raw/CMS32_DESC_LONG_DX.txt"), 
+                 col_names = "data", 
+                 show_col_types = FALSE, 
+                 delim = "\n")
+
+#The long dataset includes é and è in for example Ménière's disease. To deal with this, the data is converted to UTF-8
+ICD9_long <- ICD9_long |> 
+  mutate(data = iconv(data, 
+        from = "latin1", 
+        to = "UTF-8", 
+        sub = "byte"))
+
+# The first value in each row is the ID, but the delimiter is not preserved. Each row is therefore split at the first, and everything else is merged into the second column:
 
 ICD9_short <- ICD9_short |> 
   separate(col = data,
            into = c("ID", "Description_short"), 
            extra = "merge")
 
-ICD9_long <- read_csv(here("data/CMS32_DESC_long_DX.txt"), 
-                 col_names = "data", 
-                 show_col_types = FALSE)
-
 ICD9_long <- ICD9_long |> 
   separate(col = data,
            into = c("ID", "Description_long"), 
            extra = "merge")
 
-ICD9 <- left_join(ICD9_short, 
-                 ICD9_long)
-```
+# The long and short dataframe, should have identical IDs, however in case there are some differences, we want all data, and therefore use full_join
+ICD9 <- full_join(ICD9_short, 
+                 ICD9_long, 
+                 by = "ID")
 
-```{r}
+suppressWarnings({
 ICD9 <- ICD9 |> 
-  mutate(ID = ifelse(str_starts(ID, 
-                                 'V'),
-                      ID, 
-                      str_c(substr(ID, 
-                                   1, 
-                                   3),
-                            ".",
-                            substr(ID, 
-                                   4, 
-                                   length(ID))))) |> 
-  mutate(ID = ifelse(str_starts(ID, 
-                                 'V'),
-                     ID, 
-                     as.double(ID)))
+  mutate(ID = ifelse(str_starts(ID, "[VE]"),
+                     ID,
+                     as.double(str_c(substr(ID,1,3),
+                           ".",
+                           substr(ID,4,length(ID))))))
+})
 ```
 
 ## Clean diabetes data
 
 ```{r}
-diabetes_data <- read_csv(here("data/diabetic_data.csv"), 
+diabetes_data <- read_csv(here("data/_raw/diabetic_data.csv"), 
                           na = c("?", "None"), 
                           show_col_types = FALSE)
-```
 
-```{r}
 #Change NO in readmitted column to No
 diabetes_data <- diabetes_data |> 
   mutate(readmitted, 
@@ -130,7 +141,6 @@ diabetes_data <- diabetes_data |>
          change = str_replace(string = change, 
                                   "Ch", 
                                   "Yes"))
-
 
 ```
 
@@ -173,7 +183,11 @@ full_data <- full_data |>
             relationship = "many-to-one", 
             na_matches = "never") |> 
   rename(diag_1_short = Description_short, 
-          diag_1_long = Description_long)
+          diag_1_long = Description_long) |> 
+  mutate(diag_1_short = case_when(is.na(diag_1_short) ~ diag_1,
+                                  !is.na(diag_1_short) ~ diag_1_short)) |> 
+  mutate(diag_1_long = case_when(is.na(diag_1_long) ~ diag_1,
+                                  !is.na(diag_1_long) ~ diag_1_long))
 
 full_data <- full_data |> 
   left_join(ICD9, 
@@ -181,7 +195,11 @@ full_data <- full_data |>
             relationship = "many-to-one", 
             na_matches = "never") |> 
   rename(diag_2_short = Description_short, 
-         diag_2_long = Description_long)
+         diag_2_long = Description_long)|> 
+  mutate(diag_2_short = case_when(is.na(diag_2_short) ~ diag_2,
+                                  !is.na(diag_2_short) ~ diag_2_short)) |> 
+  mutate(diag_2_long = case_when(is.na(diag_2_long) ~ diag_2,
+                                  !is.na(diag_2_long) ~ diag_2_long))
 
 full_data <- full_data |> 
   left_join(ICD9, 
@@ -189,10 +207,14 @@ full_data <- full_data |>
             relationship = "many-to-one", 
             na_matches = "never") |> 
   rename(diag_3_short = Description_short,
-         diag_3_long = Description_long)
+         diag_3_long = Description_long)|> 
+  mutate(diag_3_short = case_when(is.na(diag_3_short) ~ diag_3,
+                                  !is.na(diag_3_short) ~ diag_3_short)) |> 
+  mutate(diag_3_long = case_when(is.na(diag_3_long) ~ diag_3,
+                                  !is.na(diag_3_long) ~ diag_3_long))
 
 
-full_data <-  full_data |> 
+full_data <- full_data |> 
   relocate(c(diag_1_short, 
              diag_2_short, 
              diag_3_short, 
@@ -200,7 +222,6 @@ full_data <-  full_data |>
              diag_2_long, 
              diag_3_long), .after = diag_1) |> 
   select(-diag_1, -diag_2, -diag_3)
-names(full_data)
 ```
 
 ## Output clean data

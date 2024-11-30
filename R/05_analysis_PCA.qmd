@@ -12,7 +12,7 @@ This is an example trial run. The real data should be imported below as clean da
 library(tidyverse)
 library(broom)  # devtools::install_github("tidymodels/broom")
 library(cowplot)
-biopsy <- read_csv("https://wilkelab.org/classes/SDS348/data_sets/biopsy.csv")
+data <- read_csv(here("data/02_dat_clean.csv"))
 ```
 
 ### Start of the PCA
@@ -20,18 +20,20 @@ biopsy <- read_csv("https://wilkelab.org/classes/SDS348/data_sets/biopsy.csv")
 Looking at the data in PC coordinates.
 
 ```{r}
-pca_fit <- biopsy |>  
-  select(where(is.numeric)) %>% # retain only numeric columns
+numeric_data <- data |> 
+  select(where(is.numeric)) |> 
+  na.omit()
+
+pca_fit <- numeric_data |>  
   prcomp(scale = TRUE) # do PCA on scaled data
 
-pca_fit %>%
-  augment(biopsy) |>  # add original dataset back in
-  ggplot(aes(.fittedPC1, .fittedPC2, color = outcome)) + 
+data_clean <- data |> 
+  filter(row_number() %in% rownames(numeric_data))
+
+pca_plot <- pca_fit |> 
+  augment(data_clean) |>  # add original dataset back in
+  ggplot(aes(.fittedPC1, .fittedPC2)) + 
   geom_point(size = 1.5) +
-  scale_color_manual(
-    values = c(malignant = "#D55E00",
-               benign = "#0072B2")
-  ) +
   theme_half_open(12) +
   background_grid()
 ```
@@ -94,4 +96,24 @@ pca_fit |>
     expand = expansion(mult = c(0, 0.01))
   ) +
   theme_minimal_hgrid(12)
+```
+
+### Exporting the key plots
+
+```{r}
+ggsave(
+  filename = here("results", "pca_plot.png"),  # path to save
+  plot = pca_plot, 
+  width = 8, 
+  height = 6, 
+  dpi = 300
+)
+
+ggsave(
+  filename = here("results", "pca_bar_plot.png"),  # path to save
+  plot = pca_bar_plot, 
+  width = 8, 
+  height = 6, 
+  dpi = 300
+)
 ```

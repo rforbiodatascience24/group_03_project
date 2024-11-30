@@ -4,16 +4,30 @@ format: html
 editor: visual
 ---
 
+## Load libraries
+
 ```{r}
 library(RCurl) 
 library(jsonlite) 
 library(dplyr) 
 library(here)
+```
 
+## Create data directory
+
+```{r}
 # Create 'data' directory if it doesn't exist
 
 if (!dir.exists(here("data"))) {dir.create(here("data"))  }
 
+# Create 'raw' directory if it doesn't exist
+
+if (!dir.exists(here("data/_raw"))) {dir.create(here("data/_raw"))  }
+```
+
+## Get diabetes data
+
+```{r}
 # Fetch dataset
 
 url <- 
@@ -27,21 +41,37 @@ download.file(url, temp)
 
 unzip(temp, exdir = here("data"))
 
-# Define paths
+# The data lies in a subfolder, whichi we would like to remove
 
 path_a <- file.path(here("data"), "dataset_diabetes")
-
-path_b <- file.path(here("data"))
+path_b <- file.path(here("data"), "_raw")
 
 # Get the list of files with their full paths from 'path_a'
-
 my_files <- list.files(path_a, full.names = TRUE)
 
 # Copy files to 'path_b'
-
 file.copy(from = my_files, to = path_b, overwrite = TRUE)
 
 # Delete the now-empty folder
-
 unlink(path_a, recursive = TRUE)
+```
+
+## Get ICD9 data
+
+```{r}
+# Fetch data
+url_ICD9 <- "https://www.cms.gov/medicare/coding/icd9providerdiagnosticcodes/downloads/icd-9-cm-v32-master-descriptions.zip"
+
+temp <- tempfile()
+
+download.file(url_ICD9, temp)
+
+# Unzip files directly into the '_raw' directory
+unzip(temp, exdir = here("data/_raw"))
+
+# The zip-folder also contains data on surgaries, which is not relevent here. The unused files are removed 
+unlink(here("data/_raw/CMS32_DESC_LONG_SG.txt"))
+unlink(here("data/_raw/CMS32_DESC_SHORT_SG.txt"))
+unlink(here("data/_raw/CMS32_DESC_LONG_SHORT_SG.xlSX"))
+unlink(here("data/_raw/CMS32_DESC_LONG_SHORT_DX.xlsx"))
 ```
