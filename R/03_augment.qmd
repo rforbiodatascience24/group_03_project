@@ -1,8 +1,18 @@
+---
+title: "Augment data"
+format: html
+editor: visual
+---
+
+## Load libraries
+
 ```{r}
 library("here")
 library("tidyverse")
 
 ```
+
+## Load data
 
 ```{r}
 clean_data <- read_csv(here("data/02_dat_clean.csv")) 
