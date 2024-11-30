@@ -12,30 +12,32 @@ This is an example trial run. The real data should be imported below as clean da
 library(tidyverse)
 library(broom)  # devtools::install_github("tidymodels/broom")
 library(cowplot)
-data <- read_csv(here("data/02_dat_clean.csv"))
+aug_data <- read_csv(here("data/03_dat_aug.csv"))
 ```
 
 ### Start of the PCA
 
-Looking at the data in PC coordinates.
+Looking at the data in PC coordinates:
 
 ```{r}
-numeric_data <- data |> 
+numeric_data <- aug_data |> 
   select(where(is.numeric)) |> 
-  na.omit()
+  na.omit() |> 
+  select(where(~ var(., na.rm = TRUE) > 0))
 
 pca_fit <- numeric_data |>  
-  prcomp(scale = TRUE) # do PCA on scaled data
+  prcomp(scale = TRUE) 
 
-data_clean <- data |> 
+data_clean <- aug_data |> 
   filter(row_number() %in% rownames(numeric_data))
 
 pca_plot <- pca_fit |> 
-  augment(data_clean) |>  # add original dataset back in
+  augment(data_clean) |>  
   ggplot(aes(.fittedPC1, .fittedPC2)) + 
   geom_point(size = 1.5) +
   theme_half_open(12) +
   background_grid()
+pca_plot
 ```
 
 Now we extract the rotation matrix
@@ -49,12 +51,12 @@ pca_fit |>
 and plot it:
 
 ```{r}
-# define arrow style for plotting
+# arrow for plotting
 arrow_style <- arrow(
   angle = 20, ends = "first", type = "closed", length = grid::unit(8, "pt")
 )
 
-# plot rotation matrix
+# rotation matrix
 pca_fit |> 
   tidy(matrix = "rotation") |> 
   pivot_wider(names_from = "PC",
@@ -64,7 +66,7 @@ pca_fit |>
   geom_segment(xend = 0,
                yend = 0,
                arrow = arrow_style) +
-  geom_text(
+  geom_text_repel(
     aes(label = column),
     hjust = 1, nudge_x = -0.02, 
     color = "#904C2F"
@@ -85,7 +87,7 @@ pca_fit |>
 And now the plot:
 
 ```{r}
-pca_fit |> 
+pca_bar_plot <- pca_fit |> 
   tidy(matrix = "eigenvalues") |> 
   ggplot(aes(PC, percent)) +
   geom_col(fill = "#56B4E9",
@@ -96,13 +98,16 @@ pca_fit |>
     expand = expansion(mult = c(0, 0.01))
   ) +
   theme_minimal_hgrid(12)
+pca_bar_plot
 ```
+
+It is seen that 22.5% of the variance is explained by PC1.
 
 ### Exporting the key plots
 
 ```{r}
 ggsave(
-  filename = here("results", "pca_plot.png"),  # path to save
+  filename = here("results", "05_pca_plot.png"),
   plot = pca_plot, 
   width = 8, 
   height = 6, 
@@ -110,10 +115,38 @@ ggsave(
 )
 
 ggsave(
-  filename = here("results", "pca_bar_plot.png"),  # path to save
+  filename = here("results", "05_pca_bar_plot.png"),  
   plot = pca_bar_plot, 
   width = 8, 
   height = 6, 
   dpi = 300
 )
+```
+
+#### My try to cluster things
+
+```{r}
+library(ggplot2)
+
+# Assuming pca_fit has been created and contains PCA results
+pca_data <- as.data.frame(pca_fit$x)  # Extract PCA scores
+
+# Plotting PC1 vs PC2, and using PC3 to determine the color
+ggplot(pca_data, aes(x = PC1, y = PC2, color = PC3)) + 
+  geom_point(size = 1.5) +
+  theme_minimal() +
+  labs(x = "PC1", y = "PC2", color = "PC3") +
+  scale_color_gradient(low = "blue", high = "red")  # Color scale for PC3
+
+```
+
+```{r}
+# Example: k-means clustering using the first three PCs
+kmeans_result <- kmeans(pca_data[, 1:3], centers = 3)  # Cluster into 3 groups
+pca_data$cluster <- as.factor(kmeans_result$cluster)
+
+# Plot the clusters in 2D (using PC1 and PC2)
+ggplot(pca_data, aes(x = PC1, y = PC2, color = cluster)) +
+  geom_point() +
+  theme_minimal()
 ```
