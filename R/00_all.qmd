@@ -52,11 +52,3 @@ quarto::quarto_render(input = "06_analysis_PCA.qmd",
 quarto::quarto_render(input = "07_shiny.qmd",
                       output_format = "html")
 ```
-
-## All
-
-```{r}
-
-file.rename(from = "00_all.html",
-            to = "../results/00_all.html")
-```
