@@ -6,11 +6,12 @@ editor: visual
 
 ### Import dataset
 
-```{r}
+```{r,message=FALSE,warning=FALSE}
 library(tidyverse)
 library(broom)
 library(cowplot)
 library(ggplot2)
+library(here)
 aug_data <- read_csv(here("data/03_dat_aug.csv"))
 ```
 
