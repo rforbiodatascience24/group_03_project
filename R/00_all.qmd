@@ -9,9 +9,6 @@ editor: visual
 ```{r}
 quarto::quarto_render(input = "01_load.qmd",
                       output_format = "html")
-
-file.rename(from = "01_load.html",
-            to = "../results/01_load.html")
 ```
 
 ## Clean Data
@@ -19,9 +16,6 @@ file.rename(from = "01_load.html",
 ```{r}
 quarto::quarto_render(input = "02_clean.qmd", 
                       output_format = "html")
-
-file.rename(from = "02_clean.html",
-            to = "../results/02_clean.html")
 ```
 
 ## Augment Data
@@ -29,9 +23,6 @@ file.rename(from = "02_clean.html",
 ```{r}
 quarto::quarto_render(input = "03_augment.qmd", 
                       output_format = "html")
-
-file.rename(from = "03_augment.html",
-            to = "../results/03_augment.html")
 ```
 
 ## Description
@@ -39,9 +30,6 @@ file.rename(from = "03_augment.html",
 ```{r}
 quarto::quarto_render(input = "04_description.qmd", 
                       output_format = "html")
-
-file.rename(from = "04_description.html",
-            to = "../results/04_description.html")
 ```
 
 ## Visualizations
@@ -49,10 +37,6 @@ file.rename(from = "04_description.html",
 ```{r}
 quarto::quarto_render(input = "05_visualizations.qmd", 
                       output_format = "html")
-
-
-file.rename(from = "05_visualizations.html",
-            to = "../results/05_visualizations.html")
 ```
 
 ## PCA analysis
@@ -60,9 +44,6 @@ file.rename(from = "05_visualizations.html",
 ```{r}
 quarto::quarto_render(input = "06_analysis_PCA.qmd",
                       output_format = "html")
-
-file.rename(from = "06_analysis_PCA.html",
-            to = "../results/06_analysis_PCA.html")
 ```
 
 ## Shiny
@@ -70,9 +51,6 @@ file.rename(from = "06_analysis_PCA.html",
 ```{r}
 quarto::quarto_render(input = "07_shiny.qmd",
                       output_format = "html")
-
-file.rename(from = "07_shiny.html",
-            to = "../results/07_shiny.html")
 ```
 
 ## All
