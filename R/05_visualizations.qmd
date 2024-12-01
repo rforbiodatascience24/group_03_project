@@ -31,8 +31,11 @@ ggplot(aes(x = age,
   geom_col(position = "dodge") +
   labs(x = "Age Group",
        y = "Average number of diagnoses",
-       color = "Gender",
-       Title = "Average number of diagnoses for all age groups and genders")
+       fill = "Gender",
+       Title = "Average number of diagnoses for all age groups and genders") +
+  scale_fill_manual(values=c('hotpink',
+                             'cornflowerblue',
+                             'grey35')) 
 ```
 
 ## Age diastribution, shown by race
