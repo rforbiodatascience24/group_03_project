@@ -83,6 +83,7 @@ aug_data |>
 
 ```{r}
 aug_data |> 
+  distinct(patient_nbr, gender) |> 
   group_by(gender) |> 
   count()
 ```
@@ -90,7 +91,8 @@ aug_data |>
 ### Race distribution
 
 ```{r}
-aug_data |> 
+aug_data |>
+  distinct(patient_nbr, race) |> 
   group_by(race) |> 
   count()
 ```
