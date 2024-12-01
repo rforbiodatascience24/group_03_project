@@ -20,7 +20,7 @@ clean_data <- read_csv(here("data/02_dat_clean.csv"))
 
 ## Encounters in dataset
 
-Add columns that signifiez the amount of encounters one patient has in the dataset.
+Add columns that signifies the amount of encounters one patient has in the data set.
 
 ```{r}
 clean_data <- clean_data |> 

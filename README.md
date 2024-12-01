@@ -14,13 +14,13 @@ s215109: Rolf Larsen / RolfLarsenGH
 
 The data can be retrieved directly from the following link:
 
-<https://archive.ics.uci.edu/dataset/296/diabetes+130-us+hospitals+for+years+1999-2008>
+<https://archive.ics.uci.edu/ml/machine-learning-databases/00296/dataset_diabetes.zip>
 
 ### More about the data:
 
 The data can also be retrieved from the following site:
 
-<https://archive.ics.uci.edu/ml/machine-learning-databases/00296/dataset_diabetes.zip>
+<https://archive.ics.uci.edu/dataset/296/diabetes+130-us+hospitals+for+years+1999-2008>
 
 Using the "DOWNLOAD" button on the right side, the same zip-compressed data file as above is downloaded.
 

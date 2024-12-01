@@ -21,41 +21,33 @@ data <- read.csv(here("data/03_dat_aug.csv"))
 ## Age distribution
 
 ```{r}
-data1 <- data |>
+data |>
   filter(gender != "Unknown/Invalid") |>
   group_by(age, gender) |> 
-  summarize(average_diagnoses = mean(number_diagnoses), .groups = "drop")
-
-bp1 <- ggplot(
-  data = data1,
-  mapping = aes(x = age,
+  summarize(average_diagnoses = mean(number_diagnoses), .groups = "drop") |>
+ggplot(aes(x = age,
                 y = average_diagnoses,
-                fill = gender)
-) +
+                fill = gender)) +
   geom_col(position = "dodge") +
   labs(x = "Age Group",
        y = "Average number of diagnoses",
        color = "Gender",
        Title = "Average number of diagnoses for all age groups and genders")
-
-bp1
 ```
 
 ## Age diastribution, shown by race
 
 ```{r}
-barplot1 <- data |>
+data |>
   filter(gender != "Unknown/Invalid", 
          race != "Other") |>
   group_by(age, 
            gender, 
            race) |> 
   summarize(average_diagnoses = mean(number_diagnoses), .groups = "drop") |> 
-ggplot(
-  mapping = aes(x = age,
+  ggplot(mapping = aes(x = age,
                 y = average_diagnoses,
-                fill = gender)
-) +
+                fill = gender)) +
   geom_col(position = "dodge", 
            alpha = 1.0) +
   facet_wrap(~ race) +
@@ -63,24 +55,21 @@ ggplot(
     x = "Age Group",
     y = "Average number of diagnoses",
     fill = "Gender",
-    title = "Average number of diagnoses for all age groups and genders facet wrapped for race"
-  ) +
+    title = 
+      "Average number of diagnoses for all age groups and genders facet wrapped for race") +
   scale_fill_manual(values=c('hotpink',
                              'cornflowerblue',
                              'grey35')) +
     theme_minimal() +
-    theme(
-      axis.text.x = element_text(angle = 60, hjust =1)
-    )
+    theme(axis.text.x = element_text(angle = 60, hjust =1))
 
-barplot1
 ```
 
 ## Race/gender distribution
 
 ```{r}
 
-plot_data <- data |>
+data |>
   select(patient_nbr,race,gender) |>
   distinct(patient_nbr, .keep_all = TRUE) |>
   mutate(race = ifelse(is.na(race), "Other", race)) |>
@@ -88,9 +77,8 @@ plot_data <- data |>
   summarise(count = n(), .groups = "drop") |>
   mutate(text_color = ifelse(count > 4000, "white", 
                              ifelse(gender=='Female','hotpink',
-                                    ifelse(gender=='Male','cornflowerblue','grey35'))))
-  
-ggplot(plot_data, aes(x=race, y=count,
+                                    ifelse(gender=='Male','cornflowerblue','grey35')))) |>
+  ggplot(aes(x=race, y=count,
              fill=gender)) +
   geom_bar(stat='identity',
            position = 'stack') +
@@ -98,7 +86,6 @@ ggplot(plot_data, aes(x=race, y=count,
             aes(label = count, color = text_color, vjust = 0.5),
             position = position_stack(vjust = 0.5),  
             size = 4) +
-
   geom_text(data = plot_data |> filter(count <= 4000), 
             aes(label = count, color = text_color, vjust = -3),
             position = position_dodge2(width=0.8),  
@@ -119,7 +106,7 @@ ggplot(plot_data, aes(x=race, y=count,
 ## Discharge disposition
 
 ```{r, fig.width=8, fig.height=6}
-bp3 <- data |>
+data |>
   group_by(discharge_disposition,
            gender,
            age)|> 
@@ -140,13 +127,13 @@ bp3 <- data |>
     theme(
       axis.text.x = element_text(angle = 60, hjust =1)
     )
-bp3
+
 ```
 
 ### Only for emergency admission type
 
 ```{r, fig.width=8, fig.height=6}
-bp4 <- data |>
+data |>
   filter(!discharge_disposition %in% c("NULL",
                                        "Not Available",
                                        "Not Mapped"),
@@ -171,13 +158,13 @@ bp4 <- data |>
     theme(
       axis.text.x = element_text(angle = 60, hjust =1)
     )
-bp4
+
 ```
 
 ### Only urgent admission type:
 
 ```{r, fig.width=8, fig.height=6}
-bp5 <- data |>
+data |>
   filter(gender != "Unknown/Invalid",
          !discharge_disposition %in% c("NULL",
                                        "Not Available",
@@ -203,13 +190,13 @@ bp5 <- data |>
     theme(
       axis.text.x = element_text(angle = 60, hjust =1)
     )
-bp5
+
 ```
 
 ### For elective admission type
 
 ```{r, fig.width=8, fig.height=6}
-bp6 <- data |>
+data |>
   filter(gender != "Unknown/Invalid",
          !discharge_disposition %in% c("NULL",
                                        "Not Available",
@@ -235,7 +222,7 @@ bp6 <- data |>
     theme(
       axis.text.x = element_text(angle = 60, hjust =1)
     )
-bp6
+
 ```
 
 ## Number of visits per patient
@@ -279,28 +266,22 @@ data |>
 ## Diagnosis vs. visits
 
 ```{r}
-
-diagnosis <- data |>
-  select(patient_nbr, number_diagnoses,gender) |>
+data |>
+  filter(nr_encounters == 1) |>
+  select(patient_nbr, number_diagnoses, gender) |>
   group_by(patient_nbr) |>
-  mutate(visit_num = row_number()) |>  # Create a visit number for each patient
+  mutate(visit_num = row_number()) |>
   ungroup() |>
   pivot_wider(
-    names_from = visit_num,                # Visit number will be the new column names
-    values_from = number_diagnoses,        # Number of diagnoses for each visit
-    names_prefix = "visit_",               # Prefix for new column names (e.g., visit_1, visit_2)
-    values_fill = list(number_diagnoses = NA)  # Fill missing values with NA
-  )
-```
-
-```{r}
-diagnosis |>
-  filter(if_all(c(-patient_nbr,-visit_1,-gender), is.na)) |>
+    names_from = visit_num,                
+    values_from = number_diagnoses,        
+    names_prefix = "visit_",          
+    values_fill = list(number_diagnoses = NA)) |>
   ggplot(aes(x=visit_1,fill=gender)) +
   geom_boxplot() +
   labs(title = 'Amount of diagnoses for people with only 1 visit',
        x ='Number of diagnoses',
-       fill = 'Gender') +
+       fill = 'Gender') + 
   scale_fill_manual(values=c('hotpink',
                              'cornflowerblue',
                              'grey35')) 
@@ -308,22 +289,28 @@ diagnosis |>
 ```
 
 ```{r}
-diagnosis |>
-  select(-gender) |>
-  filter(if_all(c(-patient_nbr,-visit_1,-visit_2), is.na)) |>
-  filter(!if_all(visit_2,is.na)) |>
-  select(patient_nbr,visit_1,visit_2) |>
-  pivot_longer(cols = c(visit_1,visit_2),
+data |>
+  filter(nr_encounters == 2) |>
+  select(patient_nbr, number_diagnoses,encounter_id) |>
+  group_by(patient_nbr) |>
+  arrange(encounter_id, .by_group = TRUE) |>
+  mutate(visit_num = row_number()) |>
+  ungroup() |>
+  select(-encounter_id) |>
+  pivot_wider(
+    names_from = visit_num,                
+    values_from = number_diagnoses,        
+    names_prefix = "visit_",          
+    values_fill = list(number_diagnoses = NA)) |>
+  pivot_longer(cols = -patient_nbr,
                names_to = 'visit') |>
-   filter(!is.finite(value))
   ggplot(aes(x=value,fill=visit)) +
   geom_boxplot() +
-  labs(title = str_c('Amount of diagnoses for people with 3 visits (',
-                     diagnosis |>
-                       select(-gender) |>
-                       filter(if_all(c(-patient_nbr,-visit_1,-visit_2), is.na)) |>
-                       filter(!if_all(c(visit_2),is.na)) |>
+  labs(title = str_c('Amount of diagnoses for people with 2 visits (',
+                      data |>
+                       filter(nr_encounters == 2) |>
                        pull(patient_nbr) |>
+                       unique() |>
                        length(),
                      ' people)'),
        x ='Number of diagnoses',
@@ -331,34 +318,50 @@ diagnosis |>
 ```
 
 ```{r}
-diagnosis |>
-  select(-gender) |>
-  filter(if_all(c(-patient_nbr,-visit_1,-visit_2,-visit_3), is.na)) |>
-  filter(!if_all(visit_3,is.na)) |>
-  select(patient_nbr,visit_1,visit_2,visit_3) |>
-  pivot_longer(cols = c(visit_1,visit_2,visit_3),
+data |>
+  filter(nr_encounters == 3) |>
+  select(patient_nbr, number_diagnoses, encounter_id) |>
+  group_by(patient_nbr) |>
+  arrange(encounter_id, .by_group = TRUE) |>
+  mutate(visit_num = row_number()) |>
+  ungroup() |>
+  select(-encounter_id) |>
+  pivot_wider(
+    names_from = visit_num,                
+    values_from = number_diagnoses,        
+    names_prefix = "visit_",          
+    values_fill = list(number_diagnoses = NA)) |>
+  pivot_longer(cols = -patient_nbr,
                names_to = 'visit') |>
-  filter(!is.finite(value))
   ggplot(aes(x=value,fill=visit)) +
   geom_boxplot() +
   labs(title = str_c('Amount of diagnoses for people with 3 visits (',
-                     diagnosis |>
-                       select(-gender) |>
-                       filter(if_all(c(-patient_nbr,-visit_1,-visit_2,-visit_3), is.na)) |>
-                       filter(!if_all(c(visit_3),is.na)) |>
+                     data |>
+                       filter(nr_encounters == 3) |>
                        pull(patient_nbr) |>
+                       unique() |>
                        length(),
                      ' people)'),
        x ='Number of diagnoses',
        fill = 'Visit number') 
 ```
 
-## Plot of average of number of diagnosis per patient per visit:
+## Plot of average of number of diagnosis per patient per maximum visit:
 
 ```{r}
-diagnosis |>
-  select(-gender) |>
-  pivot_longer(cols = !patient_nbr,
+data |>
+  select(patient_nbr, number_diagnoses,encounter_id) |>
+  group_by(patient_nbr) |>
+  arrange(encounter_id, .by_group = TRUE) |>
+  mutate(visit_num = row_number()) |>
+  ungroup() |>
+  select(-encounter_id) |>
+  pivot_wider(
+    names_from = visit_num,                
+    values_from = number_diagnoses,        
+    names_prefix = "visit_",          
+    values_fill = list(number_diagnoses = NA)) |>
+  pivot_longer(cols = c(-patient_nbr),
                names_to = 'visit',
                values_to = 'diagnosis') |>
   drop_na(diagnosis) |>
@@ -380,7 +383,7 @@ diagnosis |>
                      ) +
   theme_minimal() +
   theme(axis.text.x=element_text(angle=90,hjust=1)) + 
-  labs(title = 'Average number of diagnosis by maximum amount of visits by patient',
+  labs(title = 'Average number of diagnoses by maximum amount of visits by patient',
        subtitle = '- Green dots signify 1 person',
        x = 'Maximum amount of visits by patients',
        y = 'Average number of diagnoses') 
