@@ -24,36 +24,49 @@ The data can also be retrieved from the following site:
 
 Using the "DOWNLOAD" button on the right side, the same zip-compressed data file as above is downloaded.
 
+## Porject presentation
+
+HERE THE LINK TO THE PROJECT PRESENTATION IS INSERTED!
+
 ## Project Description
 
 Our project is analyzing data from 130 US Hospitals in the years 1999-2008. The used dataset focuses on patients with diabetes who had laboratory tests, received medications, and had a hospital stay up to 14 days. The data set includes 101.766 instances, where each instance is one visit to the hospital by a diabetes patient.
 
-The data is analysed to show BLA BLA BLA BLA BLA BLA BLA BLA BLA BLA BLA BLA BLA BLA BLA BLA
+The data is merged with an ICD9 database to describe the diagnoses and analyzed to show patient groups, which are admitted and readmitted more than others. The purpose is to gain insight into groups of patient being admitted more than others.
 
 ## Content of repository:
 
 ### 01_load_data.qmd
-Getting and loading the data, and joining raw dataframes together
+
+Creating the \_raw folder and getting the data. The data contains the full patient information along with admission data. The admission data file is stating codes, decribing how a patient is admitted into the hospital.\
+Here the ICD9 code database is also fetched. The ICD9 codes are used instead of diagnoses and procedures in the US.
 
 ### 02_clean_data.qmd
-Cleaning the data set
+
+Here the admission data is made into a tidy data frame. The ICD9 data is also made into a tidy data frame with short and long descriptions for each diagnosis.
+
+The full patient dataset is then cleaned to show NA values instead of "?" e.g. and columns containing yes or no is standardized.
+
+The admission data is then joined into the diabetes data. The same is done for the ICD9 dataset.
 
 ### 03_augment.qmd
+
 Augment the dataset, adding columns for amount of entries pr patient and total days in hospital.
 
 ### 04_description.qmd
-Information about dataset, such as distribution of age and gender, and patient with most days spend in hostpital.
 
-### 03_visualize_data.R
-Vizualization of the data set
+Information about the dataset, such as distribution of age and gender, and patient with most days spend in hospital.
 
-### 04_PCA_analysis.R
-PCA-analysis
-We will perform a PCA analysis on the data set to see if we can reduce the dimensionality of the data set.
-We will then plot the data set in 2D and 3D to see if we can see any patterns in the data set.
+### 05_visualize_data.R
 
-## Shiny app
+Vizualizations of the dataset. Here information about gender, age and number of diagnoses are quantified in plots.
 
-## How to Install and Run the Project
+### 06_PCA_analysis.R
+
+PCA-analysis. Here a PCA analysis is performed on the data set to see if we can reduce the dimensionality to view patterns that may contribute to readmittance. It is then plotted in 2D and 3D to see if any patterns can be seen in the data set.
+
+### 07_shiny.R
+
+A shiny app created as a tool to look up.... INSERT DESCRIPTION
 
 Here we insert the needed packages and installations, which are needed to run the code (if neccessary).
