@@ -6,8 +6,6 @@ editor: visual
 
 ### Import dataset
 
-This is an example trial run. The real data should be imported below as clean data:
-
 ```{r}
 library(tidyverse)
 library(broom)
@@ -66,7 +64,7 @@ pca_fit |>
   geom_segment(xend = 0,
                yend = 0,
                arrow = arrow_style) +
-  geom_text_repel(
+  geom_text(
     aes(label = column),
     hjust = 1, nudge_x = -0.02, 
     color = "#904C2F"
