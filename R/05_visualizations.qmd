@@ -71,39 +71,41 @@ data |>
 ## Race/gender distribution
 
 ```{r}
-
-data |>
-  select(patient_nbr,race,gender) |>
+plot_data <- data |>
+  select(patient_nbr, race, gender) |>
   distinct(patient_nbr, .keep_all = TRUE) |>
   mutate(race = ifelse(is.na(race), "Other", race)) |>
   group_by(race, gender) |>
   summarise(count = n(), .groups = "drop") |>
   mutate(text_color = ifelse(count > 4000, "white", 
-                             ifelse(gender=='Female','hotpink',
-                                    ifelse(gender=='Male','cornflowerblue','grey35')))) |>
-  ggplot(aes(x=race, y=count,
-             fill=gender)) +
-  geom_bar(stat='identity',
-           position = 'stack') +
-   geom_text(data = plot_data |> filter(count > 4000), 
-            aes(label = count, color = text_color, vjust = 0.5),
-            position = position_stack(vjust = 0.5),  
-            size = 4) +
-  geom_text(data = plot_data |> filter(count <= 4000), 
-            aes(label = count, color = text_color, vjust = -3),
-            position = position_dodge2(width=0.8),  
-            size = 4) +
+                             ifelse(gender == "Female", "hotpink",
+                                    ifelse(gender == "Male", "cornflowerblue", "grey35"))))
+
+ggplot(plot_data, aes(x = race, y = count, fill = gender)) +
+  geom_bar(stat = "identity", position = "stack") +
+  geom_text(
+    data = plot_data |> filter(count > 4000), 
+    aes(label = count, color = text_color), 
+    position = position_stack(vjust = 0.5), 
+    size = 4
+  ) +
+  geom_text(
+    data = plot_data |> filter(count <= 4000), 
+    aes(label = count, color = text_color), 
+    position = position_dodge2(width = 0.8), 
+    size = 4
+  ) +
   scale_color_identity() +
-  labs(x = "Race", 
-       y = "Count", 
-       fill = "Gender",
-      title = str_c('Gender/race distribution of dataset, total no. of patients: ',
-                    sum(plot_data$count))) +
-  scale_fill_manual(values = c('hotpink',
-                               'cornflowerblue',
-                               'grey35')) +
+  labs(
+    x = "Race", 
+    y = "Count", 
+    fill = "Gender",
+    title = str_c("Gender/race distribution of dataset, total no. of patients: ", 
+                  sum(plot_data$count))
+  ) +
+  scale_fill_manual(values = c("hotpink", "cornflowerblue", "grey35")) +
   theme_minimal() +
-  theme(legend.position = 'bottom')
+  theme(legend.position = "bottom")
 ```
 
 ## Discharge disposition
