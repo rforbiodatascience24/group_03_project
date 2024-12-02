@@ -1,5 +1,5 @@
 ---
-title: "Project in R for data bio science 22100"
+title: "Final project in <br>22100 R for data bio science"
 authors: 'Group 3: <br>
           s225049: Ida Sofie Goldschmidt <br>
           s225074: Annekatrine Kirketerp-Møller<br>
@@ -7,7 +7,16 @@ authors: 'Group 3: <br>
           s224974: Rasmus Kamp<br>
           s215109: Rolf Larsen'
 slide-number: true
-format: revealjs
+format: 
+  revealjs: 
+    theme: blood
+    include-in-header:
+      - text: |
+          <style>
+          h1 {
+              font-size: 2em !important; 
+          }
+          </style>
 editor: visual
 ---
 
@@ -80,6 +89,7 @@ editor: visual
 
 ## PCA analysis
 
+::: r-fit-text
 -   The PCA reduces the dimensionality of our dataset, so that we can easier group patients with similar characteristics.
 
 -   PC1 (25% of variance) likely represent interactions with hospitals (encounters, num_emergencies) while PC2 (17% of variance) likely represent intensity or difficulty of treatment (time_in_hospital, num_medications, num_procedures)
@@ -89,9 +99,10 @@ editor: visual
 -   By K-means clustering based on the PCA we get three major groups of patients
 
     -   "Insert small description of each cluster"
+:::
 
 ## Results
-
+::: r-fit-text
 -   Average number of diagnoses rises with age
 
 -   Most common primary diagnosis: *Coronary atherosclerosis* - buildup of fats, cholesterol and other substances in and on the walls of the heart arteries
@@ -103,6 +114,7 @@ editor: visual
     -   Has many problematic side effects, such as chronic foot ulcers, digestive issues etc.
 
 -   For patients with uncontrolled diabetes, *Ketoacidosis* was more common, which is caused by lack of insulin in the body
+:::
 
 -   Which Medication had the lowest amout of readmissions in the age group (30-40\] for asians
 
