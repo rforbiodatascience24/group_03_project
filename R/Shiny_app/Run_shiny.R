@@ -1,6 +1,6 @@
 library(shiny)
 #Load necessary scripts
-source("Ui.R")
+source("UI.R")
 source("Server.R")
 source("Functions.R")
 
