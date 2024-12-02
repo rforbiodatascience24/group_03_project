@@ -65,8 +65,6 @@ Vizualizations of the dataset. Here information about gender, age and number of 
 
 PCA-analysis. Here a PCA analysis is performed on the data set to see if we can reduce the dimensionality to view patterns that may contribute to readmittance. It is then plotted in 2D and 3D to see if any patterns can be seen in the data set.
 
-### 07_shiny.R
+### Shiny_app
 
-A shiny app created as a tool to look up.... INSERT DESCRIPTION
-
-Here we insert the needed packages and installations, which are needed to run the code (if neccessary).
+A shiny app created as a tool to explore hospital readmission across various parameters in the data set. 
