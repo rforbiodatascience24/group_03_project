@@ -135,17 +135,18 @@ data |>
 ## Discharge disposition
 
 ```{r discharge_disposition_for_all_admission_types, fig.width=8, fig.height=6}
+#Finding the 8 most frequent discharge disposition for any admission type
 top_8_discharge_dispositions <- data |>
   group_by(discharge_disposition)|> 
-  summarize(n = n()) |> 
-  arrange(desc(n)) |> 
+  summarize(n = n()) |> #Summarizing the total amount of occurences of each discharge type
+  arrange(desc(n)) |> #Arranging from high -> low 
   head(8) |> 
-  select(discharge_disposition) |> 
-  pull()
+  select(discharge_disposition) |>
+  pull() #Converting into a vector
 
 data |> 
   select(discharge_disposition, age) |> 
-  filter(discharge_disposition %in% top_8_discharge_dispositions) |> 
+  filter(discharge_disposition %in% top_8_discharge_dispositions) |> #Filtering for only the cases where the discharge type was in the top 8 
   group_by(discharge_disposition, age) |> 
   summarize(n = n(),.groups = 'keep') |> 
   drop_na(discharge_disposition) |>
@@ -172,6 +173,7 @@ data |>
 ### Only for emergency admission type
 
 ```{r discharge_disposition_for_emergency_admissions, fig.width=8, fig.height=6}
+#Finding the top 8 for the casses related to emergency admissions only
 top_8_discharge_dispositions <- data |>
   filter(admission_type == "Emergency") |> 
   group_by(discharge_disposition)|> 
