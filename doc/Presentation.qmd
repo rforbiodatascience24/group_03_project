@@ -15,7 +15,7 @@ editor: visual
 
 ## Materials
 
-::: columns
+::::: columns
 ::: {.column width="60%"}
 **Raw**
 
@@ -37,7 +37,7 @@ editor: visual
 -   Add nr_encounters
 -   Add time_in_hospital
 :::
-:::
+:::::
 
 ## Methods
 
@@ -64,6 +64,16 @@ App showing number of readmissions across different parameters in the dataset.
     -   Medication
 
 ## PCA analysis
+
+-   The PCA reduces the dimensionality of our dataset, so that we can easier group patients with similar characteristics.
+
+-   PC1 (25% of variance) likely represent interactions with hospitals (encounters, num_emergencies) while PC2 (17% of variance) likely represent intensity or difficulty of treatment (time_in_hospital, num_medications, num_procedures)
+
+    -   We therefore can split patients into smaller segments
+
+-   By K-means clustering based on the PCA we get three major groups of patients
+
+    -   "Insert small description of each cluster"
 
 ## Results
 
