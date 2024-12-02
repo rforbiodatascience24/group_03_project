@@ -1,0 +1,175 @@
+---
+title: "PCA: Group 03"
+format:
+  html:
+    embed-resources: true
+editor: visual
+---
+
+### Import dataset
+
+```{r,message=FALSE,warning=FALSE}
+library(tidyverse)
+library(broom)
+library(cowplot)
+library(ggplot2)
+library(here)
+aug_data <- read_csv(here("data/03_dat_aug.csv"))
+```
+
+### Start of the PCA
+
+Looking at the data in PC coordinates:
+
+```{r pc_coordinate_plot}
+numeric_data <- aug_data |> 
+  select(where(is.numeric)) |> 
+  na.omit() |> 
+  select(where(~ var(., na.rm = TRUE) > 0))
+
+pca_fit <- numeric_data |>  
+  prcomp(scale = TRUE) 
+
+data_clean <- aug_data |> 
+  filter(row_number() %in% rownames(numeric_data))
+
+pca_plot <- pca_fit |> 
+  augment(data_clean) |>  
+  ggplot(aes(.fittedPC1, .fittedPC2)) + 
+  geom_point(size = 1.5) +
+  theme_half_open(12) +
+  background_grid()
+pca_plot
+```
+
+Now we extract the rotation matrix
+
+```{r}
+pca_fit |> 
+  tidy(matrix = "rotation")
+```
+
+and plot it:
+
+```{r rotation_matrix_plot}
+# arrow for plotting
+arrow_style <- arrow(
+  angle = 20, ends = "first", type = "closed", length = grid::unit(8, "pt")
+)
+
+# rotation matrix
+pca_fit |> 
+  tidy(matrix = "rotation") |> 
+  pivot_wider(names_from = "PC",
+              names_prefix = "PC",
+              values_from = "value") |> 
+  ggplot(aes(PC1, PC2)) +
+  geom_segment(xend = 0,
+               yend = 0,
+               arrow = arrow_style) +
+  geom_text(
+    aes(label = column),
+    hjust = 1, nudge_x = -0.02, 
+    color = "#904C2F"
+  ) +
+  xlim(-1.25, .5) +
+  ylim(-.5, 1) +
+  coord_fixed() + 
+  theme_minimal_hgrid(12)
+```
+
+Look at the variance
+
+```{r}
+pca_fit |> 
+  tidy(matrix = "eigenvalues")
+```
+
+And now the plot:
+
+```{r variance_plot}
+pca_bar_plot <- pca_fit |> 
+  tidy(matrix = "eigenvalues") |> 
+  ggplot(aes(PC, percent)) +
+  geom_col(fill = "#56B4E9",
+           alpha = 0.8) +
+  scale_x_continuous(breaks = 1:9) +
+  scale_y_continuous(
+    labels = scales::percent_format(),
+    expand = expansion(mult = c(0, 0.01))
+  ) +
+  theme_minimal_hgrid(12)
+pca_bar_plot
+```
+
+It is seen that 22.5% of the variance is explained by PC1. The drop of is after PC3.
+
+### Exporting the key plots
+
+```{r}
+ggsave(
+  filename = here("results", "06_pca_plot.png"),
+  plot = pca_plot, 
+  width = 8, 
+  height = 6, 
+  dpi = 300
+)
+
+ggsave(
+  filename = here("results", "06_pca_bar_plot.png"),  
+  plot = pca_bar_plot, 
+  width = 8, 
+  height = 6, 
+  dpi = 300
+)
+```
+
+We can then extract what each Principle component is made up of:
+
+```{r}
+# Extract the loadings
+loadings <- pca_fit$rotation |> 
+  as_tibble(rownames = "Variable")
+
+print(loadings)
+```
+
+#### Using k-means to cluster patients
+
+```{r}
+pca_data <- pca_fit |> 
+  augment(data_clean)
+
+pca_data <- pca_data |> 
+  mutate(cluster = kmeans(select(pca_data, .fittedPC1:.fittedPC3), centers = 3)$cluster) |>
+  mutate(cluster = as.factor(cluster))
+
+pca_clustered <- pca_data |> 
+  ggplot(aes(x = .fittedPC1, y = .fittedPC2, color = cluster)) +
+  labs(x = "PC1",
+       y = "PC2",
+       title = "Clustering of patient groups based on PCA") +
+  geom_point() +
+  theme_minimal()
+pca_clustered
+```
+
+### Exporting the key plot again
+
+```{r}
+ggsave(
+  filename = here("results", "06_pca_clustered.jpg"),
+  plot = pca_clustered , 
+  width = 8, 
+  height = 6, 
+  dpi = 300
+)
+```
+
+### Summary
+
+-   **PC1**: Likely represents overall patient interaction with the healthcare system.
+
+-   **PC2**: Likely represents treatment intensity or complexity.
+
+-   **PC3**: Likely represents inpatient care or hospitalization frequency.

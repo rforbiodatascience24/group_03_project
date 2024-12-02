@@ -1,0 +1,61 @@
+---
+title: "Augment: Group 03"
+format:
+  html:
+    embed-resources: true
+editor: visual
+---
+
+## Load libraries
+
+```{r}
+library("here")
+library("tidyverse")
+
+```
+
+## Load data
+
+```{r}
+clean_data <- read_csv(here("data/02_dat_clean.csv")) 
+```
+
+## Encounters in dataset
+
+Add columns that signifies the amount of encounters one patient has in the data set.
+
+```{r}
+clean_data <- clean_data |> 
+  count(patient_nbr) |> 
+  right_join(clean_data,
+             join_by(patient_nbr)) |> 
+  rename("nr_encounters" = n) |> 
+  relocate(c(patient_nbr, nr_encounters), 
+           .after = encounter_id)
+```
+
+## Total time in hospital
+
+Add column for total amount of days spent in hospital
+
+```{r}
+clean_data <- clean_data |> 
+  group_by(patient_nbr) |> 
+  summarise(sum(time_in_hospital)) |> 
+  right_join(clean_data,
+             join_by(patient_nbr)) |> 
+  rename("total_time_hospital" = "sum(time_in_hospital)") |> 
+  relocate(total_time_hospital, 
+           .after = time_in_hospital)
+```
+
+## Write csv
+
+```{r}
+clean_data <- clean_data |> 
+  relocate(patient_nbr, 
+           .after = encounter_id)
+write_csv(clean_data, here("data/03_dat_aug.csv"))
+write_csv(clean_data, here("R/Shiny_app/03_dat_aug.csv"))
+
+```
