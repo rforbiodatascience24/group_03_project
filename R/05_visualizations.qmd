@@ -125,10 +125,10 @@ data |>
   ) +
   geom_col(position = "dodge") +
   labs(
-    x = "Discharge type",
+    x = "Discharge disposition",
     y = "Count",
     fill = "Age group",
-    title = "Discharge type for all age groups for all admission types"
+    title = "Discharge disposition for all age groups for all admission types"
   ) +
     theme_minimal() +
     theme(
@@ -157,10 +157,10 @@ data |>
   ) +
   geom_col(position = "dodge") +
   labs(
-    x = "Discharge type",
+    x = "Discharge disposition",
     y = "Count",
     fill = "Age group",
-    title = "Discharge type for all age groups for emergency admissions"
+    title = "Discharge disposition for all age groups for emergency admissions"
   ) +
     theme_minimal() +
     theme(
@@ -190,10 +190,10 @@ data |>
   ) +
   geom_col(position = "dodge") +
   labs(
-    x = "Discharge type",
+    x = "Discharge disposition",
     y = "Count",
     fill = "Age group",
-    title = "Discharge type for all age groups for urgent admissions"
+    title = "Discharge disposition for all age groups for urgent admissions"
   ) +
     theme_minimal() +
     theme(
@@ -223,10 +223,10 @@ data |>
   ) +
   geom_col(position = "dodge") +
   labs(
-    x = "Discharge type",
+    x = "Discharge disposition",
     y = "Count",
     fill = "Age group",
-    title = "Discharge type for all age groups for elective admissions"
+    title = "Discharge disposition for all age groups for elective admissions"
   ) +
     theme_minimal() +
     theme(
