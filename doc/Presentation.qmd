@@ -40,7 +40,7 @@ editor: visual
 
 ## Methods and Materials
 
-::::: columns
+::: columns
 ::: {.column width="60%"}
 **Raw**
 
@@ -62,7 +62,7 @@ editor: visual
 -   Add nr_encounters
 -   Add time_in_hospital
 :::
-:::::
+:::
 
 ## Parameter examination
 
