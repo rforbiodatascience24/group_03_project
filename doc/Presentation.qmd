@@ -105,8 +105,6 @@ editor: visual
     -   We therefore can split patients into smaller segments
 
 -   By K-means clustering based on the PCA we get three major groups of patients
-
-    -   "Insert small description of each cluster"
 :::
 
 ## Results
