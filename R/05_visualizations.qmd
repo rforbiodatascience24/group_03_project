@@ -10,6 +10,7 @@ editor: visual
 
 library(tidyverse)
 library(here)
+library(viridis)
 ```
 
 ## Load data
@@ -156,6 +157,7 @@ data |>
                   fill = age)
   ) +
   geom_col(position = "dodge") +
+  scale_fill_viridis_d(option = "viridis") +
   scale_x_discrete(labels = function(x) str_wrap(x, width = 45)) +
   labs(
     x = "Discharge disposition",
@@ -194,6 +196,7 @@ data |>
                   fill = age)
   ) +
   geom_col(position = "dodge") +
+  scale_fill_viridis_d(option = "viridis") +
   scale_x_discrete(labels = function(x) str_wrap(x, width = 45)) +
   labs(
     x = "Discharge disposition",
@@ -232,6 +235,7 @@ data |>
                   fill = age)
   ) +
   geom_col(position = "dodge") +
+  scale_fill_viridis_d(option = "viridis") +
   scale_x_discrete(labels = function(x) str_wrap(x, width = 45)) +
   labs(
     x = "Discharge disposition",
@@ -270,6 +274,7 @@ data |>
                   fill = age)
   ) +
   geom_col(position = "dodge") +
+  scale_fill_viridis_d(option = "viridis") +
   scale_x_discrete(labels = function(x) str_wrap(x, width = 45)) +
   labs(
     x = "Discharge disposition",
