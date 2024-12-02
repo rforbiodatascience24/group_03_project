@@ -157,7 +157,7 @@ data |>
                   fill = age)
   ) +
   geom_col(position = "dodge") +
-  scale_x_discrete(labels = function(x) str_wrap(x, width = 45)) +
+  scale_x_discrete(labels = function(x) str_wrap(x, width = 35)) +
   labs(
     x = "Discharge disposition",
     y = "Count",
@@ -195,7 +195,7 @@ data |>
                   fill = age)
   ) +
   geom_col(position = "dodge") +
-  scale_x_discrete(labels = function(x) str_wrap(x, width = 45)) +
+  scale_x_discrete(labels = function(x) str_wrap(x, width = 35)) +
   labs(
     x = "Discharge disposition",
     y = "Count",
@@ -233,7 +233,7 @@ data |>
                   fill = age)
   ) +
   geom_col(position = "dodge") +
-  scale_x_discrete(labels = function(x) str_wrap(x, width = 45)) +
+  scale_x_discrete(labels = function(x) str_wrap(x, width = 35)) +
   labs(
     x = "Discharge disposition",
     y = "Count",
@@ -271,7 +271,7 @@ data |>
                   fill = age)
   ) +
   geom_col(position = "dodge") +
-  scale_x_discrete(labels = function(x) str_wrap(x, width = 45)) +
+  scale_x_discrete(labels = function(x) str_wrap(x, width = 35)) +
   labs(
     x = "Discharge disposition",
     y = "Count",
@@ -563,7 +563,8 @@ diabetes_count |>
        subtitle = str_c(
          'For patients with diabetes as primary or secondary diagnosis\n(only for cases with complications: ',
                         diabetes_count |>
-                          filter(!str_detect(all_diagnoses, 'without mention of complication')) |>
+                          filter(!str_detect(all_diagnoses, 
+                                             'without mention of complication')) |>
                           select(count) |>
                           sum(),
                         ' patients)'),
