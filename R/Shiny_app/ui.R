@@ -1,5 +1,5 @@
 library(shiny)
-data <- read_csv(here("data/03_dat_aug_shiny.csv"))
+data <- read_csv(here("data/03_dat_aug.csv"))
 
 # Define UI
 ui <- fluidPage(
