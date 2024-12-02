@@ -97,16 +97,7 @@ editor: visual
 
 ## PCA analysis
 
-<<<<<<< HEAD
-:::::: r-fit-text
-::::: columns
-=======
-::: r-fit-text - The PCA reduces the dimensionality of our dataset, so that we can easier group patients with similar characteristics.
 
-::::::: r-fit-text
-
-::: columns
->>>>>>> 190bfffe9ab662f66bb52a76ddda386e5855227c
 ::: {.column width="50%"}
 -   The PCA reduces the dimensionality of our data set, so that we can easier group patients with similar characteristics.
 
@@ -121,13 +112,6 @@ editor: visual
 ::: {.column width="50%"}
 ![](images/06_pca_clustered-01.jpg){fig-align="center" width="1000"}
 :::
-<<<<<<< HEAD
-:::::
-::::::
-=======
-:::
-:::
->>>>>>> 190bfffe9ab662f66bb52a76ddda386e5855227c
 
 ## Results
 
@@ -146,10 +130,6 @@ editor: visual
 :::
 
 ## Discussion
-<<<<<<< HEAD
 
 -   It is inherently logical that the amount of diagnoses increases with age. This is especially given seeing as the most common diagnosis is *Coronary atherosclerosis,* which is much more commonly seen in elderly people.
 
--   h
-=======
->>>>>>> 190bfffe9ab662f66bb52a76ddda386e5855227c
