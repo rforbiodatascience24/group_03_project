@@ -54,4 +54,6 @@ clean_data <- clean_data |>
   relocate(patient_nbr, 
            .after = encounter_id)
 write_csv(clean_data, here("data/03_dat_aug.csv"))
+write_csv(clean_data, here("R/Shiny_app/03_dat_aug.csv"))
+
 ```

@@ -187,7 +187,7 @@ full_data <- full_data |>
   mutate(diag_1_short = case_when(is.na(diag_1_short) ~ diag_1,
                                   !is.na(diag_1_short) ~ diag_1_short)) |> 
   mutate(diag_1_long = case_when(is.na(diag_1_long) ~ diag_1,
-                                  !is.na(diag_1_long) ~ diag_1_long))
+                                 !is.na(diag_1_long) ~ diag_1_long))
 
 full_data <- full_data |> 
   left_join(ICD9, 
