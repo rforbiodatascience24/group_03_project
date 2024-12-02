@@ -1,12 +1,14 @@
 library(shiny)
 
-# Function to load and preprocess the dataset
-load_data <- function(file_path) {
+# Function to load the dataset
+load_data <- function() {
+  # Hardcoded file path
+  file_path <- "data/03_dat_aug_shiny.csv"
+  
   # Check if the file exists
   if (!file.exists(file_path)) {
-    stop("Error: File not found.")
-  }
-  
+    stop("Error: File not found at the specified path.")
+  }  
   # Load the CSV file
   data <- read.csv(file_path, stringsAsFactors = FALSE) 
   
@@ -20,7 +22,6 @@ load_data <- function(file_path) {
     "Glipizide-Metformin", "Glimepiride-Pioglitazone",
     "Metformin-Rosiglitazone", "Metformin-Pioglitazone"
   )
-  data[medication_columns] <- lapply(data[medication_columns], as.integer)
-  
+
   return(data)
 }
