@@ -23,7 +23,7 @@ data <- read.csv(here("data/03_dat_aug.csv"))
 ```{r}
 data |>
   filter(gender != "Unknown/Invalid") |>
-  group_by(age, gender) |> 
+  group_by(age, gender) |>
   summarize(average_diagnoses = mean(number_diagnoses), .groups = "drop") |>
 ggplot(aes(x = age,
                 y = average_diagnoses,
@@ -59,7 +59,7 @@ data |>
     y = "Average number of diagnoses",
     fill = "Gender",
     title = 
-      "Average number of diagnoses for all age groups and genders facet wrapped for race") +
+      "Average number of diagnoses for all age groups and genders \n facet wrapped for race") +
   scale_fill_manual(values=c('hotpink',
                              'cornflowerblue',
                              'grey35')) +
@@ -386,9 +386,44 @@ data |>
                      ) +
   theme_minimal() +
   theme(axis.text.x=element_text(angle=90,hjust=1)) + 
-  labs(title = 'Average number of diagnoses by maximum amount of visits by patient',
+  labs(title = 'Average number of diagnoses per visit by patient',
        subtitle = '- Green dots signify 1 person',
-       x = 'Maximum amount of visits by patients',
+       x = 'Number of visit by patients',
        y = 'Average number of diagnoses') 
     
+```
+
+## Most common primary diagnoses compared to number of visits
+
+```{r}
+data |>
+  select(patient_nbr, encounter_id, nr_encounters, diag_1_long) |>
+  group_by(diagnosis = diag_1_long) |>
+  summarise(count = n(), .groups = "drop") |>
+  top_n(15, count) |>
+  inner_join(data, by = c("diagnosis" = "diag_1_long")) |>
+  group_by(nr_encounters, diagnosis) |>
+  summarise(diagnosis_count = n(), .groups = "drop") |>
+  mutate(diagnosis = str_trim(str_extract(diagnosis, paste0("^\\S+(\\s+\\S+){0,6}")))) |>
+  ggplot(aes(x = factor(nr_encounters), y = diagnosis, fill = diagnosis_count)) +
+  geom_tile(color = "white") +
+  scale_fill_gradient(low = "orange", high = "purple") +
+  labs(
+    x = "Number of visits",
+    y = "",
+    fill = "Count",
+    title = "Top 15 most common primary diagnoses across all visits"
+  ) +
+  theme_minimal() +
+  theme(axis.text.x = element_text(angle = 90, hjust = 1),
+        legend.position = 'bottom',
+        axis.text.y = element_text(angle=20),
+        plot.title = element_text(hjust = 1.5))
+```
+
+```{r}
+data |>
+  group_by(patient_nbr) |>
+  filter(n_distinct(gender) > 1) |>
+  arrange(encounter_id, .by_group = TRUE)
 ```
