@@ -39,6 +39,16 @@ editor: visual
 
 ## Shiny app for further examination
 
+App showing number of readmissions across different parameters in the dataset.
+
+-   filters:
+
+    -   Race
+
+    -   Gender
+
+    -   Medication
+
 ## PCA analysis
 
 ## Results
@@ -51,6 +61,4 @@ editor: visual
 
 -   
 
-## Shiny app
-
-OBS Insert link to shiny app
+-   
