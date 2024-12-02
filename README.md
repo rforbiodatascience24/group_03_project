@@ -24,9 +24,9 @@ The data can also be retrieved from the following site:
 
 Using the "DOWNLOAD" button on the right side, the same zip-compressed data file as above is downloaded.
 
-## Porject presentation
+## Project presentation
 
-HERE THE LINK TO THE PROJECT PRESENTATION IS INSERTED!
+<https://github.com/rforbiodatascience24/group_03_project/blob/421ccc05d7c993486381e4eb9a82126c4d83fc8a/results/doc/Presentation.html>
 
 ## Project Description
 
@@ -65,8 +65,6 @@ Vizualizations of the dataset. Here information about gender, age and number of 
 
 PCA-analysis. Here a PCA analysis is performed on the data set to see if we can reduce the dimensionality to view patterns that may contribute to readmittance. It is then plotted in 2D and 3D to see if any patterns can be seen in the data set.
 
-### 07_shiny.R
+### Shiny_app
 
-A shiny app created as a tool to look up.... INSERT DESCRIPTION
-
-Here we insert the needed packages and installations, which are needed to run the code (if neccessary).
+A shiny app created as a tool to explore hospital readmission across various parameters in the data set. 

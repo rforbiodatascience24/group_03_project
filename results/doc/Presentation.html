@@ -8,7 +8,7 @@
 <link href="Presentation_files/libs/quarto-html/light-border.css" rel="stylesheet">
 <link href="Presentation_files/libs/quarto-html/quarto-html.min.css" rel="stylesheet" data-mode="light">
 <link href="Presentation_files/libs/quarto-html/quarto-syntax-highlighting-dark.css" rel="stylesheet" id="quarto-text-highlighting-styles"><meta charset="utf-8">
-  <meta name="generator" content="quarto-1.5.57">
+  <meta name="generator" content="quarto-1.3.353">
 
   <title>Final project in  22100 R for data bio science</title>
   <meta name="apple-mobile-web-app-capable" content="yes">
@@ -155,8 +155,7 @@
   }
 
   .callout.callout-titled .callout-body > .callout-content > :last-child {
-    padding-bottom: 0.5rem;
-    margin-bottom: 0;
+    margin-bottom: 0.5rem;
   }
 
   .callout.callout-titled .callout-icon::before {
@@ -395,7 +394,8 @@ Determine which medications are most effective at preventing readmission.</p></l
 <li>Visualizations</li>
 <li>PCA</li>
 </ul>
-</div></div>
+</div>
+</div>
 
 </div>
 <aside><div>
@@ -405,17 +405,17 @@ Determine which medications are most effective at preventing readmission.</p></l
 <h2>Parameter examination</h2>
 <h3 id="average-diagnoses-amount-by-age">Average diagnoses amount by age</h3>
 
-<img data-src="images/average_diagnoses_for_all_races.png" class="quarto-figure quarto-figure-center r-stretch"></section>
+<img data-src="images/average_diagnoses_for_all_races.png" class="r-stretch quarto-figure-center"></section>
 <section class="slide level2">
 
 <h3 id="most-common-primary-diagnosis-across-visits">Most common primary diagnosis across visits</h3>
 
-<img data-src="images/most_common_primary_diagnoses_per_visit.png" class="quarto-figure quarto-figure-center r-stretch"></section>
+<img data-src="images/most_common_primary_diagnoses_per_visit.png" class="r-stretch quarto-figure-center"></section>
 <section class="slide level2">
 
 <h3 id="patients-with-diabetes-as-primary-or-secondary-diagnoses-for-visit">Patients with diabetes as primary or secondary diagnoses for visit</h3>
 
-<img data-src="images/diabetes_management_and_complications_for_patients_with_complications.png" class="quarto-figure quarto-figure-center r-stretch"></section>
+<img data-src="images/diabetes_management_and_complications_for_patients_with_complications.png" class="r-stretch quarto-figure-center"></section>
 <section id="shiny-app-for-dynamic-data-examination" class="slide level2">
 <h2>Shiny App for dynamic data examination</h2>
 <div class="r-fit-text">
@@ -437,10 +437,11 @@ A dynamic app to explore the number of hospital readmissions across various para
 <ol start="5" type="1">
 <li>Medications</li>
 </ol>
-</div></div>
+</div>
+</div>
 </div>
 
-<img data-src="images/shiny_app_example.jpg" class="quarto-figure quarto-figure-center r-stretch"></section>
+<img data-src="images/shiny_app_example.jpg" class="r-stretch quarto-figure-center"></section>
 <section id="pca-analysis" class="slide level2">
 <h2>PCA analysis</h2>
 <div class="r-fit-text">
@@ -457,10 +458,11 @@ A dynamic app to explore the number of hospital readmissions across various para
 </div><div class="column" style="width:50%;">
 <div class="quarto-figure quarto-figure-center">
 <figure>
-<p><img data-src="images/06_pca_clustered-02.jpg" class="quarto-figure quarto-figure-center"></p>
+<p><img data-src="images/06_pca_clustered-02.jpg"></p>
 </figure>
 </div>
-</div></div>
+</div>
+</div>
 </div>
 </section>
 <section id="results" class="slide level2">
@@ -496,10 +498,8 @@ A dynamic app to explore the number of hospital readmissions across various para
 </ul>
 
 </div>
-<div class="quarto-auto-generated-content">
 <div class="footer footer-default">
 
-</div>
 </div>
 <aside><div>
 <p>Pahwa R, Jialal I. Atherosclerosis. [Updated 2023 Aug 8]. In: StatPearls [Internet]. Treasure Island (FL): StatPearls Publishing; 2024 Jan-.&nbsp;Available from: https://www.ncbi.nlm.nih.gov/books/NBK507799/</p>
@@ -533,6 +533,7 @@ A dynamic app to explore the number of hospital readmissions across various para
       Reveal.initialize({
 'controlsAuto': true,
 'previewLinksAuto': false,
+'smaller': false,
 'pdfSeparateFragments': false,
 'autoAnimateEasing': "ease",
 'autoAnimateDuration': 1,
@@ -749,7 +750,18 @@ A dynamic app to explore the number of hospital readmissions across various para
         }
         return false;
       }
-      const onCopySuccess = function(e) {
+      const clipboard = new window.ClipboardJS('.code-copy-button', {
+        text: function(trigger) {
+          const codeEl = trigger.previousElementSibling.cloneNode(true);
+          for (const childEl of codeEl.children) {
+            if (isCodeAnnotation(childEl)) {
+              childEl.remove();
+            }
+          }
+          return codeEl.innerText;
+        }
+      });
+      clipboard.on('success', function(e) {
         // button target
         const button = e.trigger;
         // don't keep focus
@@ -781,50 +793,11 @@ A dynamic app to explore the number of hospital readmissions across various para
         }, 1000);
         // clear code selection
         e.clearSelection();
-      }
-      const getTextToCopy = function(trigger) {
-          const codeEl = trigger.previousElementSibling.cloneNode(true);
-          for (const childEl of codeEl.children) {
-            if (isCodeAnnotation(childEl)) {
-              childEl.remove();
-            }
-          }
-          return codeEl.innerText;
-      }
-      const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
-        text: getTextToCopy
       });
-      clipboard.on('success', onCopySuccess);
-      if (window.document.getElementById('quarto-embedded-source-code-modal')) {
-        // For code content inside modals, clipBoardJS needs to be initialized with a container option
-        // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
-        const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
-          text: getTextToCopy,
-          container: window.document.getElementById('quarto-embedded-source-code-modal')
-        });
-        clipboardModal.on('success', onCopySuccess);
-      }
-        var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
-        var mailtoRegex = new RegExp(/^mailto:/);
-          var filterRegex = new RegExp('/' + window.location.host + '/');
-        var isInternal = (href) => {
-            return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
-        }
-        // Inspect non-navigation links and adorn them if external
-     	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
-        for (var i=0; i<links.length; i++) {
-          const link = links[i];
-          if (!isInternal(link.href)) {
-            // undo the damage that might have been done by quarto-nav.js in the case of
-            // links that we want to consider external
-            if (link.dataset.originalHref !== undefined) {
-              link.href = link.dataset.originalHref;
-            }
-          }
-        }
-      function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      function tippyHover(el, contentFn) {
         const config = {
           allowHTML: true,
+          content: contentFn,
           maxWidth: 500,
           delay: 100,
           arrow: false,
@@ -834,17 +807,8 @@ A dynamic app to explore the number of hospital readmissions across various para
           interactive: true,
           interactiveBorder: 10,
           theme: 'light-border',
-          placement: 'bottom-start',
+          placement: 'bottom-start'
         };
-        if (contentFn) {
-          config.content = contentFn;
-        }
-        if (onTriggerFn) {
-          config.onTrigger = onTriggerFn;
-        }
-        if (onUntriggerFn) {
-          config.onUntrigger = onUntriggerFn;
-        }
           config['offset'] = [0,0];
           config['maxWidth'] = 700;
         window.tippy(el, config); 
@@ -858,11 +822,7 @@ A dynamic app to explore the number of hospital readmissions across various para
           try { href = new URL(href).hash; } catch {}
           const id = href.replace(/^#\/?/, "");
           const note = window.document.getElementById(id);
-          if (note) {
-            return note.innerHTML;
-          } else {
-            return "";
-          }
+          return note.innerHTML;
         });
       }
       const findCites = (el) => {
