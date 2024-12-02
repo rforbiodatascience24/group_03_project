@@ -21,6 +21,7 @@ server <- function(input, output) {
     # Filter by medications
     if (!is.null(input$medication_filter)) {
       for (med in input$medication_filter) {
+        med <- tolower(med)
         if (med %in% colnames(data)) {
           # Only filter if column exists
           data <- data[data[[med]] != "No", ]
@@ -34,7 +35,7 @@ server <- function(input, output) {
       return(NULL)  # Handle empty results gracefully
     }
     
-    data
+    return(data)
   })
   
   # Render the bar plot

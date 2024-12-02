@@ -1,4 +1,5 @@
 library(shiny)
+data <- read_csv(here("data/03_dat_aug_shiny.csv"))
 
 # Define UI
 ui <- fluidPage(
@@ -11,7 +12,7 @@ ui <- fluidPage(
       selectInput(
         "readmission_filter",
         "Filter by Readmission Status:",
-        choices = c("All", "<30", ">30", "No"),
+        choices = c(unique(data$readmitted), "All"),
         selected = "All"
       ),
       selectInput(
@@ -26,13 +27,13 @@ ui <- fluidPage(
         "medication_filter",
         "Filter by Medications:",
         choices = c(
-          "metformin", "repaglinide", "nateglinide", "chlorpropamide",
-          "glimepiride", "acetohexamide", "glipizide", "glyburide",
-          "tolbutamide", "pioglitazone", "rosiglitazone", "acarbose",
-          "miglitol", "troglitazone", "tolazamide", "examide",
-          "sitagliptin", "insulin", "glyburide-metformin", 
-          "glipizide-metformin", "glimepiride-pioglitazone",
-          "metformin-rosiglitazone", "metformin-pioglitazone"
+          "Metformin", "Repaglinide", "Nateglinide", "Chlorpropamide",
+          "Glimepiride", "Acetohexamide", "Glipizide", "Glyburide",
+          "Tolbutamide", "Pioglitazone", "Rosiglitazone", "Acarbose",
+          "Miglitol", "Troglitazone", "Tolazamide", "Examide",
+          "Sitagliptin", "Insulin", "Glyburide-Metformin", 
+          "Glipizide-Metformin", "Glimepiride-Pioglitazone",
+          "Metformin-Rosiglitazone", "Metformin-Pioglitazone"
         ),
         selected = NULL
       )
