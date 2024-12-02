@@ -43,9 +43,17 @@ editor: visual
 
 ## Results
 
--   Shiny
+-   Average number of diagnoses rises with age
 
--   
+-   Most common primary diagnosis: *Coronary atherosclerosis* - buildup of fats, cholesterol and other substances in and on the walls of the heart arteries
+
+    -   Very common for diabetes patients
+
+-   Most common diabetes complication: *Neurological manifestations* - damage to nerve endings, results in pain and numbness in legs, feet and hands
+
+    -   Has many problematic side effects, such as chronic foot ulcers, digestive issues etc.
+
+-   For patients with uncontrolled diabetes, *Ketoacidosis* was more common, which is caused by lack of insulin in the body
 
 ## Discussion
 

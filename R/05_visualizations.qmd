@@ -58,8 +58,7 @@ data |>
     y = "Average number of diagnoses",
     fill = "Gender",
     title = 
-      "Average number of diagnoses for all age groups and genders 
-        \n facet wrapped for race") +
+      "Average number of diagnoses for all age groups and genders,\nfacet wrapped for race") +
     scale_fill_manual(values=c('hotpink',
                              'cornflowerblue',
                              'grey35')) +
