@@ -39,7 +39,7 @@ ggplot(aes(x = age,
 
 ## Age distribution, shown by race
 
-```{r}
+```{r average_diagnoses_for_all_races}
 data |>
   mutate(race = ifelse(is.na(race),'Other',race)) |>
   mutate(race = ifelse(race == 'Other', 'Other/Unspecified', race)) |>
@@ -135,7 +135,7 @@ data |>
 
 ## Discharge disposition
 
-```{r, fig.width=8, fig.height=6}
+```{r discharge_disposition_for_all_admission_types, fig.width=8, fig.height=6}
 top_8_discharge_dispositions <- data |>
   group_by(discharge_disposition)|> 
   summarize(n = n()) |> 
@@ -172,7 +172,7 @@ data |>
 
 ### Only for emergency admission type
 
-```{r, fig.width=8, fig.height=6}
+```{r discharge_disposition_for_emergency_admissions, fig.width=8, fig.height=6}
 top_8_discharge_dispositions <- data |>
   filter(admission_type == "Emergency") |> 
   group_by(discharge_disposition)|> 
@@ -211,7 +211,7 @@ data |>
 
 ### Only urgent admission type:
 
-```{r, fig.width=8, fig.height=6}
+```{r discharge_disposition_for_urgent_admissions, fig.width=8, fig.height=6}
 top_8_discharge_dispositions <- data |>
   filter(admission_type == "Urgent") |> 
   group_by(discharge_disposition)|> 
@@ -250,7 +250,7 @@ data |>
 
 ### For elective admission type
 
-```{r, fig.width=8, fig.height=6}
+```{r discharge_disposition_for_elective_admissions, fig.width=8, fig.height=6}
 top_8_discharge_dispositions <- data |>
   filter(admission_type == "Elective") |> 
   group_by(discharge_disposition)|> 
