@@ -8,22 +8,28 @@ server <- function(input, output) {
   
   # Reactive filtering
   filtered_data <- reactive({
-    data <- dataset
+    data <- data  # Assuming `data` is loaded globally
     
     # Filter by readmission status
     if (input$readmission_filter != "All") {
       data <- data[data$readmitted == input$readmission_filter, ]
     }
-    # Filter by Age
-    if  (input$age != "All") {
-      data <- data[data$age == input$age, ]
+    
+    # Filter by age
+    if (input$age != "All") {
+      data <- data[data$age == input$age, ]    }
+    
+    # Filter by race
+    if (input$race != "All") {
+
     }  
     # Filter by Race
     if  (input$race != "All") {
       data <- data[data$race == input$race, ]
     }
-    # Filter by Gender
-    if  (input$gender != "All") {
+    
+    # Filter by gender
+    if (input$gender != "All") {
       data <- data[data$gender == input$gender, ]
     }
     
