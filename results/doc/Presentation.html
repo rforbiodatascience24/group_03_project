@@ -355,7 +355,7 @@ Understand the key factors and primary diagnoses leading to hospital admissions 
 <li><p><strong>Frequent Side Diagnoses</strong>:<br>
 Investigate the most common secondary diagnoses accompanying hospital admissions.</p></li>
 <li><p><strong>Effective Medications</strong>:<br>
-Determine which medications are most effective at preventing readmissions.</p></li>
+Determine which medications are most effective at preventing readmission.</p></li>
 </ol>
 </div>
 </section>
@@ -418,16 +418,14 @@ A dynamic app to explore the number of hospital readmissions across various para
 <h2>PCA analysis</h2>
 <div class="r-fit-text">
 <ul>
-<li><p>The PCA reduces the dimensionality of our dataset, so that we can easier group patients with similar characteristics.</p></li>
+<li><p>The PCA reduces the dimensionality of our data set, so that we can easier group patients with similar characteristics.</p></li>
 <li><p>PC1 (25% of variance) likely represent interactions with hospitals (encounters, num_emergencies) while PC2 (17% of variance) likely represent intensity or difficulty of treatment (time_in_hospital, num_medications, num_procedures)</p>
 <ul>
 <li>We therefore can split patients into smaller segments</li>
 </ul></li>
-<li><p>By K-means clustering based on the PCA we get three major groups of patients</p>
-<ul>
-<li>“Insert small description of each cluster”</li>
-</ul></li>
+<li><p>By K-means clustering based on the PCA we get three major groups of patients</p></li>
 </ul>
+<p><img data-src="images/06_pca_clustered.png" width="1200"></p>
 </div>
 </section>
 <section id="results" class="slide level2">
@@ -444,10 +442,7 @@ A dynamic app to explore the number of hospital readmissions across various para
 <li>Has many problematic side effects, such as chronic foot ulcers, digestive issues etc.</li>
 </ul></li>
 <li><p>For patients with uncontrolled diabetes, <em>Ketoacidosis</em> was more common, which is caused by lack of insulin in the body</p></li>
-</ul>
-<!-- -->
-<ul>
-<li>Which Medication had the lowest amout of readmissions in the age group (30-40] for asians</li>
+<li><p>Which medication had the lowest amount of readmission in the age group (30-40] for Asian patients</p></li>
 </ul>
 </div>
 </section>
