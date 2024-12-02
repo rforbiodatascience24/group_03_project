@@ -4,25 +4,23 @@ library(shiny)
 server <- function(input, output) {
   
   # Reactive data loading
-  dataset <- reactive({
-    req(input$data_file) # Ensure a file is uploaded
-    load_data(input$data_file$datapath) # Call the load_data function
-  })
+  dataset <- load_data()
   
   # Reactive filtering
   filtered_data <- reactive({
-    data <- dataset()
+    data <- dataset
     
     # Filter by readmission status
     if (input$readmission_filter != "All") {
-      data <- data[data$Readmitted == input$readmission_filter, ]
+      data <- data[data$readmitted == input$readmission_filter, ]
     }
     
     # Filter by medications
     if (!is.null(input$medication_filter)) {
       for (med in input$medication_filter) {
-        if (med %in% colnames(data)) {  # Only filter if column exists
-          data <- data[data[[med]] == 1, ]
+        if (med %in% colnames(data)) {
+          # Only filter if column exists
+          data <- data[data[[med]] != "No", ]
         } else {
           warning(paste("Medication column", med, "not found in dataset"))
         }
@@ -46,7 +44,7 @@ server <- function(input, output) {
     }
     
     # Count the number of patients by readmission status
-    readmission_counts <- table(data$Readmitted)
+    readmission_counts <- table(data$readmitted)
     
     # Create a bar plot
     barplot(
