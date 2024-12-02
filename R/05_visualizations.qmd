@@ -22,9 +22,8 @@ data <- read.csv(here("data/03_dat_aug.csv"))
 
 ```{r}
 data |>
-  filter(gender != "Unknown/Invalid") |>
   group_by(age, gender) |>
-  summarize(average_diagnoses = mean(number_diagnoses), .groups = "drop") |>
+  summarise(average_diagnoses = mean(number_diagnoses), .groups = "drop") |>
 ggplot(aes(x = age,
                 y = average_diagnoses,
                 fill = gender)) +
@@ -32,7 +31,7 @@ ggplot(aes(x = age,
   labs(x = "Age Group",
        y = "Average number of diagnoses",
        fill = "Gender",
-       Title = "Average number of diagnoses for all age groups and genders") +
+       title = "Average number of diagnoses for all age groups and genders per encounter") +
   scale_fill_manual(values=c('hotpink',
                              'cornflowerblue',
                              'grey35')) 
@@ -42,8 +41,8 @@ ggplot(aes(x = age,
 
 ```{r}
 data |>
-  filter(gender != "Unknown/Invalid", 
-         race != "Other") |>
+  mutate(race = ifelse(is.na(race),'Other',race)) |>
+  mutate(race = ifelse(race == 'Other', 'Other/Unspecified', race)) |>
   group_by(age, 
            gender, 
            race) |> 
@@ -59,42 +58,62 @@ data |>
     y = "Average number of diagnoses",
     fill = "Gender",
     title = 
-      "Average number of diagnoses for all age groups and genders \n facet wrapped for race") +
-  scale_fill_manual(values=c('hotpink',
+      "Average number of diagnoses for all age groups and genders 
+        \n facet wrapped for race") +
+    scale_fill_manual(values=c('hotpink',
                              'cornflowerblue',
                              'grey35')) +
     theme_minimal() +
-    theme(axis.text.x = element_text(angle = 60, hjust =1))
+    theme(axis.text.x = element_text(angle = 60, hjust =1),
+          legend.position = 'inside',
+          legend.position.inside = c(0.85,0.15))
 
 ```
 
 ## Race/gender distribution
 
 ```{r}
-plot_data <- data |>
+data |>
   select(patient_nbr, race, gender) |>
   distinct(patient_nbr, .keep_all = TRUE) |>
   mutate(race = ifelse(is.na(race), "Other", race)) |>
   group_by(race, gender) |>
   summarise(count = n(), .groups = "drop") |>
-  mutate(text_color = 
-           ifelse(count > 4000, "white", 
-              ifelse(gender == "Female", "hotpink",
-                 ifelse(gender == "Male", "cornflowerblue", "grey35"))))
-
-ggplot(plot_data, aes(x = race, y = count, fill = gender)) +
+  mutate(text_color = ifelse(count > 4000, "white", 
+                       ifelse(gender == "Female", "hotpink", 
+                        ifelse(gender == "Male", "cornflowerblue", "grey35")))) |>
+  ggplot(aes(x = race, y = count, fill = gender)) +
   geom_bar(stat = "identity", position = "stack") +
   geom_text(
-    data = plot_data |> filter(count > 4000), 
-    aes(label = count, color = text_color), 
-    position = position_stack(vjust = 0.5), 
+    aes(label = count, color = text_color),
+    data = data |> 
+      select(patient_nbr, race, gender) |>
+      distinct(patient_nbr, .keep_all = TRUE) |>
+      mutate(race = ifelse(is.na(race), "Other", race)) |>
+      group_by(race, gender) |>
+      summarise(count = n(), .groups = "drop") |>
+      filter(count > 4000) |>
+      mutate(text_color = ifelse(count > 4000, "white", 
+                           ifelse(gender == "Female", "hotpink", 
+                            ifelse(gender == "Male", "cornflowerblue", "grey35")))),
+    position = position_stack(vjust = 0.5),
     size = 4
   ) +
   geom_text(
-    data = plot_data |> filter(count <= 4000), 
-    aes(label = count, color = text_color, vjust = -3), 
-    position = position_dodge2(width = 0.8), 
-    size = 4
+    aes(label = count, color = text_color),
+    data = data |> 
+      select(patient_nbr, race, gender) |>
+      distinct(patient_nbr, .keep_all = TRUE) |>
+      mutate(race = ifelse(is.na(race), "Other", race)) |>
+      group_by(race, gender) |>
+      summarise(count = n(), .groups = "drop") |>
+      filter(count <= 4000) |>
+      mutate(text_color = ifelse(count > 4000, "white", 
+                           ifelse(gender == "Female", "hotpink",
+                            ifelse(gender == "Male", "cornflowerblue", "grey35")))),
+    position = position_dodge2(width = 0.8),
+    size = 4,
+    vjust = -3
   ) +
   scale_color_identity() +
   labs(
@@ -102,8 +121,13 @@ ggplot(plot_data, aes(x = race, y = count, fill = gender)) +
     y = "Count", 
     fill = "Gender",
     title = str_c("Gender/race distribution of dataset, total no. of patients: ", 
-                  sum(plot_data$count))
-  ) +
+                  data |> 
+                    select(patient_nbr) |>
+                    group_by(patient_nbr) |>
+                    summarise(count = n()) |>
+                    count()
+                  )
+    ) +
   scale_fill_manual(values = c("hotpink", "cornflowerblue", "grey35")) +
   theme_minimal() +
   theme(legend.position = "bottom")
@@ -407,25 +431,28 @@ data |>
   select(patient_nbr, encounter_id, nr_encounters, diag_1_long) |>
   group_by(diagnosis = diag_1_long) |>
   summarise(count = n(), .groups = "drop") |>
-  top_n(15, count) |>
+  top_n(10, count) |>
   inner_join(data, by = c("diagnosis" = "diag_1_long")) |>
   group_by(nr_encounters, diagnosis) |>
   summarise(diagnosis_count = n(), .groups = "drop") |>
-  mutate(diagnosis = str_trim(str_extract(diagnosis, paste0("^\\S+(\\s+\\S+){0,6}")))) |>
-  ggplot(aes(x = factor(nr_encounters), y = diagnosis, fill = diagnosis_count)) +
+  ggplot(aes(x = nr_encounters, y = diagnosis, fill = diagnosis_count)) +
   geom_tile(color = "white") +
   scale_fill_gradient(low = "orange", high = "purple") +
+  scale_y_discrete(labels = function(y) str_wrap(y, width = 45)) +
   labs(
     x = "Number of visits",
     y = "",
-    fill = "Count",
-    title = "Top 15 most common primary diagnoses across all visits"
+    fill = "Amount of patients",
+    title = "Top 10 most common primary diagnosis per visit"
   ) +
   theme_minimal() +
-  theme(axis.text.x = element_text(angle = 90, hjust = 1),
+  theme(axis.text.x = element_text(angle = 0, hjust = 1),
         legend.position = 'bottom',
-        axis.text.y = element_text(angle=20),
-        plot.title = element_text(hjust = 1.5))
+        legend.background = element_rect(linewidth = 0.5, color = 'grey'),
+        legend.text = element_text(angle=20,hjust=1),
+        legend.justification = 'left',
+        legend.title.position = 'top',
+        plot.title = element_text(hjust = -3))
 ```
 
 ### Gender discrepancy for patients
@@ -438,3 +465,8 @@ data |>
 ```
 
 ## Diabetes types
+
+```{r}
+data |>
+  group_by(patient_nbr)
+```

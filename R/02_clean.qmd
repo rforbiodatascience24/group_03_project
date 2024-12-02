@@ -165,7 +165,7 @@ full_data <- full_data |>
   select(-admission_source_id)
 
 full_data <- full_data |> 
-  left_join(admission_source,
+  left_join(discharge_disposition,
             join_by('discharge_disposition_id' == 'type_id'), 
             relationship = "many-to-one") |>
   rename(discharge_disposition = description) |> 
