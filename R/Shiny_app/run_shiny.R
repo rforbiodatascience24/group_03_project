@@ -1,7 +1,6 @@
-library(shiny)
-data <- read.csv("03_dat_aug.csv")
 
-#Load necessary scripts
+library("shiny")
+# Load necessary scripts
 source("ui.R")
 source("server.R")
 
