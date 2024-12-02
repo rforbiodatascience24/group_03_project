@@ -114,10 +114,8 @@ A dynamic app to explore the number of hospital readmissions across various para
 
 ## PCA analysis
 
-::::::: r-fit-text
-
-:::::: columns
-
+:::::: r-fit-text
+::::: columns
 ::: {.column width="50%"}
 -   The PCA reduces the dimensionality of our data set, so that we can easier group patients with similar characteristics.
 
@@ -129,14 +127,10 @@ A dynamic app to explore the number of hospital readmissions across various para
 :::
 
 ::: {.column width="50%"}
-
 ![](images/06_pca_clustered-01.jpg){fig-align="center" width="1000"}
-
 :::
-
+:::::
 ::::::
-
-:::::::
 
 ## Results
 
@@ -160,4 +154,4 @@ A dynamic app to explore the number of hospital readmissions across various para
 
 -   It is inherently logical that the amount of diagnoses increases with age. This is especially given seeing as the most common diagnosis is *Coronary atherosclerosis,* which is much more commonly seen in elderly people.
 
--   
+-   h
