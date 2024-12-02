@@ -22,9 +22,23 @@ editor: visual
 
 ## Introduction
 
+-   **Exploring Patterns**:\
+    Identifying trends and tendencies in diabetes patients to improve understanding of hospital admissions.
+
+### Objectives
+
+1.  **Identify Common Factors**:\
+    Understand the key factors and primary diagnoses leading to hospital admissions among diabetes patients.
+
+2.  **Frequent Side Diagnoses**:\
+    Investigate the most common secondary diagnoses accompanying hospital admissions.
+
+3.  **Effective Medications**:\
+    Determine which medications are most effective at preventing readmissions.
+
 ## Materials
 
-::::: columns
+::: columns
 ::: {.column width="60%"}
 **Raw**
 
@@ -46,7 +60,7 @@ editor: visual
 -   Add nr_encounters
 -   Add time_in_hospital
 :::
-:::::
+:::
 
 ## Methods
 
@@ -58,17 +72,20 @@ editor: visual
 
 ## Parameter examination
 
-## Shiny app for further examination
+-   Plots, and their significance
 
-App showing number of re-admissions across different parameters in the dataset.
+## Shiny App for Further Examination
 
--   Filters:
+-   **Purpose**:\
+    A dynamic app to explore the number of hospital readmissions across various parameters in the dataset.
 
-    -   Race
+### Filters Available:
 
-    -   Gender
+1.  **Race**
 
-    -   Medication
+2.  **Gender**
+
+3.  **Medication**
 
 ## PCA analysis
 
@@ -99,6 +116,8 @@ App showing number of re-admissions across different parameters in the dataset.
 
 -   For patients with uncontrolled diabetes, *Ketoacidosis* was more common, which is caused by lack of insulin in the body
 :::
+
+-   Which Medication had the lowest amout of readmissions in the age group (30-40\] for asians
 
 ## Discussion
 
