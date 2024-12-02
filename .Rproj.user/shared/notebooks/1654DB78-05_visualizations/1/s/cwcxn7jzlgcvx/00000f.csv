@@ -1,0 +1,4 @@
+"0","data |>"
+"0","  group_by(patient_nbr) |>"
+"0","  filter(n_distinct(gender) > 1) |>"
+"0","  arrange(encounter_id, .by_group = TRUE)"

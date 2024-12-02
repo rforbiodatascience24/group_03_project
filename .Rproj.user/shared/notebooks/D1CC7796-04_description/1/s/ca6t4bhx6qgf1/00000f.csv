@@ -1,0 +1,7 @@
+"0","max_time <- aug_data |> "
+"0","  summarise(max(total_time_hospital)) |> "
+"0","  pull()"
+"0",""
+"0","aug_data |> "
+"0","  distinct(patient_nbr, total_time_hospital) |> "
+"0","  filter(total_time_hospital == max_time)"

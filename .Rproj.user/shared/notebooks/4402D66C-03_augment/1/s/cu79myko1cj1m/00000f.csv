@@ -1,0 +1,4 @@
+"0","clean_data <- clean_data |> "
+"0","  relocate(patient_nbr, "
+"0","           .after = encounter_id)"
+"0","write_csv(clean_data, here(""data/03_dat_aug.csv""))"

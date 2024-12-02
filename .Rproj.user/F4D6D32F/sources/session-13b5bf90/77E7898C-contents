@@ -1,0 +1,126 @@
+---
+title: "Final project in <br>22100 R for data bio science"
+authors: 'Group 3: <br>
+          s225049: Ida Sofie Goldschmidt <br>
+          s225074: Annekatrine Kirketerp-Møller<br>
+          s225051: Emil August Dissing Berntsen<br>
+          s224974: Rasmus Kamp<br>
+          s215109: Rolf Larsen'
+slide-number: true
+format: 
+  revealjs: 
+    theme: blood
+    include-in-header:
+      - text: |
+          <style>
+          h1 {
+              font-size: 2em !important; 
+          }
+          </style>
+editor: visual
+---
+
+## Introduction
+
+-   **Exploring Patterns**:\
+    Identifying trends and tendencies in diabetes patients to improve understanding of hospital admissions.
+
+### Objectives
+
+1.  **Identify Common Factors**:\
+    Understand the key factors and primary diagnoses leading to hospital admissions among diabetes patients.
+
+2.  **Frequent Side Diagnoses**:\
+    Investigate the most common secondary diagnoses accompanying hospital admissions.
+
+3.  **Effective Medications**:\
+    Determine which medications are most effective at preventing readmissions.
+
+## Materials
+
+::::: columns
+::: {.column width="60%"}
+**Raw**
+
+-   Diabetes data
+    -   101766 encounters across 71518 patients
+    -   Example columns: age, gender, race, diagnoses, admission and discharge
+-   IDs mapping
+-   ICD9 - International classification of diseases
+:::
+
+::: {.column width="40%"}
+**Joining**
+
+-   Keep all diabetes data
+-   Values without translations are kept numbers
+
+**Augmentation**
+
+-   Add nr_encounters
+-   Add time_in_hospital
+:::
+:::::
+
+## Methods
+
+-   With the augmented data ---\> examine tendencies
+
+-   Finding patters for characteristics, diagnoses
+
+-   Purpose of project: *Are there any common factors leading to admissions into hospital, with focus on diabetes patients?*
+
+## Parameter examination
+
+-   Plots, and their significance
+
+## Shiny App for Further Examination
+
+-   **Purpose**:\
+    A dynamic app to explore the number of hospital readmissions across various parameters in the dataset.
+
+### Filters Available:
+
+1.  **Race**
+
+2.  **Gender**
+
+3.  **Medication**
+
+## PCA analysis
+
+::: r-fit-text
+-   The PCA reduces the dimensionality of our dataset, so that we can easier group patients with similar characteristics.
+
+-   PC1 (25% of variance) likely represent interactions with hospitals (encounters, num_emergencies) while PC2 (17% of variance) likely represent intensity or difficulty of treatment (time_in_hospital, num_medications, num_procedures)
+
+    -   We therefore can split patients into smaller segments
+
+-   By K-means clustering based on the PCA we get three major groups of patients
+
+    -   "Insert small description of each cluster"
+:::
+
+## Results
+
+::: r-fit-text
+-   Average number of diagnoses rises with age
+
+-   Most common primary diagnosis: *Coronary atherosclerosis* - buildup of fats, cholesterol and other substances in and on the walls of the heart arteries
+
+    -   Very common for diabetes patients
+
+-   Most common diabetes complication: *Neurological manifestations* - damage to nerve endings, results in pain and numbness in legs, feet and hands
+
+    -   Has many problematic side effects, such as chronic foot ulcers, digestive issues etc.
+
+-   For patients with uncontrolled diabetes, *Ketoacidosis* was more common, which is caused by lack of insulin in the body
+:::
+
+-   Which Medication had the lowest amout of readmissions in the age group (30-40\] for asians
+
+## Discussion
+
+-   
+
+-   

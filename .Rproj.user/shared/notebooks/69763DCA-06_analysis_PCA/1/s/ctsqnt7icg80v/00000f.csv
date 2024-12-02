@@ -1,0 +1,7 @@
+"0","ggsave("
+"0","  filename = here(""results"", ""06_pca_clustered.jpg""),"
+"0","  plot = pca_clustered , "
+"0","  width = 8, "
+"0","  height = 6, "
+"0","  dpi = 300"
+"0",")"

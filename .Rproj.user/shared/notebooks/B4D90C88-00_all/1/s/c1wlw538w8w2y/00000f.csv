@@ -1,0 +1,45 @@
+"0","quarto::quarto_render(input = ""06_analysis_PCA.qmd"","
+"0","                      output_format = ""html"")"
+"1","[31m
+
+processing file: 06_analysis_PCA.qmd
+[39m"
+"1","[31m  |                                                          [39m"
+"1","[31m  |                                                    |   0%  |                                                            |...                                                 |   5%                    |                                                            |.....                                               |  11% [unnamed-chunk-1][39m"
+"1","[31m  |                                                          [39m"
+"1","[31m  |........                                            |  16%                    |                                                            |...........                                         |  21% [unnamed-chunk-2][39m"
+"1","[31m  |                                                          [39m"
+"1","[31m  |..............                                      |  26%                    |                                                            |................                                    |  32% [unnamed-chunk-3]  |                                                            |...................                                 |  37%                    |                                                            |......................                              |  42% [unnamed-chunk-4][39m"
+"1","[31m  |                                                          [39m"
+"1","[31m  |.........................                           |  47%                    |                                                            |...........................                         |  53% [unnamed-chunk-5]  |                                                            |..............................                      |  58%                    |                                                            |.................................                   |  63% [unnamed-chunk-6]  |                                                            |....................................                |  68%                    |                                                            |......................................              |  74% [unnamed-chunk-7][39m"
+"1","[31m  |                                                          [39m"
+"1","[31m  |.........................................           |  79%                    |                                                            |............................................        |  84% [unnamed-chunk-8][39m"
+"1","[31m  |                                                          [39m"
+"1","[31m  |...............................................     |  89%                    |                                                            |.................................................   |  95% [unnamed-chunk-9][39m"
+"1","[31m  |                                                          [39m"
+"1","[31m  |....................................................| 100%                                                                                                                              
+output file: 06_analysis_PCA.knit.md
+
+[39m"
+"1","[31mpandoc 
+[39m"
+"1","[31m  to: html
+  output-file: 06_analysis_PCA.html
+  standalone: true
+  section-divs: true
+  html-math-method: mathjax
+  wrap: none
+  default-image-extension: png
+  
+metadata
+  document-css: false
+  link-citations: true
+  date-format: long
+  lang: en
+  title: PCA analysis
+  editor: visual
+  
+[39m"
+"1","[31mOutput created: ..\results\R\06_analysis_PCA.html
+
+[39m"

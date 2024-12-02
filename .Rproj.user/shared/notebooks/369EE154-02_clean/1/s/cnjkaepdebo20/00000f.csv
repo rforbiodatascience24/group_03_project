@@ -1,0 +1,3 @@
+"0","diabetes_data <- read_csv(here(""data/_raw/diabetic_data.csv""), "
+"0","                          na = c(""?"", ""None""), "
+"0","                          show_col_types = FALSE)"

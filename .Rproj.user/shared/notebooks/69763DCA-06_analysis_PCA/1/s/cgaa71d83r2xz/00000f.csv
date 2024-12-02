@@ -1,0 +1,8 @@
+"0","pca_data <- as.data.frame(pca_fit$x)"
+"0",""
+"0","ggplot(pca_data, aes(x = PC1, y = PC2, color = PC3)) + "
+"0","  geom_point(size = 1.5) +"
+"0","  theme_minimal() +"
+"0","  labs(x = ""PC1"", y = ""PC2"", color = ""PC3"") +"
+"0","  scale_color_gradient(low = ""blue"", high = ""red"")"
+"0",""

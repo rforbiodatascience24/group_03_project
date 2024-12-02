@@ -1,0 +1,7 @@
+"0","clean_data <- clean_data |> "
+"0","  count(patient_nbr) |> "
+"0","  right_join(clean_data,"
+"0","             join_by(patient_nbr)) |> "
+"0","  rename(""nr_encounters"" = n) |> "
+"0","  relocate(c(patient_nbr, nr_encounters), "
+"0","           .after = encounter_id)"
