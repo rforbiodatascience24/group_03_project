@@ -1,6 +1,7 @@
 library(shiny)
 library(tidyverse)
 data <- read_csv("03_dat_aug.csv")
+print(dim(data))
 
 #Load necessary scripts
 source("ui.R")
