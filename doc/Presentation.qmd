@@ -1,16 +1,15 @@
 ---
-title: "Presentation"
+title: "Project in R for data bio science 22100"
+authors: 'Group 3: <br>
+          s225049: Ida Sofie Goldschmidt <br>
+          s225074: Annekatrine Kirketerp-Møller<br>
+          s225051: Emil August Dissing Berntsen<br>
+          s224974: Rasmus Kamp<br>
+          s215109: Rolf Larsen'
+slide-number: true
 format: revealjs
 editor: visual
 ---
-
-## R project
-
-s225049: Ida Sofie Goldschmidt\
-s225074: Annekatrine Kirketerp-Møller\
-s225051: Emil August Dissing Berntsen\
-s224974: Rasmus Kamp\
-s215109: Rolf Larsen
 
 ## Introduction
 
@@ -20,13 +19,27 @@ s215109: Rolf Larsen
 
     -   71518 patients
 
-    -   Used columns: age, gender, race, diagnoses, admission and discharge
+    -   Example columns: age, gender, race, diagnoses, admission and discharge
 
 -   ICD9
 
     -   International classification of diseases
 
 ## Materials and methods
+
+-   With the augmented data —\> examine tendencies
+
+-   Finding patters for characteristics, diagnoses
+
+-   Purpose of project: *Are there any common factors leading to admissions into hospital, with focus on diabetes patients?*
+
+## Parameter examination
+
+-   Plots, and their significance
+
+## Shiny app for further examination
+
+## PCA analysis
 
 ## Results
 
@@ -35,6 +48,8 @@ s215109: Rolf Larsen
 -   
 
 ## Discussion
+
+-   
 
 ## Shiny app
 
