@@ -22,6 +22,7 @@ editor: visual
 
 ## Introduction
 
+::: r-fit-text
 -   **Exploring Patterns**:\
     Identifying trends and tendencies in diabetes patients to improve understanding of hospital admissions.
 
@@ -35,10 +36,11 @@ editor: visual
 
 3.  **Effective Medications**:\
     Determine which medications are most effective at preventing readmissions.
+:::
 
-## Materials
+## Methods and Materials
 
-::: columns
+::::: columns
 ::: {.column width="60%"}
 **Raw**
 
@@ -60,24 +62,30 @@ editor: visual
 -   Add nr_encounters
 -   Add time_in_hospital
 :::
-:::
-
-## Methods
-
--   With the augmented data ---\> examine tendencies
-
--   Finding patters for characteristics, diagnoses
-
--   Purpose of project: *Are there any common factors leading to admissions into hospital, with focus on diabetes patients?*
+:::::
 
 ## Parameter examination
 
--   Plots, and their significance
+### Average diagnoses amount by age
+
+![](images/average_diagnoses_for_all_races.png){fig-align="center"}
+
+------------------------------------------------------------------------
+
+### Most common primary diagnosis across visits
+
+![](images/most_common_primary_diagnoses_per_visit.png){fig-align="center"}
+
+------------------------------------------------------------------------
+
+### Patients with diabetes as primary or secondary diagnoses for visit
+
+![](images/diabetes_management_and_complications_for_patients_with_complications.png){fig-align="center"}
 
 ## Shiny App for Further Examination
 
 -   **Purpose**:\
-    A dynamic app to explore the number of hospital readmissions across various parameters in the dataset.
+    A dynamic app to explore the number of hospital readmissions across various parameters in the data set.
 
 ### Filters Available:
 
@@ -115,9 +123,11 @@ editor: visual
     -   Has many problematic side effects, such as chronic foot ulcers, digestive issues etc.
 
 -   For patients with uncontrolled diabetes, *Ketoacidosis* was more common, which is caused by lack of insulin in the body
-:::
+
+<!-- -->
 
 -   Which Medication had the lowest amout of readmissions in the age group (30-40\] for asians
+:::
 
 ## Discussion
 
