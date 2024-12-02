@@ -22,9 +22,8 @@ data <- read.csv(here("data/03_dat_aug.csv"))
 
 ```{r}
 data |>
-  filter(gender != "Unknown/Invalid") |>
   group_by(age, gender) |>
-  summarize(average_diagnoses = mean(number_diagnoses), .groups = "drop") |>
+  summarise(average_diagnoses = mean(number_diagnoses), .groups = "drop") |>
 ggplot(aes(x = age,
                 y = average_diagnoses,
                 fill = gender)) +
@@ -32,7 +31,7 @@ ggplot(aes(x = age,
   labs(x = "Age Group",
        y = "Average number of diagnoses",
        fill = "Gender",
-       Title = "Average number of diagnoses for all age groups and genders") +
+       title = "Average number of diagnoses for all age groups and genders per encounter") +
   scale_fill_manual(values=c('hotpink',
                              'cornflowerblue',
                              'grey35')) 
@@ -42,8 +41,8 @@ ggplot(aes(x = age,
 
 ```{r}
 data |>
-  filter(gender != "Unknown/Invalid", 
-         race != "Other") |>
+  mutate(race = ifelse(is.na(race),'Other',race)) |>
+  mutate(race = ifelse(race == 'Other', 'Other/Unspecified', race)) |>
   group_by(age, 
            gender, 
            race) |> 
@@ -59,12 +58,15 @@ data |>
     y = "Average number of diagnoses",
     fill = "Gender",
     title = 
-      "Average number of diagnoses for all age groups and genders \n facet wrapped for race") +
-  scale_fill_manual(values=c('hotpink',
+      "Average number of diagnoses for all age groups and genders 
+        \n facet wrapped for race") +
+    scale_fill_manual(values=c('hotpink',
                              'cornflowerblue',
                              'grey35')) +
     theme_minimal() +
-    theme(axis.text.x = element_text(angle = 60, hjust =1))
+    theme(axis.text.x = element_text(angle = 60, hjust =1),
+          legend.position = 'inside',
+          legend.position.inside = c(0.85,0.15))
 
 ```
 
