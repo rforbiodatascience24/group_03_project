@@ -77,9 +77,10 @@ plot_data <- data |>
   mutate(race = ifelse(is.na(race), "Other", race)) |>
   group_by(race, gender) |>
   summarise(count = n(), .groups = "drop") |>
-  mutate(text_color = ifelse(count > 4000, "white", 
-                             ifelse(gender == "Female", "hotpink",
-                                    ifelse(gender == "Male", "cornflowerblue", "grey35"))))
+  mutate(text_color = 
+           ifelse(count > 4000, "white", 
+              ifelse(gender == "Female", "hotpink",
+                 ifelse(gender == "Male", "cornflowerblue", "grey35"))))
 
 ggplot(plot_data, aes(x = race, y = count, fill = gender)) +
   geom_bar(stat = "identity", position = "stack") +
@@ -115,7 +116,8 @@ data |>
   group_by(discharge_disposition,
            gender,
            age)|> 
-  summarize(n = n()) |> 
+  summarize(n = n(),.groups = 'keep') |> 
+  drop_na(discharge_disposition) |>
   ggplot(
     mapping = aes(x = discharge_disposition,
                   y = n,
@@ -146,7 +148,8 @@ data |>
   group_by(discharge_disposition,
            gender,
            age)|> 
-  summarize(n = n()) |> 
+  summarize(n = n(),.groups = 'keep') |> 
+  drop_na(discharge_disposition) |>
   ggplot(
     mapping = aes(x = discharge_disposition,
                   y = n,
@@ -178,7 +181,8 @@ data |>
   group_by(discharge_disposition,
            gender,
            age)|> 
-  summarize(n = n()) |> 
+  summarize(n = n(),.groups = 'keep') |> 
+  drop_na(discharge_disposition) |>
   ggplot(
     mapping = aes(x = discharge_disposition,
                   y = n,
@@ -210,7 +214,8 @@ data |>
   group_by(discharge_disposition,
            gender,
            age)|> 
-  summarize(n = n()) |> 
+  summarize(n = n(),.groups = 'keep') |>
+  drop_na(discharge_disposition) |>
   ggplot(
     mapping = aes(x = discharge_disposition,
                   y = n,
@@ -423,9 +428,13 @@ data |>
         plot.title = element_text(hjust = 1.5))
 ```
 
+### Gender discrepancy for patients
+
 ```{r}
 data |>
   group_by(patient_nbr) |>
   filter(n_distinct(gender) > 1) |>
   arrange(encounter_id, .by_group = TRUE)
 ```
+
+## Diabetes types
