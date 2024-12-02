@@ -1,46 +1,0 @@
-"0","quarto::quarto_render(""02_clean.qmd"")"
-"1","[31m
-
-processing file: 02_clean.qmd
-[39m"
-"1","[31m  |                                                          [39m"
-"1","[31m  |                                                    |   0%  |                                                            |...                                                 |   7%                    |                                                            |.......                                             |  13% [unnamed-chunk-1][39m"
-"1","[31m  |                                                          [39m"
-"1","[31m  |..........                                          |  20%                    |                                                            |..............                                      |  27% [unnamed-chunk-2][39m"
-"1","[31m  |                                                          [39m"
-"1","[31m  |.................                                   |  33%                    |                                                            |.....................                               |  40% [unnamed-chunk-3][39m"
-"1","[31m  |                                                          [39m"
-"1","[31m  |........................                            |  47%                    |                                                            |............................                        |  53% [unnamed-chunk-4][39m"
-"1","[31m  |                                                          [39m"
-"1","[31m  |...............................                     |  60%                    |                                                            |...................................                 |  67% [unnamed-chunk-5][39m"
-"1","[31m  |                                                          [39m"
-"1","[31m  |......................................              |  73%                    |                                                            |..........................................          |  80% [unnamed-chunk-6][39m"
-"1","[31m  |                                                          [39m"
-"1","[31m  |.............................................       |  87%                    |                                                            |.................................................   |  93% [unnamed-chunk-7][39m"
-"1","[31m  |                                                          [39m"
-"1","[31m  |....................................................| 100%                                                                                                                              
-output file: 02_clean.knit.md
-
-[39m"
-"1","[31mpandoc 
-[39m"
-"1","[31m  to: html
-  output-file: 02_clean.html
-  standalone: true
-  section-divs: true
-  html-math-method: mathjax
-  wrap: none
-  default-image-extension: png
-  
-metadata
-  document-css: false
-  link-citations: true
-  date-format: long
-  lang: en
-  title: Load project data
-  editor: visual
-  
-[39m"
-"1","[31mOutput created: ..\results\R\02_clean.html
-
-[39m"

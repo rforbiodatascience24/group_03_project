@@ -1,5 +1,0 @@
-"0","# Extract the loadings"
-"0","loadings <- pca_fit$rotation |> "
-"0","  as_tibble(rownames = ""Variable"")"
-"0",""
-"0","print(loadings)"

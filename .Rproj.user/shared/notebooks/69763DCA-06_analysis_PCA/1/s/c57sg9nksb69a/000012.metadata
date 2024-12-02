@@ -1,1 +1,0 @@
-{"height":283.06551297898639,"width":458.0,"size_behavior":0,"conditions":[[1,"Warning: \u001B[38;5;232mRemoved 3 rows containing missing values or values outside the scale\nrange (`geom_segment()`).\u001B[39m"],[1,"Warning: \u001B[38;5;232mRemoved 3 rows containing missing values or values outside the scale\nrange (`geom_text_repel()`).\u001B[39m"]]}

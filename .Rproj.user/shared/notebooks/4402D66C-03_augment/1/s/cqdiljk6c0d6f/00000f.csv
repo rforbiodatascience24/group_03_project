@@ -1,8 +1,0 @@
-"0","clean_data <- clean_data |> "
-"0","  group_by(patient_nbr) |> "
-"0","  summarise(sum(time_in_hospital)) |> "
-"0","  right_join(clean_data,"
-"0","             join_by(patient_nbr)) |> "
-"0","  rename(""total_time_hospital"" = ""sum(time_in_hospital)"") |> "
-"0","  relocate(total_time_hospital, "
-"0","           .after = time_in_hospital)"
