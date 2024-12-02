@@ -8,7 +8,7 @@ load_data <- function(file_path) {
   }
   
   # Load the CSV file
-  data <- read.csv(file_path, stringsAsFactors = FALSE) # test 
+  data <- read.csv(file_path, stringsAsFactors = FALSE) 
   
   # Ensure medication columns are treated as binary
   medication_columns <- c(
