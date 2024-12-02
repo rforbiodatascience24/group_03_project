@@ -146,4 +146,6 @@ A dynamic app to explore the number of hospital readmissions across various para
 
 ## Discussion
 
+-   It is inherently logical that the amount of diagnoses increases with age. This is especially given seeing as the most common diagnosis is *Coronary atherosclerosis,* which is much more commonly seen in elderly people.
+
 -   
