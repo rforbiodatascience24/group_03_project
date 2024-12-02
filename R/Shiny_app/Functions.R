@@ -3,7 +3,7 @@ library(shiny)
 # Function to load and preprocess the dataset
 load_data <- function() {
   # Check if the file exists
-  file_path <- here("data/03_dat_aug_shiny.csv")
+  file_path <- here("data/03_dat_aug.csv")
   if (!file.exists(file_path)) {
     stop("Error: File not found.")
   }
