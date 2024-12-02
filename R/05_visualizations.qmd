@@ -20,7 +20,7 @@ data <- read.csv(here("data/03_dat_aug.csv"))
 
 ## Age distribution
 
-```{r average_number_of_diagnoses}
+```{r average_number_of_diagnoses_for_all}
 data |>
   group_by(age, gender) |>
   summarise(average_diagnoses = mean(number_diagnoses), .groups = "drop") |>
