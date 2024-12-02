@@ -12,13 +12,13 @@ ui <- fluidPage(
       selectInput(
         "readmission_filter",
         "Filter by Readmission Status:",
-        choices = c(unique(data$readmitted), "All"),
+        choices = c("All", unique(data$readmitted)),
         selected = "All"
       ),
       selectInput(
         "age",
         "Filter by age group:",
-        choices = c(unique(data$age), "All"),
+        choices = c("All", sort(unique(data$age))),
         selected = "All"
       ),
       selectInput(
