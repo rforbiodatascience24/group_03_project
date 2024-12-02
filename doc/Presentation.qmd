@@ -4,21 +4,38 @@ format: revealjs
 editor: visual
 ---
 
-## Quarto
+## R project 
 
-Quarto enables you to weave together content and executable code into a finished presentation. To learn more about Quarto presentations see <https://quarto.org/docs/presentations/>.
+s225049: Ida Sofie Goldschmidt\
+s225074: Annekatrine Kirketerp-Møller\
+s225051: Emil August Dissing Berntsen\
+s224974: Rasmus Kamp\
+s215109: Rolf Larsen
 
-## Bullets
+## Introduction
 
-When you click the **Render** button a document will be generated that includes:
+-   Diabetes data
 
--   Content authored with markdown
--   Output from executable code
+    -   101766 encounters
 
-## Code
+    -   71518 patients
 
-When you click the **Render** button a presentation will be generated that includes both content and the output of embedded code. You can embed code like this:
+    -   Used columns: age, gender, race, diagnoses, admission and discharge
 
-```{r}
-1 + 1
-```
+-   ICD9
+
+    -   International classification of diseases
+
+## Materials and methods
+
+## Results
+
+-   Shiny
+
+-   
+
+## Discussion
+
+## Shiny app
+
+OBS Insert link to shiny app

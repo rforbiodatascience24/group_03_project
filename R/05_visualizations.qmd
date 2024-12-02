@@ -38,7 +38,7 @@ ggplot(aes(x = age,
                              'grey35')) 
 ```
 
-## Age diastribution, shown by race
+## Age distribution, shown by race
 
 ```{r}
 data |>
