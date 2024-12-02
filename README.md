@@ -24,9 +24,9 @@ The data can also be retrieved from the following site:
 
 Using the "DOWNLOAD" button on the right side, the same zip-compressed data file as above is downloaded.
 
-## Porject presentation
+## Project presentation
 
-HERE THE LINK TO THE PROJECT PRESENTATION IS INSERTED!
+<https://github.com/rforbiodatascience24/group_03_project/blob/421ccc05d7c993486381e4eb9a82126c4d83fc8a/results/doc/Presentation.html>
 
 ## Project Description
 
