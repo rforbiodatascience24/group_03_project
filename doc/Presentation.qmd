@@ -4,7 +4,7 @@ format: revealjs
 editor: visual
 ---
 
-## R project 
+## R project
 
 s225049: Ida Sofie Goldschmidt\
 s225074: Annekatrine Kirketerp-Møller\
