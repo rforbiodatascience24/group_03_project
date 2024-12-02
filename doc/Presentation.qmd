@@ -102,6 +102,7 @@ editor: visual
 :::
 
 ## Results
+
 ::: r-fit-text
 -   Average number of diagnoses rises with age
 
