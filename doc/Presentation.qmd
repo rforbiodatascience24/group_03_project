@@ -23,8 +23,9 @@ editor: visual
 ## Introduction
 
 ::: r-fit-text
--   **Exploring Patterns**:\
-    Identifying trends and tendencies in diabetes patients to improve understanding of hospital admissions.
+### **Goal: Exploring Patterns**
+
+-   Identifying trends and tendencies in diabetes patients to improve understanding of hospital admissions.
 
 ### Objectives
 
@@ -82,18 +83,34 @@ editor: visual
 
 ![](images/diabetes_management_and_complications_for_patients_with_complications.png){fig-align="center"}
 
-## Shiny App for Further Examination
+## Shiny App for dynamic data examination
 
--   **Purpose**:\
-    A dynamic app to explore the number of hospital readmissions across various parameters in the data set.
+::::::: r-fit-text
+**Purpose**:\
+A dynamic app to explore the number of hospital readmissions across various parameters in the data set.
 
-### Filters Available:
+**Filters Available:**
 
-1.  **Race**
+:::::: columns
+::: {.column width="32%"}
+1.  Readmission status
 
-2.  **Gender**
+2.  Age
+:::
 
-3.  **Medication**
+::: {.column width="32%"}
+3.  Race
+
+4.  Gender
+:::
+
+::: {.column width="32%"}
+5.  Medications
+:::
+::::::
+:::::::
+
+![](images/shiny_app_example.jpg){fig-align="center"}
 
 ## PCA analysis
 
