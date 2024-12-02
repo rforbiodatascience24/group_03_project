@@ -44,7 +44,7 @@ editor: visual
 
 ## Methods and Materials
 
-:::::: r-fit-text
+::::::: r-fit-text
 ::::: columns
 ::: {.column width="60%"}
 **Raw**
@@ -68,7 +68,11 @@ editor: visual
 -   Add time_in_hospital
 :::
 :::::
-::::::
+
+::: aside
+Clore J, Cios K, DeShazo J, Strack B. Diabetes 130-US Hospitals for Years 1999-2008 \[dataset\]. 2014. UCI Machine Learning Repository. Available from: https://doi.org/10.24432/C5230J.
+:::
+:::::::
 
 ## Parameter examination
 
