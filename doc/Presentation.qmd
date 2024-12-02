@@ -13,9 +13,23 @@ editor: visual
 
 ## Introduction
 
+-   **Exploring Patterns**:\
+    Identifying trends and tendencies in diabetes patients to improve understanding of hospital admissions.
+
+### Objectives
+
+1.  **Identify Common Factors**:\
+    Understand the key factors and primary diagnoses leading to hospital admissions among diabetes patients.
+
+2.  **Frequent Side Diagnoses**:\
+    Investigate the most common secondary diagnoses accompanying hospital admissions.
+
+3.  **Effective Medications**:\
+    Determine which medications are most effective at preventing readmissions.
+
 ## Materials
 
-::::: columns
+::: columns
 ::: {.column width="60%"}
 **Raw**
 
@@ -37,7 +51,7 @@ editor: visual
 -   Add nr_encounters
 -   Add time_in_hospital
 :::
-:::::
+:::
 
 ## Methods
 
@@ -51,17 +65,18 @@ editor: visual
 
 -   Plots, and their significance
 
-## Shiny app for further examination
+## Shiny App for Further Examination
 
-App showing number of readmissions across different parameters in the dataset.
+-   **Purpose**:\
+    A dynamic app to explore the number of hospital readmissions across various parameters in the dataset.
 
--   filters:
+### Filters Available:
 
-    -   Race
+1.  **Race**
 
-    -   Gender
+2.  **Gender**
 
-    -   Medication
+3.  **Medication**
 
 ## PCA analysis
 
