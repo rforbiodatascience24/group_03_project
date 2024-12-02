@@ -11,7 +11,7 @@ quarto::quarto_render(input = "01_load.qmd",
                       output_format = "html")
 ```
 
-## Clean Data
+## 34fr34fClean Data
 
 ```{r}
 quarto::quarto_render(input = "02_clean.qmd", 
