@@ -123,13 +123,11 @@ editor: visual
     -   Has many problematic side effects, such as chronic foot ulcers, digestive issues etc.
 
 -   For patients with uncontrolled diabetes, *Ketoacidosis* was more common, which is caused by lack of insulin in the body
-
-<!-- -->
-
--   Which Medication had the lowest amout of readmissions in the age group (30-40\] for asians
 :::
 
 ## Discussion
+
+-   
 
 -   
 
