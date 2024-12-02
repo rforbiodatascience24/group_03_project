@@ -429,6 +429,8 @@ A dynamic app to explore the number of hospital readmissions across various para
 <section id="pca-analysis" class="slide level2">
 <h2>PCA analysis</h2>
 <div class="r-fit-text">
+<div class="columns">
+<div class="column" style="width:50%;">
 <ul>
 <li><p>The PCA reduces the dimensionality of our data set, so that we can easier group patients with similar characteristics.</p></li>
 <li><p>PC1 (25% of variance) likely represent interactions with hospitals (encounters, num_emergencies) while PC2 (17% of variance) likely represent intensity or difficulty of treatment (time_in_hospital, num_medications, num_procedures)</p>
@@ -437,9 +439,15 @@ A dynamic app to explore the number of hospital readmissions across various para
 </ul></li>
 <li><p>By K-means clustering based on the PCA we get three major groups of patients</p></li>
 </ul>
+</div><div class="column" style="width:50%;">
+<div class="quarto-figure quarto-figure-center">
+<figure>
+<p><img data-src="images/06_pca_clustered-01.jpg" class="quarto-figure quarto-figure-center" width="1000"></p>
+</figure>
 </div>
-
-<img data-src="images/06_pca_clustered-01.jpg" width="1000" class="r-stretch"></section>
+</div></div>
+</div>
+</section>
 <section id="results" class="slide level2">
 <h2>Results</h2>
 <div class="r-fit-text">
