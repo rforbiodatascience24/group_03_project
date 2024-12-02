@@ -23,13 +23,13 @@ ui <- fluidPage(
       selectInput(
         "race",
         "Filter by race:",
-        choices = c(unique(data$race), "All"),
+        choices = c("All", sort(unique(data$race))),
         selected = "All"
       ),
       selectInput(
         "gender",
         "Filter by gender",
-        choices = c(unique(data$gender), "All"),
+        choices = c("All", sort(unique(data$gender))),
         selected = "All"
       ),
       
