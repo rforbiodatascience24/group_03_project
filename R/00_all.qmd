@@ -1,10 +1,60 @@
 ---
-title: "00_all.qmd"
-format: html
+title: "All: Group 03"
+format:
+  html:
+    embed-resources: true
 editor: visual
 ---
 
-## Load Data
+# Load data
+
+First the data is gathered from the different websites.
+
+{{< include 01_load.qmd >}}
+
+# Clean data
+
+The four different files are then combined, and different types of NA values are combined.
+
+{{< include 02_clean.qmd >}}
+
+# Augment data
+
+Two columns are created, one for the amount of encounters per patient and one for the total amount of days the patient has spend in the hospital within the dataset.
+
+{{< include 03_augment.qmd >}}
+
+# Description
+
+Different key statistics of the data are found.
+
+{{< include 04_description.qmd >}}
+
+# Visualizations
+
+The data is visualized to discover trends.
+
+{{< include 05_visualizations.qmd >}}
+
+# PCA
+
+A PCA is conducted.
+
+{{< include 06_analysis_PCA.qmd >}}
+
+# Shiny
+
+A shiny app is created to discover correlation between readmission and medications.
+
+{{< include Shiny_app/run_shiny.R >}}
+
+{{< include Shiny_app//ui.R >}}
+
+{{< include Shiny_app//server.R >}}
+
+# Render all scripts
+
+## Load data
 
 ```{r}
 quarto::quarto_render("01_load.qmd")
@@ -38,10 +88,4 @@ quarto::quarto_render("05_visualizations.qmd")
 
 ```{r}
 quarto::quarto_render("06_analysis_PCA.qmd")
-```
-
-## Shiny
-
-```{r}
-# quarto::quarto_render("07_shiny.qmd")
 ```

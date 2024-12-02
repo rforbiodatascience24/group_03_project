@@ -1,6 +1,8 @@
 ---
-title: "Description of data"
-format: html
+title: "Description: Group 03"
+format:
+  html:
+    embed-resources: true
 editor: visual
 ---
 

@@ -1,6 +1,8 @@
 ---
-title: "PCA analysis"
-format: html
+title: "PCA: Group 03"
+format:
+  html:
+    embed-resources: true
 editor: visual
 ---
 

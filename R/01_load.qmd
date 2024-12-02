@@ -1,6 +1,8 @@
 ---
-title: "Get_data"
-format: html
+title: "Load: Group 03"
+format:
+  html:
+    embed-resources: true
 editor: visual
 ---
 

@@ -1,6 +1,8 @@
 ---
-title: "Visualizations"
-format: html
+title: "Visulizations: Group 03"
+format:
+  html:
+    embed-resources: true
 editor: visual
 ---
 

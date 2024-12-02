@@ -1,6 +1,8 @@
 ---
-title: "Load project data"
-format: html
+title: "Clean: Group 03"
+format:
+  html:
+    embed-resources: true
 editor: visual
 ---
 
