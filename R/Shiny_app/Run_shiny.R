@@ -1,7 +1,7 @@
 library(shiny)
 #Load necessary scripts
-source("UI.R")
-source("Server.R")
+source("ui.R")
+source("server.R")
 source("Functions.R")
 
 # Run the Shiny app
