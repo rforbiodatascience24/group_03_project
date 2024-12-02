@@ -1,11 +1,13 @@
 library(shiny)
 library(tidyverse)
-library(here)
-data <- read_csv(here("data/03_dat_aug.csv"))
+data <- read_csv("03_dat_aug.csv")
 
+print(head(data))
 #Load necessary scripts
 source("ui.R")
 source("server.R")
 
 # Run the Shiny app
 shinyApp(ui = ui, server = server)
+
+

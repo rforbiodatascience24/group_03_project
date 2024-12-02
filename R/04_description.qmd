@@ -47,6 +47,18 @@ aug_data |>
   
 ```
 
+### Patient with most encounters
+
+```{r}
+max_enc <- aug_data |> 
+  summarise(max(nr_encounters)) |> 
+  pull()
+
+aug_data |> 
+  distinct(patient_nbr, nr_encounters) |> 
+  filter(nr_encounters == max_enc)
+```
+
 ### Patient on most amount of medication
 
 ```{r}

@@ -10,7 +10,6 @@ editor: visual
 
 library(tidyverse)
 library(here)
-library(viridis)
 ```
 
 ## Load data
@@ -377,7 +376,11 @@ data |>
                        length(),
                      ' people)'),
        x ='Number of diagnoses',
-       fill = 'Visit number') 
+       fill = 'Visit number') +
+  scale_fill_manual(
+    values = c("visit_1" = "lightblue3", "visit_2" = "seagreen3"), 
+    labels = c("1", "2") 
+  )
 ```
 
 ```{r}
@@ -406,7 +409,11 @@ data |>
                        length(),
                      ' people)'),
        x ='Number of diagnoses',
-       fill = 'Visit number') 
+       fill = 'Visit number') +
+scale_fill_manual(
+    values = c("visit_1" = "lightblue3", "visit_2" = "seagreen3","visit_3" = 'darkolivegreen'), 
+    labels = c("1", "2","3") 
+  )
 ```
 
 ## Plot of average of number of diagnosis per patient per maximum visit:
@@ -496,6 +503,78 @@ data |>
 ## Diabetes types
 
 ```{r}
-data |>
-  group_by(patient_nbr)
+diabetes_count <- data |>
+  select(patient_nbr,ends_with('_long')) |>
+  pivot_longer(cols = ends_with('_long'),
+               values_to = 'all_diagnoses',
+               names_to = 'diag_order') |>
+  select(-diag_order) |>
+  group_by(patient_nbr) |>
+  filter(str_detect(all_diagnoses,'iabetes')) |>
+  distinct() |>
+  group_by(all_diagnoses) |>
+  summarise(count=n()) 
+```
+
+```{r}
+
+diabetes_count |>
+  mutate(type = ifelse(str_detect(all_diagnoses,'type I '),'Type I','Type II or unspecified'),
+         uncontrolled = ifelse(str_detect(all_diagnoses,', uncontrolled'), 
+                               'Uncontrolled', 'Not specified as uncontrolled'),
+         no_complication = ifelse(str_detect(all_diagnoses, 'without mention of complication'),
+                                  'No complication','Complications')) |>
+  mutate(complication_type = ifelse(no_complication == 'Complications',
+                                    str_to_sentence(str_extract(all_diagnoses,'(?<=with ).*(?=, *type)')),
+                                    'None')) |>
+  mutate(complication_type = ifelse(is.na(complication_type),'Pregnancy complications',complication_type)) |>
+  mutate(complication_type = factor(complication_type, 
+                                    levels = c(unique(complication_type[complication_type != 'None']), 'None'))) |>
+  ggplot(aes(x = uncontrolled, y=count, fill = complication_type)) +
+  geom_bar(stat='identity',) +
+  facet_wrap(~type) +
+  labs(title = 'Diabetes managment and complications',
+       subtitle = str_c('For patients with diabetes as primary or secondary diagnosis (',
+                        sum(diabetes_count$count),' patients)'),
+       x = 'Controllation of disease', 
+       y = 'Number of instances', 
+       fill = 'Complications') +
+  theme_minimal() +
+  scale_x_discrete(labels = function(x) str_wrap(x,width = 17)) +
+  scale_fill_viridis_d(option = 'viridis',direction=-1) 
+
+```
+
+### Only for people with complications
+
+```{r}
+diabetes_count |>
+  mutate(type = ifelse(str_detect(all_diagnoses,'type I '),'Type I','Type II or unspecified'),
+         uncontrolled = ifelse(str_detect(all_diagnoses,', uncontrolled'), 
+                               'Uncontrolled', 'Not specified as uncontrolled'),
+         no_complication = ifelse(str_detect(all_diagnoses, 'without mention of complication'),
+                                  'No complication','Complications')) |>
+  mutate(complication_type = ifelse(no_complication == 'Complications',
+                                    str_to_sentence(str_extract(all_diagnoses,'(?<=with ).*(?=, *type)')),
+                                    'None')) |>
+  mutate(complication_type = ifelse(is.na(complication_type),'Pregnancy complications',complication_type)) |>
+  filter(!complication_type == 'None') |>
+  ggplot(aes(x = uncontrolled, y=count, fill = complication_type)) +
+  geom_bar(stat='identity',) +
+  facet_wrap(~type) +
+  labs(title = 'Diabetes managment and complications',
+       subtitle = str_c(
+         'For patients with diabetes as primary or secondary diagnosis\n(only for cases with complications: ',
+                        diabetes_count |>
+                          filter(!str_detect(all_diagnoses, 'without mention of complication')) |>
+                          select(count) |>
+                          sum(),
+                        ' patients)'),
+       x = 'Controllation of disease', 
+       y = 'Number of instances', 
+       fill = 'Complications') +
+  theme_minimal() +
+  scale_fill_viridis_d(option = 'plasma',direction=-1) + 
+  scale_x_discrete(labels = function(x) str_wrap(x,width = 17))
+
 ```
