@@ -4,7 +4,7 @@ library(shiny)
 server <- function(input, output) {
   
   # Reactive data loading
-  dataset <- data
+  dataset <- df
   
   # Reactive filtering
   filtered_data <- reactive({
@@ -18,7 +18,7 @@ server <- function(input, output) {
     if  (input$age != "All") {
       data <- data[data$age == input$age, ]
     }  
-      # Filter by Race
+    # Filter by Race
     if  (input$race != "All") {
       data <- data[data$race == input$race, ]
     }
