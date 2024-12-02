@@ -144,7 +144,7 @@ A dynamic app to explore the number of hospital readmissions across various para
 :::
 
 ::: {.column width="50%"}
-![](images/06_pca_clustered-01.jpg){fig-align="center"}
+![](images/06_pca_clustered-03.jpg){fig-align="center"}
 :::
 :::::
 ::::::
