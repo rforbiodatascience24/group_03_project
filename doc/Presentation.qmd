@@ -130,7 +130,7 @@ A dynamic app to explore the number of hospital readmissions across various para
 :::
 
 ::: {.column width="50%"}
-![](images/06_pca_clustered-01.jpg){fig-align="center" width="1000"}
+![](images/06_pca_clustered-01.jpg){fig-align="center"}
 :::
 :::::
 ::::::
@@ -163,4 +163,6 @@ Lizzo JM, Goyal A, Gupta V. Adult Diabetic Ketoacidosis. \[Updated 2023 Jul 10\]
 
 ## Discussion
 
--   
+::: r-fit-text
+-   It is inherently logical that the amount of diagnoses increases with age. This is especially given seeing as the most common diagnosis is *Coronary atherosclerosis,* which is much more commonly seen in elderly people.
+:::
