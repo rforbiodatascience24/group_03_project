@@ -4,7 +4,7 @@ library(shiny)
 server <- function(input, output) {
   
   # Reactive data loading
-  dataset <- load_data()
+  dataset <- data
   
   # Reactive filtering
   filtered_data <- reactive({
