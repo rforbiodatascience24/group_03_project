@@ -155,7 +155,7 @@ pca_clustered <- pca_data |>
 
 ```{r}
 ggsave(
-  filename = here("results", "06_pca_clustered.png"),
+  filename = here("results", "06_pca_clustered.jpg"),
   plot = pca_clustered , 
   width = 8, 
   height = 6, 
