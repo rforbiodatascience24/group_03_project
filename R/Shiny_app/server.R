@@ -4,7 +4,7 @@ library(shiny)
 server <- function(input, output) {
   
   # Reactive data loading
-  dataset <- load_data()
+  dataset <- data
   
   # Reactive filtering
   filtered_data <- reactive({
@@ -14,10 +14,23 @@ server <- function(input, output) {
     if (input$readmission_filter != "All") {
       data <- data[data$readmitted == input$readmission_filter, ]
     }
+    # Filter by Age
+    if  (input$age != "All") {
+      data <- data[data$age == input$age, ]
+    }  
+      # Filter by Race
+    if  (input$race != "All") {
+      data <- data[data$race == input$race, ]
+    }
+    # Filter by Gender
+    if  (input$gender != "All") {
+      data <- data[data$gender == input$gender, ]
+    }
     
     # Filter by medications
     if (!is.null(input$medication_filter)) {
       for (med in input$medication_filter) {
+        med <- tolower(med)
         if (med %in% colnames(data)) {
           # Only filter if column exists
           data <- data[data[[med]] != "No", ]
@@ -31,7 +44,7 @@ server <- function(input, output) {
       return(NULL)  # Handle empty results gracefully
     }
     
-    data
+    return(data)
   })
   
   # Render the bar plot

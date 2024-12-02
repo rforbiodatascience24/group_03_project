@@ -11,7 +11,25 @@ ui <- fluidPage(
       selectInput(
         "readmission_filter",
         "Filter by Readmission Status:",
-        choices = c("All", "<30", ">30", "No"),
+        choices = c("All", unique(data$readmitted)),
+        selected = "All"
+      ),
+      selectInput(
+        "age",
+        "Filter by age group:",
+        choices = c("All", sort(unique(data$age))),
+        selected = "All"
+      ),
+      selectInput(
+        "race",
+        "Filter by race:",
+        choices = c(unique(data$race), "All"),
+        selected = "All"
+      ),
+      selectInput(
+        "gender",
+        "Filter by gender",
+        choices = c(unique(data$gender), "All"),
         selected = "All"
       ),
       
@@ -20,13 +38,13 @@ ui <- fluidPage(
         "medication_filter",
         "Filter by Medications:",
         choices = c(
-          "metformin", "repaglinide", "nateglinide", "chlorpropamide",
-          "glimepiride", "acetohexamide", "glipizide", "glyburide",
-          "tolbutamide", "pioglitazone", "rosiglitazone", "acarbose",
-          "miglitol", "troglitazone", "tolazamide", "examide",
-          "sitagliptin", "insulin", "glyburide-metformin", 
-          "glipizide-metformin", "glimepiride-pioglitazone",
-          "metformin-rosiglitazone", "metformin-pioglitazone"
+          "Metformin", "Repaglinide", "Nateglinide", "Chlorpropamide",
+          "Glimepiride", "Acetohexamide", "Glipizide", "Glyburide",
+          "Tolbutamide", "Pioglitazone", "Rosiglitazone", "Acarbose",
+          "Miglitol", "Troglitazone", "Tolazamide", "Examide",
+          "Sitagliptin", "Insulin", "Glyburide-Metformin", 
+          "Glipizide-Metformin", "Glimepiride-Pioglitazone",
+          "Metformin-Rosiglitazone", "Metformin-Pioglitazone"
         ),
         selected = NULL
       )
