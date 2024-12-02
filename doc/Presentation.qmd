@@ -44,8 +44,8 @@ editor: visual
 
 ## Methods and Materials
 
-::::::: r-fit-text
-::::: columns
+:::::::: r-fit-text
+:::::: columns
 ::: {.column width="60%"}
 **Raw**
 
@@ -62,7 +62,6 @@ editor: visual
 :::
 
 ::: {.column width="5%"}
- 
 :::
 
 ::: {.column width="35%"}
@@ -75,14 +74,13 @@ editor: visual
 
 -   Visualizations
 -   PCA
-
 :::
-:::::
+::::::
 
 ::: aside
 Clore J, Cios K, DeShazo J, Strack B. Diabetes 130-US Hospitals for Years 1999-2008 \[dataset\]. 2014. UCI Machine Learning Repository. Available from: https://doi.org/10.24432/C5230J.
 :::
-:::::::
+::::::::
 
 ## Parameter examination
 
@@ -104,13 +102,13 @@ Clore J, Cios K, DeShazo J, Strack B. Diabetes 130-US Hospitals for Years 1999-2
 
 ## Shiny App for dynamic data examination
 
-::: r-fit-text
+::::::: r-fit-text
 **Purpose**:\
 A dynamic app to explore the number of hospital readmissions across various parameters in the data set.
 
 **Filters Available:**
 
-::: columns
+:::::: columns
 ::: {.column width="32%"}
 1.  Readmission status
 
@@ -126,15 +124,15 @@ A dynamic app to explore the number of hospital readmissions across various para
 ::: {.column width="32%"}
 5.  Medications
 :::
-:::
-:::
+::::::
+:::::::
 
 ![](images/shiny_app_example.jpg){fig-align="center"}
 
 ## PCA analysis
 
-::: r-fit-text
-::: columns
+:::::: r-fit-text
+::::: columns
 ::: {.column width="50%"}
 -   The PCA reduces the dimensionality of our data set, so that we can easier group patients with similar characteristics.
 
@@ -148,12 +146,12 @@ A dynamic app to explore the number of hospital readmissions across various para
 ::: {.column width="50%"}
 ![](images/06_pca_clustered-01.jpg){fig-align="center"}
 :::
-:::
-:::
+:::::
+::::::
 
 ## Results
 
-::: r-fit-text
+:::: r-fit-text
 -   Average number of diagnoses rises with age
 
 -   Most common primary diagnosis: *Coronary atherosclerosis* - buildup of fats, cholesterol and other substances in and on the walls of the heart arteries
@@ -175,11 +173,11 @@ Luna R, Talanki Manjunatha R, Bollu B, Jhaveri S, Avanthika C, Reddy N, Saha T, 
 
 Lizzo JM, Goyal A, Gupta V. Adult Diabetic Ketoacidosis. \[Updated 2023 Jul 10\]. In: StatPearls \[Internet\]. Treasure Island (FL): StatPearls Publishing; 2024 Jan-. Available from: https://www.ncbi.nlm.nih.gov/books/NBK560723/
 :::
-:::
+::::
 
 ## Discussion
 
-::: r-fit-text
+:::: r-fit-text
 -   It is inherently logical that the amount of diagnoses increases with age. This is especially given seeing as the most common diagnosis is *Coronary atherosclerosis,* which is much more commonly seen in elderly people.
 -   *Coronary atherosclerosis* and *Neurological manifestations* are often more prevalent and worsened by obesity, a common cause of diabetes type II.
 -   When diabetes was uncontrolled among patients, *ketoacidosis* was a much more common diagnosis when admitted to hospital, obviously causes by the patients not properly administering their disease and therefore lacking insulin.
@@ -191,6 +189,6 @@ La Sala, Lucia, and Antonio E. Pontiroli. 2020. "Prevention of Diabetes and Card
 
 Smith, A. G., & Singleton, J. R. (2013). Obesity and hyperlipidemia are risk factors for early diabetic neuropathy. *Journal of Diabetes and Its Complications*, *27*(5), 436–442. doi:10.1016/j.jdiacomp.2013.04.003
 
-Lizzo JM, Goyal A, Gupta V. Adult Diabetic Ketoacidosis. \[Updated 2023 Jul 10\]. In: StatPearls \[Internet\]. Treasure Island (FL): StatPearls Publishing; 2024 Jan-. Available from: https://www.ncbi.nlm.nih.gov/books/NBK560723/
+Lizzo JM, Goyal A, Gupta V. Adult Diabetic *Ketoacidosis*. \[Updated 2023 Jul 10\]. In: StatPearls \[Internet\]. Treasure Island (FL): StatPearls Publishing; 2024 Jan-. Available from: https://www.ncbi.nlm.nih.gov/books/NBK560723/
 :::
-:::
+::::
