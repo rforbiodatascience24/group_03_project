@@ -58,13 +58,11 @@ editor: visual
 
 ## Parameter examination
 
--   Plots, and their significance
-
 ## Shiny app for further examination
 
-App showing number of readmissions across different parameters in the dataset.
+App showing number of re-admissions across different parameters in the dataset.
 
--   filters:
+-   Filters:
 
     -   Race
 
@@ -87,6 +85,7 @@ App showing number of readmissions across different parameters in the dataset.
 :::
 
 ## Results
+
 ::: r-fit-text
 -   Average number of diagnoses rises with age
 
