@@ -122,31 +122,36 @@ ggsave(
 )
 ```
 
-#### Trying to cluster things
+We can then extract what each Principle component is made up of:
 
-Here PC1, PC2 and PC3 is used to cluster the patient to possibly see patterns.
+```{r}
+# Extract the loadings
+loadings <- pca_fit$rotation |> 
+  as_tibble(rownames = "Variable")
 
-```{r PCA_plot}
-pca_data <- as.data.frame(pca_fit$x)
-
-ggplot(pca_data, aes(x = PC1, y = PC2, color = PC3)) + 
-  geom_point(size = 1.5) +
-  theme_minimal() +
-  labs(x = "PC1", y = "PC2", color = "PC3") +
-  scale_color_gradient(low = "blue", high = "red")
-
+print(loadings)
 ```
 
-Here it is tried to cluster the patient based on k-means and the first 3 PC's.
+#### Using k-means to cluster patients
 
-```{r PCA_plot_k_means}
+```{r}
 pca_data <- pca_data |> 
   mutate(cluster = kmeans(select(pca_data, 1:3), centers = 3)$cluster) |> 
   mutate(cluster = as.factor(cluster))
 
-# Plot in 2D
 pca_data |> 
   ggplot(aes(x = PC1, y = PC2, color = cluster)) +
+  labs(x = "PC1 - (encounters)",
+       y = "PC2 - (time_in_hospital)",
+       title = "Clustering of patient groups based on PCA") +
   geom_point() +
   theme_minimal()
 ```
+
+### Summary
+
+-   **PC1**: Likely represents overall patient interaction with the healthcare system.
+
+-   **PC2**: Likely represents treatment intensity or complexity.
+
+-   **PC3**: Likely represents inpatient care or hospitalization frequency.
