@@ -85,6 +85,10 @@ code span.st {
 
 code span.cf {
   color: #003B4F;
+<<<<<<< HEAD
+=======
+  font-weight: bold;
+>>>>>>> 57bb184439e1dd82a5edf1b4684a9562c2933abc
   font-style: inherit;
 }
 
@@ -193,6 +197,10 @@ code span.dv {
 
 code span.kw {
   color: #003B4F;
+<<<<<<< HEAD
+=======
+  font-weight: bold;
+>>>>>>> 57bb184439e1dd82a5edf1b4684a9562c2933abc
   font-style: inherit;
 }
 

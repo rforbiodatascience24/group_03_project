@@ -3194,8 +3194,13 @@ vertical-align: -.125em;
 <span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>full_data <span class="ot">&lt;-</span> full_data <span class="sc">|&gt;</span> </span>
 <span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>  <span class="fu">left_join</span>(discharge_disposition,</span>
+<<<<<<< HEAD
 <span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>            <span class="fu">join_by</span>(<span class="st">&#39;discharge_disposition_id&#39;</span> <span class="sc">==</span> <span class="st">&#39;type_id&#39;</span>), </span>
 <span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a>            <span class="at">relationship =</span> <span class="st">&quot;many-to-one&quot;</span>) <span class="sc">|&gt;</span></span>
+=======
+<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>            <span class="fu">join_by</span>(<span class="st">'discharge_disposition_id'</span> <span class="sc">==</span> <span class="st">'type_id'</span>), </span>
+<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a>            <span class="at">relationship =</span> <span class="st">"many-to-one"</span>) <span class="sc">|&gt;</span></span>
+>>>>>>> 57bb184439e1dd82a5edf1b4684a9562c2933abc
 <span id="cb5-21"><a href="#cb5-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="at">discharge_disposition =</span> description) <span class="sc">|&gt;</span> </span>
 <span id="cb5-22"><a href="#cb5-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">relocate</span>(discharge_disposition, <span class="at">.after =</span> discharge_disposition_id) <span class="sc">|&gt;</span> </span>
 <span id="cb5-23"><a href="#cb5-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">select</span>(<span class="sc">-</span>discharge_disposition_id)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>

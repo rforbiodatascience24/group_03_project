@@ -3041,6 +3041,7 @@ vertical-align: -.125em;
 <section id="load-libraries" class="level2">
 <h2 class="anchored" data-anchor-id="load-libraries">Load libraries</h2>
 <div class="cell">
+<<<<<<< HEAD
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(RCurl) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Warning: pakke &#39;RCurl&#39; blev bygget under R version 4.2.3</code></pre>
@@ -3056,26 +3057,46 @@ Vedhæfter pakke: &#39;dplyr&#39;</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
 <pre><code>De følgende objekter er maskerede fra &#39;package:stats&#39;:
+=======
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(RCurl) </span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(jsonlite) </span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>
+Attaching package: 'dplyr'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following objects are masked from 'package:stats':
+>>>>>>> 57bb184439e1dd82a5edf1b4684a9562c2933abc
 
     filter, lag</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
+<<<<<<< HEAD
 <pre><code>De følgende objekter er maskerede fra &#39;package:base&#39;:
+=======
+<pre><code>The following objects are masked from 'package:base':
+>>>>>>> 57bb184439e1dd82a5edf1b4684a9562c2933abc
 
     intersect, setdiff, setequal, union</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(here)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(here)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
+<<<<<<< HEAD
 <pre><code>Warning: pakke &#39;here&#39; blev bygget under R version 4.2.3</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
 <pre><code>here() starts at C:/Users/ida21/OneDrive/Dokumenter/Life Science og teknologi/5. Semester/R/R_for_Bio_data_science/projects/group_03_project</code></pre>
+=======
+<pre><code>here() starts at /Users/AK/Library/Mobile Documents/com~apple~CloudDocs/Skrivebord/STUDIE/3. studieår/R for Bio Data Science/group_03_project</code></pre>
+>>>>>>> 57bb184439e1dd82a5edf1b4684a9562c2933abc
 </div>
 </div>
 </section>
 <section id="create-data-directory" class="level2">
 <h2 class="anchored" data-anchor-id="create-data-directory">Create data directory</h2>
 <div class="cell">
+<<<<<<< HEAD
 <div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create &#39;data&#39; directory if it doesn&#39;t exist</span></span>
 <span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">dir.exists</span>(<span class="fu">here</span>(<span class="st">&quot;data&quot;</span>))) {<span class="fu">dir.create</span>(<span class="fu">here</span>(<span class="st">&quot;data&quot;</span>))  }</span>
@@ -3083,11 +3104,21 @@ Vedhæfter pakke: &#39;dplyr&#39;</code></pre>
 <span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Create &#39;raw&#39; directory if it doesn&#39;t exist</span></span>
 <span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">dir.exists</span>(<span class="fu">here</span>(<span class="st">&quot;data/_raw&quot;</span>))) {<span class="fu">dir.create</span>(<span class="fu">here</span>(<span class="st">&quot;data/_raw&quot;</span>))  }</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+=======
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Create 'data' directory if it doesn't exist</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">dir.exists</span>(<span class="fu">here</span>(<span class="st">"data"</span>))) {<span class="fu">dir.create</span>(<span class="fu">here</span>(<span class="st">"data"</span>))  }</span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Create 'raw' directory if it doesn't exist</span></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a><span class="cf">if</span> (<span class="sc">!</span><span class="fu">dir.exists</span>(<span class="fu">here</span>(<span class="st">"data/_raw"</span>))) {<span class="fu">dir.create</span>(<span class="fu">here</span>(<span class="st">"data/_raw"</span>))  }</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+>>>>>>> 57bb184439e1dd82a5edf1b4684a9562c2933abc
 </div>
 </section>
 <section id="get-diabetes-data" class="level2">
 <h2 class="anchored" data-anchor-id="get-diabetes-data">Get diabetes data</h2>
 <div class="cell">
+<<<<<<< HEAD
 <div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Fetch dataset</span></span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>url <span class="ot">&lt;-</span> </span>
@@ -3111,16 +3142,42 @@ Vedhæfter pakke: &#39;dplyr&#39;</code></pre>
 <span id="cb12-21"><a href="#cb12-21" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb12-22"><a href="#cb12-22" aria-hidden="true" tabindex="-1"></a><span class="co"># Copy files to &#39;path_b&#39;</span></span>
 <span id="cb12-23"><a href="#cb12-23" aria-hidden="true" tabindex="-1"></a><span class="fu">file.copy</span>(<span class="at">from =</span> my_files, <span class="at">to =</span> path_b, <span class="at">overwrite =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+=======
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Fetch dataset</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>url <span class="ot">&lt;-</span> </span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>  <span class="st">"https://archive.ics.uci.edu/ml/machine-learning-databases/00296/dataset_diabetes.zip"</span></span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>temp <span class="ot">&lt;-</span> <span class="fu">tempfile</span>()</span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-8"><a href="#cb8-8" aria-hidden="true" tabindex="-1"></a><span class="fu">download.file</span>(url, temp)</span>
+<span id="cb8-9"><a href="#cb8-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-10"><a href="#cb8-10" aria-hidden="true" tabindex="-1"></a><span class="co"># Unzip files directly into the 'data' directory</span></span>
+<span id="cb8-11"><a href="#cb8-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-12"><a href="#cb8-12" aria-hidden="true" tabindex="-1"></a><span class="fu">unzip</span>(temp, <span class="at">exdir =</span> <span class="fu">here</span>(<span class="st">"data"</span>))</span>
+<span id="cb8-13"><a href="#cb8-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-14"><a href="#cb8-14" aria-hidden="true" tabindex="-1"></a><span class="co"># The data lies in a subfolder, whichi we would like to remove</span></span>
+<span id="cb8-15"><a href="#cb8-15" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-16"><a href="#cb8-16" aria-hidden="true" tabindex="-1"></a>path_a <span class="ot">&lt;-</span> <span class="fu">file.path</span>(<span class="fu">here</span>(<span class="st">"data"</span>), <span class="st">"dataset_diabetes"</span>)</span>
+<span id="cb8-17"><a href="#cb8-17" aria-hidden="true" tabindex="-1"></a>path_b <span class="ot">&lt;-</span> <span class="fu">file.path</span>(<span class="fu">here</span>(<span class="st">"data"</span>), <span class="st">"_raw"</span>)</span>
+<span id="cb8-18"><a href="#cb8-18" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-19"><a href="#cb8-19" aria-hidden="true" tabindex="-1"></a><span class="co"># Get the list of files with their full paths from 'path_a'</span></span>
+<span id="cb8-20"><a href="#cb8-20" aria-hidden="true" tabindex="-1"></a>my_files <span class="ot">&lt;-</span> <span class="fu">list.files</span>(path_a, <span class="at">full.names =</span> <span class="cn">TRUE</span>)</span>
+<span id="cb8-21"><a href="#cb8-21" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb8-22"><a href="#cb8-22" aria-hidden="true" tabindex="-1"></a><span class="co"># Copy files to 'path_b'</span></span>
+<span id="cb8-23"><a href="#cb8-23" aria-hidden="true" tabindex="-1"></a><span class="fu">file.copy</span>(<span class="at">from =</span> my_files, <span class="at">to =</span> path_b, <span class="at">overwrite =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+>>>>>>> 57bb184439e1dd82a5edf1b4684a9562c2933abc
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] TRUE TRUE</code></pre>
 </div>
-<div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Delete the now-empty folder</span></span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a><span class="fu">unlink</span>(path_a, <span class="at">recursive =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Delete the now-empty folder</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="fu">unlink</span>(path_a, <span class="at">recursive =</span> <span class="cn">TRUE</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 </div>
 </section>
 <section id="get-icd9-data" class="level2">
 <h2 class="anchored" data-anchor-id="get-icd9-data">Get ICD9 data</h2>
 <div class="cell">
+<<<<<<< HEAD
 <div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Fetch data</span></span>
 <span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>url_ICD9 <span class="ot">&lt;-</span> <span class="st">&quot;https://www.cms.gov/medicare/coding/icd9providerdiagnosticcodes/downloads/icd-9-cm-v32-master-descriptions.zip&quot;</span></span>
 <span id="cb15-3"><a href="#cb15-3" aria-hidden="true" tabindex="-1"></a></span>
@@ -3136,6 +3193,23 @@ Vedhæfter pakke: &#39;dplyr&#39;</code></pre>
 <span id="cb15-13"><a href="#cb15-13" aria-hidden="true" tabindex="-1"></a><span class="fu">unlink</span>(<span class="fu">here</span>(<span class="st">&quot;data/_raw/CMS32_DESC_SHORT_SG.txt&quot;</span>))</span>
 <span id="cb15-14"><a href="#cb15-14" aria-hidden="true" tabindex="-1"></a><span class="fu">unlink</span>(<span class="fu">here</span>(<span class="st">&quot;data/_raw/CMS32_DESC_LONG_SHORT_SG.xlSX&quot;</span>))</span>
 <span id="cb15-15"><a href="#cb15-15" aria-hidden="true" tabindex="-1"></a><span class="fu">unlink</span>(<span class="fu">here</span>(<span class="st">&quot;data/_raw/CMS32_DESC_LONG_SHORT_DX.xlsx&quot;</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+=======
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Fetch data</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a>url_ICD9 <span class="ot">&lt;-</span> <span class="st">"https://www.cms.gov/medicare/coding/icd9providerdiagnosticcodes/downloads/icd-9-cm-v32-master-descriptions.zip"</span></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a>temp <span class="ot">&lt;-</span> <span class="fu">tempfile</span>()</span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a><span class="fu">download.file</span>(url_ICD9, temp)</span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Unzip files directly into the '_raw' directory</span></span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a><span class="fu">unzip</span>(temp, <span class="at">exdir =</span> <span class="fu">here</span>(<span class="st">"data/_raw"</span>))</span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a><span class="co"># The zip-folder also contains data on surgaries, which is not relevent here. The unused files are removed </span></span>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a><span class="fu">unlink</span>(<span class="fu">here</span>(<span class="st">"data/_raw/CMS32_DESC_LONG_SG.txt"</span>))</span>
+<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a><span class="fu">unlink</span>(<span class="fu">here</span>(<span class="st">"data/_raw/CMS32_DESC_SHORT_SG.txt"</span>))</span>
+<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a><span class="fu">unlink</span>(<span class="fu">here</span>(<span class="st">"data/_raw/CMS32_DESC_LONG_SHORT_SG.xlSX"</span>))</span>
+<span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a><span class="fu">unlink</span>(<span class="fu">here</span>(<span class="st">"data/_raw/CMS32_DESC_LONG_SHORT_DX.xlsx"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+>>>>>>> 57bb184439e1dd82a5edf1b4684a9562c2933abc
 </div>
 </section>
 

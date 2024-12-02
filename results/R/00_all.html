@@ -2,12 +2,20 @@
 <html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
 
 <meta charset="utf-8">
+<<<<<<< HEAD
 <meta name="generator" content="quarto-1.3.353">
+=======
+<meta name="generator" content="quarto-1.5.57">
+>>>>>>> 57bb184439e1dd82a5edf1b4684a9562c2933abc
 
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
+<<<<<<< HEAD
 <title>PCA: Group 03</title>
+=======
+<title>00_all.qmd</title>
+>>>>>>> 57bb184439e1dd82a5edf1b4684a9562c2933abc
 <style>
 code{white-space: pre-wrap;}
 span.smallcaps{font-variant: small-caps;}
@@ -16,12 +24,22 @@ div.column{flex: auto; overflow-x: auto;}
 div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
 ul.task-list{list-style: none;}
 ul.task-list li input[type="checkbox"] {
+<<<<<<< HEAD
 width: 0.8em;
 margin: 0 0.8em 0.2em -1em;  vertical-align: middle;
 }
 
 pre > code.sourceCode { white-space: pre; position: relative; }
 pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+=======
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { line-height: 1.25; }
+>>>>>>> 57bb184439e1dd82a5edf1b4684a9562c2933abc
 pre > code.sourceCode > span:empty { height: 1.2em; }
 .sourceCode { overflow: visible; }
 code.sourceCode > span { color: inherit; text-decoration: inherit; }
@@ -32,6 +50,7 @@ div.sourceCode { overflow: auto; }
 }
 @media print {
 pre > code.sourceCode { white-space: pre-wrap; }
+<<<<<<< HEAD
 pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
 pre.numberSource code
@@ -50,12 +69,33 @@ padding: 0 4px; width: 4em;
 pre.numberSource { margin-left: 3em; padding-left: 4px; }
 div.sourceCode
 { }
+=======
+pre > code.sourceCode > span { display: inline-block; text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+>>>>>>> 57bb184439e1dd82a5edf1b4684a9562c2933abc
 @media screen {
 pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
 </style>
 
 
+<<<<<<< HEAD
 <script>/*!
  * clipboard.js v2.0.11
  * https://clipboardjs.com/
@@ -3022,6 +3062,18 @@ vertical-align: -.125em;
       document.getElementsByTagName("head")[0].appendChild(script);
     })();
   </script>
+=======
+<script src="00_all_files/libs/clipboard/clipboard.min.js"></script>
+<script src="00_all_files/libs/quarto-html/quarto.js"></script>
+<script src="00_all_files/libs/quarto-html/popper.min.js"></script>
+<script src="00_all_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="00_all_files/libs/quarto-html/anchor.min.js"></script>
+<link href="00_all_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="00_all_files/libs/quarto-html/quarto-syntax-highlighting.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="00_all_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="00_all_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="00_all_files/libs/bootstrap/bootstrap.min.css" rel="stylesheet" id="quarto-bootstrap" data-mode="light">
+>>>>>>> 57bb184439e1dd82a5edf1b4684a9562c2933abc
 
 
 </head>
@@ -3034,7 +3086,11 @@ vertical-align: -.125em;
 
 <header id="title-block-header" class="quarto-title-block default">
 <div class="quarto-title">
+<<<<<<< HEAD
 <h1 class="title">PCA: Group 03</h1>
+=======
+<h1 class="title">00_all.qmd</h1>
+>>>>>>> 57bb184439e1dd82a5edf1b4684a9562c2933abc
 </div>
 
 
@@ -3047,6 +3103,7 @@ vertical-align: -.125em;
   </div>
   
 
+<<<<<<< HEAD
 </header>
 
 <section id="load-data" class="level1">
@@ -4617,6 +4674,21 @@ barplot(
 
 processing file: 01_load.qmd
 
+=======
+
+</header>
+
+
+<section id="load-data" class="level2">
+<h2 class="anchored" data-anchor-id="load-data">Load Data</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>quarto<span class="sc">::</span><span class="fu">quarto_render</span>(<span class="st">"01_load.qmd"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[31m
+
+processing file: 01_load.qmd
+[39m
+>>>>>>> 57bb184439e1dd82a5edf1b4684a9562c2933abc
   |                                                          
   |                                                    |   0%
   |                                                          
@@ -4630,6 +4702,7 @@ processing file: 01_load.qmd
   |                                                          
   |.............................                       |  56%                  
   |                                                          
+<<<<<<< HEAD
   |...................................                 |  67% [unnamed-chunk-3]trying URL &#39;https://archive.ics.uci.edu/ml/machine-learning-databases/00296/dataset_diabetes.zip&#39;
 downloaded 3.2 MB
 
@@ -4653,16 +4726,45 @@ pandoc
   output-file: 01_load.html
   standalone: true
   embed-resources: true
+=======
+  |...................................                 |  67% [unnamed-chunk-3][31mtrying URL 'https://archive.ics.uci.edu/ml/machine-learning-databases/00296/dataset_diabetes.zip'
+[39m[31mdownloaded 3.2 MB
+
+[39m
+  |                                                          
+  |........................................            |  78%                  
+  |                                                          
+  |..............................................      |  89% [unnamed-chunk-4][31mtrying URL 'https://www.cms.gov/medicare/coding/icd9providerdiagnosticcodes/downloads/icd-9-cm-v32-master-descriptions.zip'
+[39m[31mContent type 'application/zip' length 1079497 bytes (1.0 MB)
+[39m[31m==[39m[31m=[39m[31m==[39m[31m====[39m[31m=[39m[31m==[39m[31m=[39m[31m======[39m[31m=[39m[31m==========[39m[31m============[39m[31m=======[39m[31m=
+downloaded 1.0 MB
+
+[39m
+  |                                                          
+  |....................................................| 100%                  
+                                                                                                            
+[31moutput file: 01_load.knit.md
+
+[39m[1mpandoc [22m
+  to: html
+  output-file: 01_load.html
+  standalone: true
+>>>>>>> 57bb184439e1dd82a5edf1b4684a9562c2933abc
   section-divs: true
   html-math-method: mathjax
   wrap: none
   default-image-extension: png
   
+<<<<<<< HEAD
 metadata
+=======
+[1mmetadata[22m
+>>>>>>> 57bb184439e1dd82a5edf1b4684a9562c2933abc
   document-css: false
   link-citations: true
   date-format: long
   lang: en
+<<<<<<< HEAD
   title: &#39;Load: Group 03&#39;
   editor: visual
   
@@ -4679,6 +4781,24 @@ Output created: ..\results\R\01_load.html</code></pre>
 
 processing file: 02_clean.qmd
 
+=======
+  title: Get_data
+  editor: visual
+  
+Output created: ../results/R/01_load.html</code></pre>
+</div>
+</div>
+</section>
+<section id="clean-data" class="level2">
+<h2 class="anchored" data-anchor-id="clean-data">Clean Data</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>quarto<span class="sc">::</span><span class="fu">quarto_render</span>(<span class="st">"02_clean.qmd"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[31m
+
+processing file: 02_clean.qmd
+[39m
+>>>>>>> 57bb184439e1dd82a5edf1b4684a9562c2933abc
   |                                                          
   |                                                    |   0%
   |                                                          
@@ -4712,6 +4832,7 @@ processing file: 02_clean.qmd
   |                                                          
   |....................................................| 100%                  
                                                                                                             
+<<<<<<< HEAD
 output file: 02_clean.knit.md
 
 pandoc 
@@ -4719,16 +4840,29 @@ pandoc
   output-file: 02_clean.html
   standalone: true
   embed-resources: true
+=======
+[31moutput file: 02_clean.knit.md
+
+[39m[1mpandoc [22m
+  to: html
+  output-file: 02_clean.html
+  standalone: true
+>>>>>>> 57bb184439e1dd82a5edf1b4684a9562c2933abc
   section-divs: true
   html-math-method: mathjax
   wrap: none
   default-image-extension: png
   
+<<<<<<< HEAD
 metadata
+=======
+[1mmetadata[22m
+>>>>>>> 57bb184439e1dd82a5edf1b4684a9562c2933abc
   document-css: false
   link-citations: true
   date-format: long
   lang: en
+<<<<<<< HEAD
   title: &#39;Clean: Group 03&#39;
   editor: visual
   
@@ -4745,6 +4879,24 @@ Output created: ..\results\R\02_clean.html</code></pre>
 
 processing file: 03_augment.qmd
 
+=======
+  title: Load project data
+  editor: visual
+  
+Output created: ../results/R/02_clean.html</code></pre>
+</div>
+</div>
+</section>
+<section id="augment-data" class="level2">
+<h2 class="anchored" data-anchor-id="augment-data">Augment Data</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>quarto<span class="sc">::</span><span class="fu">quarto_render</span>(<span class="st">"03_augment.qmd"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[31m
+
+processing file: 03_augment.qmd
+[39m
+>>>>>>> 57bb184439e1dd82a5edf1b4684a9562c2933abc
   |                                                          
   |                                                    |   0%
   |                                                          
@@ -4770,6 +4922,7 @@ processing file: 03_augment.qmd
   |                                                          
   |....................................................| 100%                  
                                                                                                             
+<<<<<<< HEAD
 output file: 03_augment.knit.md
 
 pandoc 
@@ -4777,16 +4930,29 @@ pandoc
   output-file: 03_augment.html
   standalone: true
   embed-resources: true
+=======
+[31moutput file: 03_augment.knit.md
+
+[39m[1mpandoc [22m
+  to: html
+  output-file: 03_augment.html
+  standalone: true
+>>>>>>> 57bb184439e1dd82a5edf1b4684a9562c2933abc
   section-divs: true
   html-math-method: mathjax
   wrap: none
   default-image-extension: png
   
+<<<<<<< HEAD
 metadata
+=======
+[1mmetadata[22m
+>>>>>>> 57bb184439e1dd82a5edf1b4684a9562c2933abc
   document-css: false
   link-citations: true
   date-format: long
   lang: en
+<<<<<<< HEAD
   title: &#39;Augment: Group 03&#39;
   editor: visual
   
@@ -4803,6 +4969,24 @@ Output created: ..\results\R\03_augment.html</code></pre>
 
 processing file: 04_description.qmd
 
+=======
+  title: Augment data
+  editor: visual
+  
+Output created: ../results/R/03_augment.html</code></pre>
+</div>
+</div>
+</section>
+<section id="description" class="level2">
+<h2 class="anchored" data-anchor-id="description">Description</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>quarto<span class="sc">::</span><span class="fu">quarto_render</span>(<span class="st">"04_description.qmd"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[31m
+
+processing file: 04_description.qmd
+[39m
+>>>>>>> 57bb184439e1dd82a5edf1b4684a9562c2933abc
   |                                                         
   |                                                   |   0%
   |                                                         
@@ -4852,6 +5036,7 @@ processing file: 04_description.qmd
   |                                                         
   |...................................................| 100%                   
                                                                                                              
+<<<<<<< HEAD
 output file: 04_description.knit.md
 
 pandoc 
@@ -4859,16 +5044,29 @@ pandoc
   output-file: 04_description.html
   standalone: true
   embed-resources: true
+=======
+[31moutput file: 04_description.knit.md
+
+[39m[1mpandoc [22m
+  to: html
+  output-file: 04_description.html
+  standalone: true
+>>>>>>> 57bb184439e1dd82a5edf1b4684a9562c2933abc
   section-divs: true
   html-math-method: mathjax
   wrap: none
   default-image-extension: png
   
+<<<<<<< HEAD
 metadata
+=======
+[1mmetadata[22m
+>>>>>>> 57bb184439e1dd82a5edf1b4684a9562c2933abc
   document-css: false
   link-citations: true
   date-format: long
   lang: en
+<<<<<<< HEAD
   title: &#39;Description: Group 03&#39;
   editor: visual
   
@@ -4885,6 +5083,24 @@ Output created: ..\results\R\04_description.html</code></pre>
 
 processing file: 05_visualizations.qmd
 
+=======
+  title: Description of data
+  editor: visual
+  
+Output created: ../results/R/04_description.html</code></pre>
+</div>
+</div>
+</section>
+<section id="visualizations" class="level2">
+<h2 class="anchored" data-anchor-id="visualizations">Visualizations</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>quarto<span class="sc">::</span><span class="fu">quarto_render</span>(<span class="st">"05_visualizations.qmd"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[31m
+
+processing file: 05_visualizations.qmd
+[39m
+>>>>>>> 57bb184439e1dd82a5edf1b4684a9562c2933abc
   |                
   |          |   0%
   |                
@@ -4966,6 +5182,7 @@ processing file: 05_visualizations.qmd
   |                
   |..........| 100%                                                                        
                                                                                                                                                                   
+<<<<<<< HEAD
 output file: 05_visualizations.knit.md
 
 pandoc 
@@ -4973,32 +5190,60 @@ pandoc
   output-file: 05_visualizations.html
   standalone: true
   embed-resources: true
+=======
+[31moutput file: 05_visualizations.knit.md
+
+[39m[1mpandoc [22m
+  to: html
+  output-file: 05_visualizations.html
+  standalone: true
+>>>>>>> 57bb184439e1dd82a5edf1b4684a9562c2933abc
   section-divs: true
   html-math-method: mathjax
   wrap: none
   default-image-extension: png
   
+<<<<<<< HEAD
 metadata
+=======
+[1mmetadata[22m
+>>>>>>> 57bb184439e1dd82a5edf1b4684a9562c2933abc
   document-css: false
   link-citations: true
   date-format: long
   lang: en
+<<<<<<< HEAD
   title: &#39;Visulizations: Group 03&#39;
   editor: visual
   
 Output created: ..\results\R\05_visualizations.html</code></pre>
+=======
+  title: Visualizations
+  editor: visual
+  
+Output created: ../results/R/05_visualizations.html</code></pre>
+>>>>>>> 57bb184439e1dd82a5edf1b4684a9562c2933abc
 </div>
 </div>
 </section>
 <section id="pca-analysis" class="level2">
 <h2 class="anchored" data-anchor-id="pca-analysis">PCA analysis</h2>
 <div class="cell">
+<<<<<<< HEAD
 <div class="sourceCode cell-code" id="cb99"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb99-1"><a href="#cb99-1" aria-hidden="true" tabindex="-1"></a>quarto<span class="sc">::</span><span class="fu">quarto_render</span>(<span class="st">&quot;06_analysis_PCA.qmd&quot;</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 
 processing file: 06_analysis_PCA.qmd
 
+=======
+<div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>quarto<span class="sc">::</span><span class="fu">quarto_render</span>(<span class="st">"06_analysis_PCA.qmd"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[31m
+
+processing file: 06_analysis_PCA.qmd
+[39m
+>>>>>>> 57bb184439e1dd82a5edf1b4684a9562c2933abc
   |                                                     
   |                                               |   0%
   |                                                     
@@ -5040,6 +5285,7 @@ processing file: 06_analysis_PCA.qmd
   |                                                     
   |...............................................| 100%                       
                                                                                                                  
+<<<<<<< HEAD
 output file: 06_analysis_PCA.knit.md
 
 pandoc 
@@ -5047,16 +5293,29 @@ pandoc
   output-file: 06_analysis_PCA.html
   standalone: true
   embed-resources: true
+=======
+[31moutput file: 06_analysis_PCA.knit.md
+
+[39m[1mpandoc [22m
+  to: html
+  output-file: 06_analysis_PCA.html
+  standalone: true
+>>>>>>> 57bb184439e1dd82a5edf1b4684a9562c2933abc
   section-divs: true
   html-math-method: mathjax
   wrap: none
   default-image-extension: png
   
+<<<<<<< HEAD
 metadata
+=======
+[1mmetadata[22m
+>>>>>>> 57bb184439e1dd82a5edf1b4684a9562c2933abc
   document-css: false
   link-citations: true
   date-format: long
   lang: en
+<<<<<<< HEAD
   title: &#39;PCA: Group 03&#39;
   editor: visual
   
@@ -5064,6 +5323,20 @@ Output created: ..\results\R\06_analysis_PCA.html</code></pre>
 </div>
 </div>
 </section>
+=======
+  title: PCA analysis
+  editor: visual
+  
+Output created: ../results/R/06_analysis_PCA.html</code></pre>
+</div>
+</div>
+</section>
+<section id="shiny" class="level2">
+<h2 class="anchored" data-anchor-id="shiny">Shiny</h2>
+<div class="cell">
+<div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># quarto::quarto_render("07_shiny.qmd")</span></span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+</div>
+>>>>>>> 57bb184439e1dd82a5edf1b4684a9562c2933abc
 </section>
 
 </main>
@@ -5103,6 +5376,7 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
     return false;
   }
+<<<<<<< HEAD
   const clipboard = new window.ClipboardJS('.code-copy-button', {
     text: function(trigger) {
       const codeEl = trigger.previousElementSibling.cloneNode(true);
@@ -5115,6 +5389,9 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }
   });
   clipboard.on('success', function(e) {
+=======
+  const onCopySuccess = function(e) {
+>>>>>>> 57bb184439e1dd82a5edf1b4684a9562c2933abc
     // button target
     const button = e.trigger;
     // don't keep focus
@@ -5146,11 +5423,58 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
     }, 1000);
     // clear code selection
     e.clearSelection();
+<<<<<<< HEAD
   });
   function tippyHover(el, contentFn) {
     const config = {
       allowHTML: true,
       content: contentFn,
+=======
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    // For code content inside modals, clipBoardJS needs to be initialized with a container option
+    // TODO: Check when it could be a function (https://github.com/zenorocha/clipboard.js/issues/860)
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+>>>>>>> 57bb184439e1dd82a5edf1b4684a9562c2933abc
       maxWidth: 500,
       delay: 100,
       arrow: false,
@@ -5160,8 +5484,22 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       interactive: true,
       interactiveBorder: 10,
       theme: 'quarto',
+<<<<<<< HEAD
       placement: 'bottom-start'
     };
+=======
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+>>>>>>> 57bb184439e1dd82a5edf1b4684a9562c2933abc
     window.tippy(el, config); 
   }
   const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
@@ -5173,7 +5511,134 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
       try { href = new URL(href).hash; } catch {}
       const id = href.replace(/^#\/?/, "");
       const note = window.document.getElementById(id);
+<<<<<<< HEAD
       return note.innerHTML;
+=======
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      // TODO in 1.5, we should make sure this works without a callout special case
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+>>>>>>> 57bb184439e1dd82a5edf1b4684a9562c2933abc
     });
   }
       let selectedAnnoteEl;
@@ -5217,6 +5682,10 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
             }
             div.style.top = top - 2 + "px";
             div.style.height = height + 4 + "px";
+<<<<<<< HEAD
+=======
+            div.style.left = 0;
+>>>>>>> 57bb184439e1dd82a5edf1b4684a9562c2933abc
             let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
             if (gutterDiv === null) {
               gutterDiv = window.document.createElement("div");
@@ -5242,6 +5711,35 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
         });
         selectedAnnoteEl = undefined;
       };
+<<<<<<< HEAD
+=======
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+>>>>>>> 57bb184439e1dd82a5edf1b4684a9562c2933abc
       // Attach click handler to the DT
       const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
       for (const annoteDlNode of annoteDls) {
@@ -5305,4 +5803,8 @@ window.document.addEventListener("DOMContentLoaded", function (event) {
 
 
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 57bb184439e1dd82a5edf1b4684a9562c2933abc
 </body></html>

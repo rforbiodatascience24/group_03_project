@@ -108,7 +108,7 @@ It is seen that 22.5% of the variance is explained by PC1. The drop of is after 
 
 ```{r}
 ggsave(
-  filename = here("results", "05_pca_plot.png"),
+  filename = here("results", "06_pca_plot.png"),
   plot = pca_plot, 
   width = 8, 
   height = 6, 
@@ -116,7 +116,7 @@ ggsave(
 )
 
 ggsave(
-  filename = here("results", "05_pca_bar_plot.png"),  
+  filename = here("results", "06_pca_bar_plot.png"),  
   plot = pca_bar_plot, 
   width = 8, 
   height = 6, 
@@ -144,13 +144,25 @@ pca_data <- pca_data |>
   mutate(cluster = kmeans(select(pca_data, .fittedPC1:.fittedPC3), centers = 3)$cluster) |>
   mutate(cluster = as.factor(cluster))
 
-pca_data |> 
+pca_clustered <- pca_data |> 
   ggplot(aes(x = .fittedPC1, y = .fittedPC2, color = cluster)) +
   labs(x = "PC1 - (encounters)",
        y = "PC2 - (time_in_hospital)",
        title = "Clustering of patient groups based on PCA") +
   geom_point() +
   theme_minimal()
+```
+
+### Exporting the key plot again
+
+```{r}
+ggsave(
+  filename = here("results", "06_pca_clustered.jpg"),
+  plot = pca_clustered , 
+  width = 8, 
+  height = 6, 
+  dpi = 300
+)
 ```
 
 ### Summary

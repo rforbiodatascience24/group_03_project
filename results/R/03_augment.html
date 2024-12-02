@@ -3043,6 +3043,7 @@ vertical-align: -.125em;
 <div class="cell">
 <div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">&quot;here&quot;</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
+<<<<<<< HEAD
 <pre><code>Warning: pakke &#39;here&#39; blev bygget under R version 4.2.3</code></pre>
 </div>
 <div class="cell-output cell-output-stderr">
@@ -3078,7 +3079,11 @@ vertical-align: -.125em;
 </div>
 <div class="cell-output cell-output-stderr">
 <pre><code>Warning: pakke &#39;lubridate&#39; blev bygget under R version 4.2.3</code></pre>
+=======
+<pre><code>here() starts at /Users/AK/Library/Mobile Documents/com~apple~CloudDocs/Skrivebord/STUDIE/3. studieår/R for Bio Data Science/group_03_project</code></pre>
+>>>>>>> 57bb184439e1dd82a5edf1b4684a9562c2933abc
 </div>
+<div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">"tidyverse"</span>)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
 <div class="cell-output cell-output-stderr">
 <pre><code>── Attaching core tidyverse packages ──────────────────────── tidyverse 2.0.0 ──
 ✔ dplyr     1.1.4     ✔ readr     2.1.5
@@ -3098,7 +3103,11 @@ vertical-align: -.125em;
 <section id="load-data" class="level2">
 <h2 class="anchored" data-anchor-id="load-data">Load data</h2>
 <div class="cell">
+<<<<<<< HEAD
 <div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>clean_data <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="fu">here</span>(<span class="st">&quot;data/02_dat_clean.csv&quot;</span>)) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+=======
+<div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>clean_data <span class="ot">&lt;-</span> <span class="fu">read_csv</span>(<span class="fu">here</span>(<span class="st">"data/02_dat_clean.csv"</span>)) </span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+>>>>>>> 57bb184439e1dd82a5edf1b4684a9562c2933abc
 <div class="cell-output cell-output-stderr">
 <pre><code>Rows: 101766 Columns: 53
 ── Column specification ────────────────────────────────────────────────────────
@@ -3115,6 +3124,7 @@ dbl (10): encounter_id, patient_nbr, time_in_hospital, num_lab_procedures, n...
 <h2 class="anchored" data-anchor-id="encounters-in-dataset">Encounters in dataset</h2>
 <p>Add columns that signifies the amount of encounters one patient has in the data set.</p>
 <div class="cell">
+<<<<<<< HEAD
 <div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>clean_data <span class="ot">&lt;-</span> clean_data <span class="sc">|&gt;</span> </span>
 <span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(patient_nbr) <span class="sc">|&gt;</span> </span>
 <span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">right_join</span>(clean_data,</span>
@@ -3122,12 +3132,22 @@ dbl (10): encounter_id, patient_nbr, time_in_hospital, num_lab_procedures, n...
 <span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="st">&quot;nr_encounters&quot;</span> <span class="ot">=</span> n) <span class="sc">|&gt;</span> </span>
 <span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">relocate</span>(<span class="fu">c</span>(patient_nbr, nr_encounters), </span>
 <span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>           <span class="at">.after =</span> encounter_id)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+=======
+<div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>clean_data <span class="ot">&lt;-</span> clean_data <span class="sc">|&gt;</span> </span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">count</span>(patient_nbr) <span class="sc">|&gt;</span> </span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">right_join</span>(clean_data,</span>
+<span id="cb8-4"><a href="#cb8-4" aria-hidden="true" tabindex="-1"></a>             <span class="fu">join_by</span>(patient_nbr)) <span class="sc">|&gt;</span> </span>
+<span id="cb8-5"><a href="#cb8-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="st">"nr_encounters"</span> <span class="ot">=</span> n) <span class="sc">|&gt;</span> </span>
+<span id="cb8-6"><a href="#cb8-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">relocate</span>(<span class="fu">c</span>(patient_nbr, nr_encounters), </span>
+<span id="cb8-7"><a href="#cb8-7" aria-hidden="true" tabindex="-1"></a>           <span class="at">.after =</span> encounter_id)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+>>>>>>> 57bb184439e1dd82a5edf1b4684a9562c2933abc
 </div>
 </section>
 <section id="total-time-in-hospital" class="level2">
 <h2 class="anchored" data-anchor-id="total-time-in-hospital">Total time in hospital</h2>
 <p>Add column for total amount of days spent in hospital</p>
 <div class="cell">
+<<<<<<< HEAD
 <div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a>clean_data <span class="ot">&lt;-</span> clean_data <span class="sc">|&gt;</span> </span>
 <span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(patient_nbr) <span class="sc">|&gt;</span> </span>
 <span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="fu">sum</span>(time_in_hospital)) <span class="sc">|&gt;</span> </span>
@@ -3136,16 +3156,36 @@ dbl (10): encounter_id, patient_nbr, time_in_hospital, num_lab_procedures, n...
 <span id="cb20-6"><a href="#cb20-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="st">&quot;total_time_hospital&quot;</span> <span class="ot">=</span> <span class="st">&quot;sum(time_in_hospital)&quot;</span>) <span class="sc">|&gt;</span> </span>
 <span id="cb20-7"><a href="#cb20-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">relocate</span>(total_time_hospital, </span>
 <span id="cb20-8"><a href="#cb20-8" aria-hidden="true" tabindex="-1"></a>           <span class="at">.after =</span> time_in_hospital)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+=======
+<div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>clean_data <span class="ot">&lt;-</span> clean_data <span class="sc">|&gt;</span> </span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">group_by</span>(patient_nbr) <span class="sc">|&gt;</span> </span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">summarise</span>(<span class="fu">sum</span>(time_in_hospital)) <span class="sc">|&gt;</span> </span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">right_join</span>(clean_data,</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>             <span class="fu">join_by</span>(patient_nbr)) <span class="sc">|&gt;</span> </span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">rename</span>(<span class="st">"total_time_hospital"</span> <span class="ot">=</span> <span class="st">"sum(time_in_hospital)"</span>) <span class="sc">|&gt;</span> </span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">relocate</span>(total_time_hospital, </span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>           <span class="at">.after =</span> time_in_hospital)</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+>>>>>>> 57bb184439e1dd82a5edf1b4684a9562c2933abc
 </div>
 </section>
 <section id="write-csv" class="level2">
 <h2 class="anchored" data-anchor-id="write-csv">Write csv</h2>
 <div class="cell">
+<<<<<<< HEAD
 <div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>clean_data <span class="ot">&lt;-</span> clean_data <span class="sc">|&gt;</span> </span>
 <span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">relocate</span>(patient_nbr, </span>
 <span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a>           <span class="at">.after =</span> encounter_id)</span>
 <span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a><span class="fu">write_csv</span>(clean_data, <span class="fu">here</span>(<span class="st">&quot;data/03_dat_aug.csv&quot;</span>))</span>
 <span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a><span class="fu">write_csv</span>(clean_data, <span class="fu">here</span>(<span class="st">&quot;R/Shiny_app/03_dat_aug.csv&quot;</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+=======
+<div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>clean_data <span class="ot">&lt;-</span> clean_data <span class="sc">|&gt;</span> </span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">relocate</span>(patient_nbr, </span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>           <span class="at">.after =</span> encounter_id)</span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="fu">write_csv</span>(clean_data, <span class="fu">here</span>(<span class="st">"data/03_dat_aug.csv"</span>))</span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>clean_data_sample <span class="ot">&lt;-</span> clean_data <span class="sc">|&gt;</span></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">sample_n</span>(<span class="dv">10000</span>)</span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a><span class="fu">write_csv</span>(clean_data_sample, <span class="fu">here</span>(<span class="st">"R/Shiny_app/03_dat_aug.csv"</span>))</span></code><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></pre></div>
+>>>>>>> 57bb184439e1dd82a5edf1b4684a9562c2933abc
 </div>
 </section>
 
