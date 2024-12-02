@@ -1,5 +1,4 @@
 library(shiny)
-data <- read_csv(here("data/03_dat_aug.csv"))
 
 # Define UI
 ui <- fluidPage(
@@ -12,7 +11,25 @@ ui <- fluidPage(
       selectInput(
         "readmission_filter",
         "Filter by Readmission Status:",
-        choices = c(unique(data$readmitted), "All"),
+        choices = c("All", unique(data$readmitted)),
+        selected = "All"
+      ),
+      selectInput(
+        "age",
+        "Filter by age group:",
+        choices = c("All", sort(unique(data$age))),
+        selected = "All"
+      ),
+      selectInput(
+        "race",
+        "Filter by race:",
+        choices = c(unique(data$race), "All"),
+        selected = "All"
+      ),
+      selectInput(
+        "gender",
+        "Filter by gender",
+        choices = c(unique(data$gender), "All"),
         selected = "All"
       ),
       

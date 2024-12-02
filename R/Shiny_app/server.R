@@ -4,7 +4,7 @@ library(shiny)
 server <- function(input, output) {
   
   # Reactive data loading
-  dataset <- load_data()
+  dataset <- data
   
   # Reactive filtering
   filtered_data <- reactive({
@@ -13,6 +13,18 @@ server <- function(input, output) {
     # Filter by readmission status
     if (input$readmission_filter != "All") {
       data <- data[data$readmitted == input$readmission_filter, ]
+    }
+    # Filter by Age
+    if  (input$age != "All") {
+      data <- data[data$age == input$age, ]
+    }  
+      # Filter by Race
+    if  (input$race != "All") {
+      data <- data[data$race == input$race, ]
+    }
+    # Filter by Gender
+    if  (input$gender != "All") {
+      data <- data[data$gender == input$gender, ]
     }
     
     # Filter by medications
