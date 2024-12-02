@@ -35,7 +35,7 @@ editor: visual
     Investigate the most common secondary diagnoses accompanying hospital admissions.
 
 3.  **Effective Medications**:\
-    Determine which medications are most effective at preventing readmissions.
+    Determine which medications are most effective at preventing readmission.
 :::
 
 ## Methods and Materials
@@ -98,7 +98,7 @@ editor: visual
 ## PCA analysis
 
 ::: r-fit-text
--   The PCA reduces the dimensionality of our dataset, so that we can easier group patients with similar characteristics.
+-   The PCA reduces the dimensionality of our data set, so that we can easier group patients with similar characteristics.
 
 -   PC1 (25% of variance) likely represent interactions with hospitals (encounters, num_emergencies) while PC2 (17% of variance) likely represent intensity or difficulty of treatment (time_in_hospital, num_medications, num_procedures)
 
@@ -124,9 +124,7 @@ editor: visual
 
 -   For patients with uncontrolled diabetes, *Ketoacidosis* was more common, which is caused by lack of insulin in the body
 
-<!-- -->
-
--   Which Medication had the lowest amout of readmissions in the age group (30-40\] for asians
+-   Which medication had the lowest amount of readmission in the age group (30-40\] for Asian patients
 :::
 
 ## Discussion
