@@ -97,8 +97,13 @@ editor: visual
 
 ## PCA analysis
 
-::: r-fit-text
--   The PCA reduces the dimensionality of our dataset, so that we can easier group patients with similar characteristics.
+::: r-fit-text - The PCA reduces the dimensionality of our dataset, so that we can easier group patients with similar characteristics.
+
+::::::: r-fit-text
+
+::: columns
+::: {.column width="50%"}
+-   The PCA reduces the dimensionality of our data set, so that we can easier group patients with similar characteristics.
 
 -   PC1 (25% of variance) likely represent interactions with hospitals (encounters, num_emergencies) while PC2 (17% of variance) likely represent intensity or difficulty of treatment (time_in_hospital, num_medications, num_procedures)
 
@@ -107,6 +112,11 @@ editor: visual
 -   By K-means clustering based on the PCA we get three major groups of patients
 
     -   "Insert small description of each cluster"
+
+::: {.column width="50%"}
+![](images/06_pca_clustered-01.jpg){fig-align="center" width="1000"}
+:::
+:::
 :::
 
 ## Results
@@ -126,9 +136,3 @@ editor: visual
 :::
 
 ## Discussion
-
--   
-
--   
-
--   
