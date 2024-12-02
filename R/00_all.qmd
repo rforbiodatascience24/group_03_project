@@ -1,0 +1,54 @@
+---
+title: "00_all.qmd"
+format: html
+editor: visual
+---
+
+## Load Data
+
+```{r}
+quarto::quarto_render(input = "01_load.qmd",
+                      output_format = "html")
+```
+
+## Clean Data
+
+```{r}
+quarto::quarto_render(input = "02_clean.qmd", 
+                      output_format = "html")
+```
+
+## Augment Data
+
+```{r}
+quarto::quarto_render(input = "03_augment.qmd", 
+                      output_format = "html")
+```
+
+## Description
+
+```{r}
+quarto::quarto_render(input = "04_description.qmd", 
+                      output_format = "html")
+```
+
+## Visualizations
+
+```{r}
+quarto::quarto_render(input = "05_visualizations.qmd", 
+                      output_format = "html")
+```
+
+## PCA analysis
+
+```{r}
+quarto::quarto_render(input = "06_analysis_PCA.qmd",
+                      output_format = "html")
+```
+
+## Shiny
+
+```{r}
+quarto::quarto_render(input = "07_shiny.qmd",
+                      output_format = "html")
+```
