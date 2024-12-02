@@ -18,7 +18,7 @@ ui <- fluidPage(
       selectInput(
         "Age",
         "Filter by age group:",
-        choices = c("All", "[0-10)", "[10-20)", "[20-30)","[40-50)", "[60-70)", "[80-90)", "[90-100)"),
+        choices = c(unique((data$age), "All"),
         selected = "All"
       ),
       
