@@ -13,3 +13,5 @@ load_data <- function() {
   
   return(data)
 }
+
+data <- read_csv(here("data/03_dat_aug.csv"))

@@ -10,6 +10,7 @@ editor: visual
 
 library(tidyverse)
 library(here)
+library(viridisLite)
 ```
 
 ## Load data
@@ -136,10 +137,18 @@ data |>
 ## Discharge disposition
 
 ```{r, fig.width=8, fig.height=6}
-data |>
-  group_by(discharge_disposition,
-           gender,
-           age)|> 
+top_8_discharge_dispositions <- data |>
+  group_by(discharge_disposition)|> 
+  summarize(n = n()) |> 
+  arrange(desc(n)) |> 
+  head(8) |> 
+  select(discharge_disposition) |> 
+  pull()
+
+data |> 
+  select(discharge_disposition, age) |> 
+  filter(discharge_disposition %in% top_8_discharge_dispositions) |> 
+  group_by(discharge_disposition, age) |> 
   summarize(n = n(),.groups = 'keep') |> 
   drop_na(discharge_disposition) |>
   ggplot(
@@ -148,30 +157,36 @@ data |>
                   fill = age)
   ) +
   geom_col(position = "dodge") +
+  scale_x_discrete(labels = function(x) str_wrap(x, width = 45)) +
   labs(
-    x = "Discharge type",
+    x = "Discharge disposition",
     y = "Count",
     fill = "Age group",
-    title = "Discharge type for all age groups for all admission types"
+    title = "Discharge disposition for all age groups for all admission types"
   ) +
     theme_minimal() +
     theme(
       axis.text.x = element_text(angle = 60, hjust =1)
     )
-
 ```
 
 ### Only for emergency admission type
 
 ```{r, fig.width=8, fig.height=6}
+top_8_discharge_dispositions <- data |>
+  filter(admission_type == "Emergency") |> 
+  group_by(discharge_disposition)|> 
+  summarize(n = n()) |> 
+  arrange(desc(n)) |> 
+  head(8) |> 
+  select(discharge_disposition) |> 
+  pull()
+
 data |>
-  filter(!discharge_disposition %in% c("NULL",
-                                       "Not Available",
-                                       "Not Mapped"),
-         admission_type == "Emergency") |> 
-  group_by(discharge_disposition,
-           gender,
-           age)|> 
+  filter(admission_type == "Emergency") |> 
+  select(discharge_disposition, age) |> 
+  filter(discharge_disposition %in% top_8_discharge_dispositions) |> 
+  group_by(discharge_disposition, age) |> 
   summarize(n = n(),.groups = 'keep') |> 
   drop_na(discharge_disposition) |>
   ggplot(
@@ -180,31 +195,36 @@ data |>
                   fill = age)
   ) +
   geom_col(position = "dodge") +
+  scale_x_discrete(labels = function(x) str_wrap(x, width = 45)) +
   labs(
-    x = "Discharge type",
+    x = "Discharge disposition",
     y = "Count",
     fill = "Age group",
-    title = "Discharge type for all age groups for emergency admissions"
+    title = "Discharge disposition for all age groups for emergency admissions"
   ) +
     theme_minimal() +
     theme(
       axis.text.x = element_text(angle = 60, hjust =1)
     )
-
 ```
 
 ### Only urgent admission type:
 
 ```{r, fig.width=8, fig.height=6}
+top_8_discharge_dispositions <- data |>
+  filter(admission_type == "Urgent") |> 
+  group_by(discharge_disposition)|> 
+  summarize(n = n()) |> 
+  arrange(desc(n)) |> 
+  head(8) |> 
+  select(discharge_disposition) |> 
+  pull()
+
 data |>
-  filter(gender != "Unknown/Invalid",
-         !discharge_disposition %in% c("NULL",
-                                       "Not Available",
-                                       "Not Mapped"),
-         admission_type == "Urgent") |> 
-  group_by(discharge_disposition,
-           gender,
-           age)|> 
+  filter(admission_type == "Urgent") |> 
+  select(discharge_disposition, age) |> 
+  filter(discharge_disposition %in% top_8_discharge_dispositions) |> 
+  group_by(discharge_disposition, age) |> 
   summarize(n = n(),.groups = 'keep') |> 
   drop_na(discharge_disposition) |>
   ggplot(
@@ -213,32 +233,37 @@ data |>
                   fill = age)
   ) +
   geom_col(position = "dodge") +
+  scale_x_discrete(labels = function(x) str_wrap(x, width = 45)) +
   labs(
-    x = "Discharge type",
+    x = "Discharge disposition",
     y = "Count",
     fill = "Age group",
-    title = "Discharge type for all age groups for urgent admissions"
+    title = "Discharge disposition for all age groups for urgent admissions"
   ) +
     theme_minimal() +
     theme(
       axis.text.x = element_text(angle = 60, hjust =1)
     )
-
 ```
 
 ### For elective admission type
 
 ```{r, fig.width=8, fig.height=6}
+top_8_discharge_dispositions <- data |>
+  filter(admission_type == "Elective") |> 
+  group_by(discharge_disposition)|> 
+  summarize(n = n()) |> 
+  arrange(desc(n)) |> 
+  head(8) |> 
+  select(discharge_disposition) |> 
+  pull()
+
 data |>
-  filter(gender != "Unknown/Invalid",
-         !discharge_disposition %in% c("NULL",
-                                       "Not Available",
-                                       "Not Mapped"),
-         admission_type == "Elective") |> 
-  group_by(discharge_disposition,
-           gender,
-           age)|> 
-  summarize(n = n(),.groups = 'keep') |>
+  filter(admission_type == "Elective") |> 
+  select(discharge_disposition, age) |> 
+  filter(discharge_disposition %in% top_8_discharge_dispositions) |> 
+  group_by(discharge_disposition, age) |> 
+  summarize(n = n(),.groups = 'keep') |> 
   drop_na(discharge_disposition) |>
   ggplot(
     mapping = aes(x = discharge_disposition,
@@ -246,17 +271,17 @@ data |>
                   fill = age)
   ) +
   geom_col(position = "dodge") +
+  scale_x_discrete(labels = function(x) str_wrap(x, width = 45)) +
   labs(
-    x = "Discharge type",
+    x = "Discharge disposition",
     y = "Count",
     fill = "Age group",
-    title = "Discharge type for all age groups for elective admissions"
+    title = "Discharge disposition for all age groups for elective admissions"
   ) +
     theme_minimal() +
     theme(
       axis.text.x = element_text(angle = 60, hjust =1)
     )
-
 ```
 
 ## Number of visits per patient
@@ -348,7 +373,11 @@ data |>
                        length(),
                      ' people)'),
        x ='Number of diagnoses',
-       fill = 'Visit number') 
+       fill = 'Visit number') +
+  scale_fill_manual(
+    values = c("visit_1" = "lightblue3", "visit_2" = "seagreen3"), 
+    labels = c("1", "2") 
+  )
 ```
 
 ```{r}
@@ -377,7 +406,11 @@ data |>
                        length(),
                      ' people)'),
        x ='Number of diagnoses',
-       fill = 'Visit number') 
+       fill = 'Visit number') +
+scale_fill_manual(
+    values = c("visit_1" = "lightblue3", "visit_2" = "seagreen3","visit_3" = 'darkolivegreen'), 
+    labels = c("1", "2","3") 
+  )
 ```
 
 ## Plot of average of number of diagnosis per patient per maximum visit:
@@ -467,6 +500,78 @@ data |>
 ## Diabetes types
 
 ```{r}
-data |>
-  group_by(patient_nbr)
+diabetes_count <- data |>
+  select(patient_nbr,ends_with('_long')) |>
+  pivot_longer(cols = ends_with('_long'),
+               values_to = 'all_diagnoses',
+               names_to = 'diag_order') |>
+  select(-diag_order) |>
+  group_by(patient_nbr) |>
+  filter(str_detect(all_diagnoses,'iabetes')) |>
+  distinct() |>
+  group_by(all_diagnoses) |>
+  summarise(count=n()) 
+```
+
+```{r}
+
+diabetes_count |>
+  mutate(type = ifelse(str_detect(all_diagnoses,'type I '),'Type I','Type II or unspecified'),
+         uncontrolled = ifelse(str_detect(all_diagnoses,', uncontrolled'), 
+                               'Uncontrolled', 'Not specified as uncontrolled'),
+         no_complication = ifelse(str_detect(all_diagnoses, 'without mention of complication'),
+                                  'No complication','Complications')) |>
+  mutate(complication_type = ifelse(no_complication == 'Complications',
+                                    str_to_sentence(str_extract(all_diagnoses,'(?<=with ).*(?=, *type)')),
+                                    'None')) |>
+  mutate(complication_type = ifelse(is.na(complication_type),'Pregnancy complications',complication_type)) |>
+  mutate(complication_type = factor(complication_type, 
+                                    levels = c(unique(complication_type[complication_type != 'None']), 'None'))) |>
+  ggplot(aes(x = uncontrolled, y=count, fill = complication_type)) +
+  geom_bar(stat='identity',) +
+  facet_wrap(~type) +
+  labs(title = 'Diabetes managment and complications',
+       subtitle = str_c('For patients with diabetes as primary or secondary diagnosis (',
+                        sum(diabetes_count$count),' patients)'),
+       x = 'Controllation of disease', 
+       y = 'Number of instances', 
+       fill = 'Complications') +
+  theme_minimal() +
+  scale_x_discrete(labels = function(x) str_wrap(x,width = 17)) +
+  scale_fill_viridis_d(option = 'viridis',direction=-1) 
+
+```
+
+### Only for people with complications
+
+```{r}
+diabetes_count |>
+  mutate(type = ifelse(str_detect(all_diagnoses,'type I '),'Type I','Type II or unspecified'),
+         uncontrolled = ifelse(str_detect(all_diagnoses,', uncontrolled'), 
+                               'Uncontrolled', 'Not specified as uncontrolled'),
+         no_complication = ifelse(str_detect(all_diagnoses, 'without mention of complication'),
+                                  'No complication','Complications')) |>
+  mutate(complication_type = ifelse(no_complication == 'Complications',
+                                    str_to_sentence(str_extract(all_diagnoses,'(?<=with ).*(?=, *type)')),
+                                    'None')) |>
+  mutate(complication_type = ifelse(is.na(complication_type),'Pregnancy complications',complication_type)) |>
+  filter(!complication_type == 'None') |>
+  ggplot(aes(x = uncontrolled, y=count, fill = complication_type)) +
+  geom_bar(stat='identity',) +
+  facet_wrap(~type) +
+  labs(title = 'Diabetes managment and complications',
+       subtitle = str_c(
+         'For patients with diabetes as primary or secondary diagnosis\n(only for cases with complications: ',
+                        diabetes_count |>
+                          filter(!str_detect(all_diagnoses, 'without mention of complication')) |>
+                          select(count) |>
+                          sum(),
+                        ' patients)'),
+       x = 'Controllation of disease', 
+       y = 'Number of instances', 
+       fill = 'Complications') +
+  theme_minimal() +
+  scale_fill_viridis_d(option = 'plasma',direction=-1) + 
+  scale_x_discrete(labels = function(x) str_wrap(x,width = 17))
+
 ```
