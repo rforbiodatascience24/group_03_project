@@ -122,9 +122,9 @@ A dynamic app to explore the number of hospital readmissions across various para
     -   We therefore can split patients into smaller segments
 
 -   By K-means clustering based on the PCA we get three major groups of patients
-
-![](images/06_pca_clustered.jpg)
 :::
+
+![](images/06_pca_clustered-01.jpg){width="1000"}
 
 ## Results
 
