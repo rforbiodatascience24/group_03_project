@@ -1,0 +1,110 @@
+---
+title: "Description of data"
+format: html
+editor: visual
+---
+
+## Load libraries
+
+```{r}
+library("here")
+library("tidyverse")
+
+```
+
+## Load data
+
+```{r}
+aug_data <- read_csv(here("data/03_dat_aug.csv")) 
+```
+
+### Total amount of encounters:
+
+```{r}
+aug_data |> 
+  select(encounter_id) |> 
+  count()
+```
+
+### Total amount of patients:
+
+```{r}
+aug_data |> 
+  distinct(patient_nbr) |> 
+  count()
+```
+
+### Patient with most time spent in hospital
+
+```{r}
+max_time <- aug_data |> 
+  summarise(max(total_time_hospital)) |> 
+  pull()
+
+aug_data |> 
+  distinct(patient_nbr, total_time_hospital) |> 
+  filter(total_time_hospital == max_time)
+  
+```
+
+### Patient with most encounters
+
+```{r}
+max_enc <- aug_data |> 
+  summarise(max(nr_encounters)) |> 
+  pull()
+
+aug_data |> 
+  distinct(patient_nbr, nr_encounters) |> 
+  filter(nr_encounters == max_enc)
+```
+
+### Patient on most amount of medication
+
+```{r}
+max_med <- aug_data |> 
+  summarise(max(num_medications)) |> 
+  pull()
+
+aug_data |> 
+  distinct(patient_nbr, num_medications) |> 
+  filter(num_medications == max_med)
+```
+
+### Patients with most amount diagnoses
+
+```{r}
+max_dia <- aug_data |> 
+  summarise(max(number_diagnoses)) |> 
+  pull()
+
+aug_data |> 
+  distinct(patient_nbr, number_diagnoses) |> 
+  filter(number_diagnoses == max_dia)
+```
+
+### Age distribution
+
+```{r}
+aug_data |> 
+  group_by(age) |> 
+  count()
+```
+
+### Gender distribution
+
+```{r}
+aug_data |> 
+  distinct(patient_nbr, gender) |> 
+  group_by(gender) |> 
+  count()
+```
+
+### Race distribution
+
+```{r}
+aug_data |>
+  distinct(patient_nbr, race) |> 
+  group_by(race) |> 
+  count()
+```
