@@ -71,7 +71,7 @@ The data is downloaded here as the newest version from 2014:
 
 [ICD-9-CM Diagnosis and Procedure Codes: Abbreviated and Full Code Titles \| CMS](https://www.cms.gov/medicare/coding-billing/icd-10-codes/icd-9-cm-diagnosis-procedure-codes-abbreviated-and-full-code-titles)
 
-From the files the short and long ds are chosen (sg are surgical and dx are diagnosises).
+From the files the short and long ds are chosen (sg are surgical and dx are diagnoses).
 
 When running the 01_load.qmd, all the relevant files should be downloaded and placed in data/\_raw
 
@@ -165,7 +165,7 @@ full_data <- full_data |>
   select(-admission_source_id)
 
 full_data <- full_data |> 
-  left_join(admission_source,
+  left_join(discharge_disposition,
             join_by('discharge_disposition_id' == 'type_id'), 
             relationship = "many-to-one") |>
   rename(discharge_disposition = description) |> 
@@ -187,7 +187,7 @@ full_data <- full_data |>
   mutate(diag_1_short = case_when(is.na(diag_1_short) ~ diag_1,
                                   !is.na(diag_1_short) ~ diag_1_short)) |> 
   mutate(diag_1_long = case_when(is.na(diag_1_long) ~ diag_1,
-                                  !is.na(diag_1_long) ~ diag_1_long))
+                                 !is.na(diag_1_long) ~ diag_1_long))
 
 full_data <- full_data |> 
   left_join(ICD9, 

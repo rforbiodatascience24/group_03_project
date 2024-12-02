@@ -1,41 +1,96 @@
 ---
-title: "Presentation"
+title: "Project in R for data bio science 22100"
+authors: 'Group 3: <br>
+          s225049: Ida Sofie Goldschmidt <br>
+          s225074: Annekatrine Kirketerp-Møller<br>
+          s225051: Emil August Dissing Berntsen<br>
+          s224974: Rasmus Kamp<br>
+          s215109: Rolf Larsen'
+slide-number: true
 format: revealjs
 editor: visual
 ---
 
-## R project 
-
-s225049: Ida Sofie Goldschmidt\
-s225074: Annekatrine Kirketerp-Møller\
-s225051: Emil August Dissing Berntsen\
-s224974: Rasmus Kamp\
-s215109: Rolf Larsen
-
 ## Introduction
 
+## Materials
+
+::: columns
+::: {.column width="60%"}
+**Raw**
+
 -   Diabetes data
+    -   101766 encounters across 71518 patients
+    -   Example columns: age, gender, race, diagnoses, admission and discharge
+-   IDs mapping
+-   ICD9 - International classification of diseases
+:::
 
-    -   101766 encounters
+::: {.column width="40%"}
+**Joining**
 
-    -   71518 patients
+-   Keep all diabetes data
+-   Values without translations are kept numbers
 
-    -   Used columns: age, gender, race, diagnoses, admission and discharge
+**Augmentation**
 
--   ICD9
+-   Add nr_encounters
+-   Add time_in_hospital
+:::
+:::
 
-    -   International classification of diseases
+## Methods
 
-## Materials and methods
+-   With the augmented data ---\> examine tendencies
+
+-   Finding patters for characteristics, diagnoses
+
+-   Purpose of project: *Are there any common factors leading to admissions into hospital, with focus on diabetes patients?*
+
+## Parameter examination
+
+-   Plots, and their significance
+
+## Shiny app for further examination
+
+App showing number of readmissions across different parameters in the dataset.
+
+-   filters:
+
+    -   Race
+
+    -   Gender
+
+    -   Medication
+
+## PCA analysis
+
+-   The PCA reduces the dimensionality of our dataset, so that we can easier group patients with similar characteristics.
+
+-   PC1 (25% of variance) likely represent interactions with hospitals (encounters, num_emergencies) while PC2 (17% of variance) likely represent intensity or difficulty of treatment (time_in_hospital, num_medications, num_procedures)
+
+    -   We therefore can split patients into smaller segments
+
+-   By K-means clustering based on the PCA we get three major groups of patients
+
+    -   "Insert small description of each cluster"
 
 ## Results
 
--   Shiny
+-   Average number of diagnoses rises with age
 
--   
+-   Most common primary diagnosis: *Coronary atherosclerosis* - buildup of fats, cholesterol and other substances in and on the walls of the heart arteries
+
+    -   Very common for diabetes patients
+
+-   Most common diabetes complication: *Neurological manifestations* - damage to nerve endings, results in pain and numbness in legs, feet and hands
+
+    -   Has many problematic side effects, such as chronic foot ulcers, digestive issues etc.
+
+-   For patients with uncontrolled diabetes, *Ketoacidosis* was more common, which is caused by lack of insulin in the body
 
 ## Discussion
 
-## Shiny app
+-   
 
-OBS Insert link to shiny app
+-   
