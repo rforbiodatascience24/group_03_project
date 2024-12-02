@@ -4,42 +4,25 @@ library(shiny)
 server <- function(input, output) {
   
   # Reactive data loading
-  dataset <- df
+  dataset <- reactive({
+    req(input$data_file) # Ensure a file is uploaded
+    load_data(input$data_file$datapath) # Call the load_data function
+  })
   
   # Reactive filtering
   filtered_data <- reactive({
-    data <- data  # Assuming `data` is loaded globally
+    data <- dataset()
     
     # Filter by readmission status
     if (input$readmission_filter != "All") {
-      data <- data[data$readmitted == input$readmission_filter, ]
-    }
-    
-    # Filter by age
-    if (input$age != "All") {
-      data <- data[data$age == input$age, ]    }
-    
-    # Filter by race
-    if (input$race != "All") {
-
-    }  
-    # Filter by Race
-    if  (input$race != "All") {
-      data <- data[data$race == input$race, ]
-    }
-    
-    # Filter by gender
-    if (input$gender != "All") {
-      data <- data[data$gender == input$gender, ]
+      data <- data[data$Readmitted == input$readmission_filter, ]
     }
     
     # Filter by medications
     if (!is.null(input$medication_filter)) {
       for (med in input$medication_filter) {
-        med <- tolower(med)
-        if (med %in% colnames(data)) {
-          # Only filter if column exists
-          data <- data[data[[med]] != "No", ]
+        if (med %in% colnames(data)) {  # Only filter if column exists
+          data <- data[data[[med]] == 1, ]
         } else {
           warning(paste("Medication column", med, "not found in dataset"))
         }
@@ -50,7 +33,7 @@ server <- function(input, output) {
       return(NULL)  # Handle empty results gracefully
     }
     
-    return(data)
+    data
   })
   
   # Render the bar plot
@@ -63,7 +46,7 @@ server <- function(input, output) {
     }
     
     # Count the number of patients by readmission status
-    readmission_counts <- table(data$readmitted)
+    readmission_counts <- table(data$Readmitted)
     
     # Create a bar plot
     barplot(

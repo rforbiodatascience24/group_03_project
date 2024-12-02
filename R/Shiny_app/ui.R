@@ -7,6 +7,8 @@ ui <- fluidPage(
   
   sidebarLayout(
     sidebarPanel(
+      # File upload to load the data
+      fileInput("data_file", "Upload Dataset", accept = ".csv"),
       
       # Filter for readmission status
       selectInput(
