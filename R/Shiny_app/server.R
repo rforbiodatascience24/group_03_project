@@ -17,7 +17,16 @@ server <- function(input, output) {
     # Filter by Age
     if  (input$age != "All") {
       data <- data[data$age == input$age, ]
+    }  
+      # Filter by Race
+    if  (input$race != "All") {
+      data <- data[data$race == input$race, ]
     }
+    # Filter by Gender
+    if  (input$gender != "All") {
+      data <- data[data$gender == input$gender, ]
+    }
+    
     # Filter by medications
     if (!is.null(input$medication_filter)) {
       for (med in input$medication_filter) {

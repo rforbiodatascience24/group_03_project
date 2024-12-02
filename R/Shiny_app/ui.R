@@ -20,6 +20,18 @@ ui <- fluidPage(
         choices = c("All", sort(unique(data$age))),
         selected = "All"
       ),
+      selectInput(
+        "race",
+        "Filter by race:",
+        choices = c(unique(data$race), "All"),
+        selected = "All"
+      ),
+      selectInput(
+        "gender",
+        "Filter by gender",
+        choices = c(unique(data$gender), "All"),
+        selected = "All"
+      ),
       
       # Checkboxes for medications
       checkboxGroupInput(
