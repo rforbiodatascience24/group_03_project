@@ -1,0 +1,7 @@
+"0","max_dia <- aug_data |> "
+"0","  summarise(max(number_diagnoses)) |> "
+"0","  pull()"
+"0",""
+"0","aug_data |> "
+"0","  distinct(patient_nbr, number_diagnoses) |> "
+"0","  filter(number_diagnoses == max_dia)"

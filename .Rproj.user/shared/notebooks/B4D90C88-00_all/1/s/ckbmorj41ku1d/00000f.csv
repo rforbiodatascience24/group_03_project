@@ -1,0 +1,42 @@
+"0","quarto::quarto_render(input = ""03_augment.qmd"", "
+"0","                      output_format = ""html"")"
+"1","[31m
+
+processing file: 03_augment.qmd
+[39m"
+"1","[31m  |                                                            |                                                    |   0%  |                                                            |.....                                               |   9%                    |                                                            |.........                                           |  18% [unnamed-chunk-1][39m"
+"1","[31m  |                                                          [39m"
+"1","[31m  |..............                                      |  27%                    |                                                            |...................                                 |  36% [unnamed-chunk-2][39m"
+"1","[31m  |                                                          [39m"
+"1","[31m  |........................                            |  45%                    |                                                            |............................                        |  55% [unnamed-chunk-3][39m"
+"1","[31m  |                                                          [39m"
+"1","[31m  |.................................                   |  64%                    |                                                            |......................................              |  73% [unnamed-chunk-4][39m"
+"1","[31m  |                                                          [39m"
+"1","[31m  |...........................................         |  82%                    |                                                            |...............................................     |  91% [unnamed-chunk-5][39m"
+"1","[31m  |                                                          [39m"
+"1","[31m  |....................................................| 100%                                                                                                                              
+output file: 03_augment.knit.md
+
+[39m"
+"1","[31mpandoc 
+[39m"
+"1","[31m  to: html
+  output-file: 03_augment.html
+  standalone: true
+  section-divs: true
+  html-math-method: mathjax
+  wrap: none
+  default-image-extension: png
+  
+metadata
+  document-css: false
+  link-citations: true
+  date-format: long
+  lang: en
+  title: Augment data
+  editor: visual
+  
+[39m"
+"1","[31mOutput created: ..\results\R\03_augment.html
+
+[39m"

@@ -1,0 +1,36 @@
+"0","quarto::quarto_render(input = ""07_shiny.qmd"","
+"0","                      output_format = ""html"")"
+"1","[31m
+
+processing file: 07_shiny.qmd
+[39m"
+"1","[31m  |                                                            |                                                    |   0%  |                                                            |..........                                          |  20%                    |                                                            |.....................                               |  40% [unnamed-chunk-1][39m"
+"1","[31m  |                                                          [39m"
+"1","[31m  |...............................                     |  60%                    |                                                            |..........................................          |  80% [unnamed-chunk-2][39m"
+"1","[31m  |                                                          [39m"
+"1","[31m  |....................................................| 100%                                                                                                                              
+output file: 07_shiny.knit.md
+
+[39m"
+"1","[31mpandoc 
+[39m"
+"1","[31m  to: html
+  output-file: 07_shiny.html
+  standalone: true
+  section-divs: true
+  html-math-method: mathjax
+  wrap: none
+  default-image-extension: png
+  
+metadata
+  document-css: false
+  link-citations: true
+  date-format: long
+  lang: en
+  title: 07_shiny
+  editor: visual
+  
+[39m"
+"1","[31mOutput created: ..\results\R\07_shiny.html
+
+[39m"

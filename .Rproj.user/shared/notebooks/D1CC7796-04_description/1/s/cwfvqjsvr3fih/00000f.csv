@@ -1,0 +1,7 @@
+"0","max_med <- aug_data |> "
+"0","  summarise(max(num_medications)) |> "
+"0","  pull()"
+"0",""
+"0","aug_data |> "
+"0","  distinct(patient_nbr, num_medications) |> "
+"0","  filter(num_medications == max_med)"

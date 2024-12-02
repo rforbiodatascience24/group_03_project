@@ -1,0 +1,4 @@
+"0","aug_data |>"
+"0","  distinct(patient_nbr, race) |> "
+"0","  group_by(race) |> "
+"0","  count()"

@@ -1,0 +1,7 @@
+"0","# Create 'data' directory if it doesn't exist"
+"0",""
+"0","if (!dir.exists(here(""data""))) {dir.create(here(""data""))  }"
+"0",""
+"0","# Create 'raw' directory if it doesn't exist"
+"0",""
+"0","if (!dir.exists(here(""data/_raw""))) {dir.create(here(""data/_raw""))  }"

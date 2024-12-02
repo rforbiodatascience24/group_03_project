@@ -1,0 +1,38 @@
+"0","quarto::quarto_render(input = ""06_analysis_PCA.qmd"","
+"0","                      output_format = ""html"")"
+"1","[31m
+
+processing file: 06_analysis_PCA.qmd
+[39m"
+"1","[31m  |                                                     [39m"
+"1","[31m  |                                               |   0%  |                                                       |..                                             |   5%                         |                                                       |.....                                          |  11% [unnamed-chunk-1]     [39m"
+"1","[31m  |                                                     [39m"
+"1","[31m  |.......                                        |  16%                         |                                                       |..........                                     |  21% [pc_coordinate_plot]  [39m"
+"1","[31m  |                                                     [39m"
+"1","[31m  |............                                   |  26%                         |                                                       |...............                                |  32% [unnamed-chunk-2]       |                                                       |.................                              |  37%                         |                                                       |....................                           |  42% [rotation_matrix_plot][39m"
+"1","[31m  |                                                     [39m"
+"1","[31m  |......................                         |  47%                         |                                                       |.........................                      |  53% [unnamed-chunk-3]       |                                                       |...........................                    |  58%                         |                                                       |..............................                 |  63% [variance_plot]         |                                                       |................................               |  68%                         |                                                       |...................................            |  74% [unnamed-chunk-4]     [39m"
+"1","[31m  |                                                     [39m"
+"1","[31m  |.....................................          |  79%                         |                                                       |........................................       |  84% [unnamed-chunk-5]       |                                                       |..........................................     |  89%                         |                                                       |.............................................  |  95% [unnamed-chunk-6]     [39m"
+"1","[31mError in `mutate()`:
+! objekt 'pca_data' blev ikke fundet
+Backtrace:
+ 1. dplyr::mutate(...)
+ 2. dplyr::mutate(...)
+[39m"
+"1","[31m[39m"
+"1","[31m
+
+
+Quitting from lines 138-149 [unnamed-chunk-6] (06_analysis_PCA.qmd)
+                                                                                                                 
+Kørsel stoppet
+[39m"
+"1","[1m[33mError[39m in `quarto::quarto_render()`:[22m
+[38;5;232m[31m✖[38;5;232m Error running quarto cli.[39m
+[1mCaused by error:[22m
+[33m![39m System command 'quarto.exe' failed
+Backtrace:
+[90m 1. [39m[1m[94mquarto::quarto_render([39m[22minput = ""06_analysis_PCA.qmd"", output_format = ""html""[1m[94m)[39m[22m
+[90m 2. [39mquarto:::quarto_run(args, echo = TRUE, quarto_bin = quarto_bin)
+"
