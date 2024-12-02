@@ -54,14 +54,8 @@ clean_data <- clean_data |>
   relocate(patient_nbr, 
            .after = encounter_id)
 write_csv(clean_data, here("data/03_dat_aug.csv"))
-```
-
-## Write csv for shiny
-
-The data set is to big for the shiny app, so we take a random sample to use:
-
-```{r}
-clean_data_shiny <- clean_data |> 
+clean_data_sample <- clean_data |>
   sample_n(10000)
-write_csv(clean_data_shiny, here("data/03_dat_aug_shiny.csv"))
+write_csv(clean_data_sample, here("R/Shiny_app/03_dat_aug.csv"))
+
 ```

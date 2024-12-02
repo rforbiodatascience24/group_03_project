@@ -19,7 +19,7 @@ aug_data <- read_csv(here("data/03_dat_aug.csv"))
 
 Looking at the data in PC coordinates:
 
-```{r}
+```{r pc_coordinate_plot}
 numeric_data <- aug_data |> 
   select(where(is.numeric)) |> 
   na.omit() |> 
@@ -49,7 +49,7 @@ pca_fit |>
 
 and plot it:
 
-```{r}
+```{r rotation_matrix_plot}
 # arrow for plotting
 arrow_style <- arrow(
   angle = 20, ends = "first", type = "closed", length = grid::unit(8, "pt")
@@ -85,7 +85,7 @@ pca_fit |>
 
 And now the plot:
 
-```{r}
+```{r variance_plot}
 pca_bar_plot <- pca_fit |> 
   tidy(matrix = "eigenvalues") |> 
   ggplot(aes(PC, percent)) +
@@ -126,7 +126,7 @@ ggsave(
 
 Here PC1, PC2 and PC3 is used to cluster the patient to possibly see patterns.
 
-```{r}
+```{r PCA_plot}
 pca_data <- as.data.frame(pca_fit$x)
 
 ggplot(pca_data, aes(x = PC1, y = PC2, color = PC3)) + 
@@ -139,7 +139,7 @@ ggplot(pca_data, aes(x = PC1, y = PC2, color = PC3)) +
 
 Here it is tried to cluster the patient based on k-means and the first 3 PC's.
 
-```{r}
+```{r PCA_plot_k_means}
 pca_data <- pca_data |> 
   mutate(cluster = kmeans(select(pca_data, 1:3), centers = 3)$cluster) |> 
   mutate(cluster = as.factor(cluster))

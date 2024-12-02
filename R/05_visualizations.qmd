@@ -10,7 +10,6 @@ editor: visual
 
 library(tidyverse)
 library(here)
-library(viridisLite)
 ```
 
 ## Load data
@@ -21,7 +20,7 @@ data <- read.csv(here("data/03_dat_aug.csv"))
 
 ## Age distribution
 
-```{r}
+```{r average_number_of_diagnoses}
 data |>
   group_by(age, gender) |>
   summarise(average_diagnoses = mean(number_diagnoses), .groups = "drop") |>
@@ -40,7 +39,7 @@ ggplot(aes(x = age,
 
 ## Age distribution, shown by race
 
-```{r}
+```{r average_diagnoses_for_all_races}
 data |>
   mutate(race = ifelse(is.na(race),'Other',race)) |>
   mutate(race = ifelse(race == 'Other', 'Other/Unspecified', race)) |>
@@ -73,7 +72,7 @@ data |>
 
 ## Race/gender distribution
 
-```{r}
+```{r race_gender_distribution}
 data |>
   select(patient_nbr, race, gender) |>
   distinct(patient_nbr, .keep_all = TRUE) |>
@@ -136,7 +135,7 @@ data |>
 
 ## Discharge disposition
 
-```{r, fig.width=8, fig.height=6}
+```{r discharge_disposition_for_all_admission_types, fig.width=8, fig.height=6}
 top_8_discharge_dispositions <- data |>
   group_by(discharge_disposition)|> 
   summarize(n = n()) |> 
@@ -157,6 +156,7 @@ data |>
                   fill = age)
   ) +
   geom_col(position = "dodge") +
+  scale_fill_viridis_d(option = "viridis") +
   scale_x_discrete(labels = function(x) str_wrap(x, width = 35)) +
   labs(
     x = "Discharge disposition",
@@ -172,7 +172,7 @@ data |>
 
 ### Only for emergency admission type
 
-```{r, fig.width=8, fig.height=6}
+```{r discharge_disposition_for_emergency_admissions, fig.width=8, fig.height=6}
 top_8_discharge_dispositions <- data |>
   filter(admission_type == "Emergency") |> 
   group_by(discharge_disposition)|> 
@@ -195,6 +195,7 @@ data |>
                   fill = age)
   ) +
   geom_col(position = "dodge") +
+  scale_fill_viridis_d(option = "viridis") +
   scale_x_discrete(labels = function(x) str_wrap(x, width = 35)) +
   labs(
     x = "Discharge disposition",
@@ -210,7 +211,7 @@ data |>
 
 ### Only urgent admission type:
 
-```{r, fig.width=8, fig.height=6}
+```{r discharge_disposition_for_urgent_admissions, fig.width=8, fig.height=6}
 top_8_discharge_dispositions <- data |>
   filter(admission_type == "Urgent") |> 
   group_by(discharge_disposition)|> 
@@ -233,6 +234,7 @@ data |>
                   fill = age)
   ) +
   geom_col(position = "dodge") +
+  scale_fill_viridis_d(option = "viridis") +
   scale_x_discrete(labels = function(x) str_wrap(x, width = 35)) +
   labs(
     x = "Discharge disposition",
@@ -248,7 +250,7 @@ data |>
 
 ### For elective admission type
 
-```{r, fig.width=8, fig.height=6}
+```{r discharge_disposition_for_elective_admissions, fig.width=8, fig.height=6}
 top_8_discharge_dispositions <- data |>
   filter(admission_type == "Elective") |> 
   group_by(discharge_disposition)|> 
@@ -271,6 +273,8 @@ data |>
                   fill = age)
   ) +
   geom_col(position = "dodge") +
+
+  scale_fill_viridis_d(option = "viridis") +
   scale_x_discrete(labels = function(x) str_wrap(x, width = 35)) +
   labs(
     x = "Discharge disposition",
@@ -286,7 +290,7 @@ data |>
 
 ## Number of visits per patient
 
-```{r}
+```{r number_of_visits_per_patient}
 data |>
   select(patient_nbr,gender) |>
   group_by(patient_nbr) |>
@@ -324,7 +328,7 @@ data |>
 
 ## Diagnosis vs. visits
 
-```{r}
+```{r diagnosis_for_1_visit}
 data |>
   filter(nr_encounters == 1) |>
   select(patient_nbr, number_diagnoses, gender) |>
@@ -347,7 +351,7 @@ data |>
   
 ```
 
-```{r}
+```{r diagnosis_for_2_visits}
 data |>
   filter(nr_encounters == 2) |>
   select(patient_nbr, number_diagnoses,encounter_id) |>
@@ -380,7 +384,7 @@ data |>
   )
 ```
 
-```{r}
+```{r diagnosis_for_3_visits}
 data |>
   filter(nr_encounters == 3) |>
   select(patient_nbr, number_diagnoses, encounter_id) |>
@@ -415,7 +419,7 @@ scale_fill_manual(
 
 ## Plot of average of number of diagnosis per patient per maximum visit:
 
-```{r}
+```{r average_number_of_diagnoses_per_visit_by_patient}
 data |>
   select(patient_nbr, number_diagnoses,encounter_id) |>
   group_by(patient_nbr) |>
@@ -459,7 +463,7 @@ data |>
 
 ## Most common primary diagnoses compared to number of visits
 
-```{r}
+```{r most_common_primary_diagnoses_per_visit}
 data |>
   select(patient_nbr, encounter_id, nr_encounters, diag_1_long) |>
   group_by(diagnosis = diag_1_long) |>
@@ -513,7 +517,7 @@ diabetes_count <- data |>
   summarise(count=n()) 
 ```
 
-```{r}
+```{r diabetes_management_and_complications_for_all_patients}
 
 diabetes_count |>
   mutate(type = ifelse(str_detect(all_diagnoses,'type I '),'Type I','Type II or unspecified'),
@@ -544,7 +548,7 @@ diabetes_count |>
 
 ### Only for people with complications
 
-```{r}
+```{r diabetes_management_and_complications_for_patients_with_complications}
 diabetes_count |>
   mutate(type = ifelse(str_detect(all_diagnoses,'type I '),'Type I','Type II or unspecified'),
          uncontrolled = ifelse(str_detect(all_diagnoses,', uncontrolled'), 
