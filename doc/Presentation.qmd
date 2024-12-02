@@ -23,9 +23,8 @@ editor: visual
 ## Introduction
 
 ::: r-fit-text
-### **Goal: Exploring Patterns**
-
--   Identifying trends and tendencies in diabetes patients to improve understanding of hospital admissions.
+-   **Exploring Patterns**:\
+    Identifying trends and tendencies in diabetes patients to improve understanding of hospital admissions.
 
 ### Objectives
 
@@ -36,12 +35,12 @@ editor: visual
     Investigate the most common secondary diagnoses accompanying hospital admissions.
 
 3.  **Effective Medications**:\
-    Determine which medications are most effective at preventing readmission.
+    Determine which medications are most effective at preventing readmissions.
 :::
 
 ## Methods and Materials
 
-::::: columns
+::: columns
 ::: {.column width="60%"}
 **Raw**
 
@@ -63,7 +62,7 @@ editor: visual
 -   Add nr_encounters
 -   Add time_in_hospital
 :::
-:::::
+:::
 
 ## Parameter examination
 
@@ -83,39 +82,31 @@ editor: visual
 
 ![](images/diabetes_management_and_complications_for_patients_with_complications.png){fig-align="center"}
 
-## Shiny App for dynamic data examination
+## Shiny App for Further Examination
 
-::::::: r-fit-text
-**Purpose**:\
-A dynamic app to explore the number of hospital readmissions across various parameters in the data set.
+-   **Purpose**:\
+    A dynamic app to explore the number of hospital readmissions across various parameters in the data set.
 
-**Filters Available:**
+### Filters Available:
 
-:::::: columns
-::: {.column width="32%"}
-1.  Readmission status
+1.  **Race**
 
-2.  Age
-:::
+2.  **Gender**
 
-::: {.column width="32%"}
-3.  Race
-
-4.  Gender
-:::
-
-::: {.column width="32%"}
-5.  Medications
-:::
-::::::
-:::::::
-
-![](images/shiny_app_example.jpg){fig-align="center"}
+3.  **Medication**
 
 ## PCA analysis
 
+<<<<<<< HEAD
 :::::: r-fit-text
 ::::: columns
+=======
+::: r-fit-text - The PCA reduces the dimensionality of our dataset, so that we can easier group patients with similar characteristics.
+
+::::::: r-fit-text
+
+::: columns
+>>>>>>> 190bfffe9ab662f66bb52a76ddda386e5855227c
 ::: {.column width="50%"}
 -   The PCA reduces the dimensionality of our data set, so that we can easier group patients with similar characteristics.
 
@@ -124,13 +115,19 @@ A dynamic app to explore the number of hospital readmissions across various para
     -   We therefore can split patients into smaller segments
 
 -   By K-means clustering based on the PCA we get three major groups of patients
-:::
+
+    -   "Insert small description of each cluster"
 
 ::: {.column width="50%"}
 ![](images/06_pca_clustered-01.jpg){fig-align="center" width="1000"}
 :::
+<<<<<<< HEAD
 :::::
 ::::::
+=======
+:::
+:::
+>>>>>>> 190bfffe9ab662f66bb52a76ddda386e5855227c
 
 ## Results
 
@@ -146,12 +143,13 @@ A dynamic app to explore the number of hospital readmissions across various para
     -   Has many problematic side effects, such as chronic foot ulcers, digestive issues etc.
 
 -   For patients with uncontrolled diabetes, *Ketoacidosis* was more common, which is caused by lack of insulin in the body
-
--   Which medication had the lowest amount of readmission in the age group (30-40\] for Asian patients
 :::
 
 ## Discussion
+<<<<<<< HEAD
 
 -   It is inherently logical that the amount of diagnoses increases with age. This is especially given seeing as the most common diagnosis is *Coronary atherosclerosis,* which is much more commonly seen in elderly people.
 
 -   h
+=======
+>>>>>>> 190bfffe9ab662f66bb52a76ddda386e5855227c
