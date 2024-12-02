@@ -15,8 +15,8 @@ server <- function(input, output) {
       data <- data[data$readmitted == input$readmission_filter, ]
     }
     # Filter by Age
-    if  (!is.null(input$age)) {
-      data <- data[data$age == input$Age]
+    if  (input$age != "All") {
+      data <- data[data$age == input$Age, ]
     }
     # Filter by medications
     if (!is.null(input$medication_filter)) {
