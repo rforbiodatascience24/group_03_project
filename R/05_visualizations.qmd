@@ -136,10 +136,18 @@ data |>
 ## Discharge disposition
 
 ```{r, fig.width=8, fig.height=6}
-data |>
-  group_by(discharge_disposition,
-           gender,
-           age)|> 
+top_8_discharge_dispositions <- data |>
+  group_by(discharge_disposition)|> 
+  summarize(n = n()) |> 
+  arrange(desc(n)) |> 
+  head(8) |> 
+  select(discharge_disposition) |> 
+  pull()
+
+data |> 
+  select(discharge_disposition, age) |> 
+  filter(discharge_disposition %in% top_8_discharge_dispositions) |> 
+  group_by(discharge_disposition, age) |> 
   summarize(n = n(),.groups = 'keep') |> 
   drop_na(discharge_disposition) |>
   ggplot(
@@ -148,6 +156,7 @@ data |>
                   fill = age)
   ) +
   geom_col(position = "dodge") +
+  scale_x_discrete(labels = function(x) str_wrap(x, width = 45)) +
   labs(
     x = "Discharge disposition",
     y = "Count",
@@ -158,20 +167,25 @@ data |>
     theme(
       axis.text.x = element_text(angle = 60, hjust =1)
     )
-
 ```
 
 ### Only for emergency admission type
 
 ```{r, fig.width=8, fig.height=6}
+top_8_discharge_dispositions <- data |>
+  filter(admission_type == "Emergency") |> 
+  group_by(discharge_disposition)|> 
+  summarize(n = n()) |> 
+  arrange(desc(n)) |> 
+  head(8) |> 
+  select(discharge_disposition) |> 
+  pull()
+
 data |>
-  filter(!discharge_disposition %in% c("NULL",
-                                       "Not Available",
-                                       "Not Mapped"),
-         admission_type == "Emergency") |> 
-  group_by(discharge_disposition,
-           gender,
-           age)|> 
+  filter(admission_type == "Emergency") |> 
+  select(discharge_disposition, age) |> 
+  filter(discharge_disposition %in% top_8_discharge_dispositions) |> 
+  group_by(discharge_disposition, age) |> 
   summarize(n = n(),.groups = 'keep') |> 
   drop_na(discharge_disposition) |>
   ggplot(
@@ -180,6 +194,7 @@ data |>
                   fill = age)
   ) +
   geom_col(position = "dodge") +
+  scale_x_discrete(labels = function(x) str_wrap(x, width = 45)) +
   labs(
     x = "Discharge disposition",
     y = "Count",
@@ -190,21 +205,25 @@ data |>
     theme(
       axis.text.x = element_text(angle = 60, hjust =1)
     )
-
 ```
 
 ### Only urgent admission type:
 
 ```{r, fig.width=8, fig.height=6}
+top_8_discharge_dispositions <- data |>
+  filter(admission_type == "Urgent") |> 
+  group_by(discharge_disposition)|> 
+  summarize(n = n()) |> 
+  arrange(desc(n)) |> 
+  head(8) |> 
+  select(discharge_disposition) |> 
+  pull()
+
 data |>
-  filter(gender != "Unknown/Invalid",
-         !discharge_disposition %in% c("NULL",
-                                       "Not Available",
-                                       "Not Mapped"),
-         admission_type == "Urgent") |> 
-  group_by(discharge_disposition,
-           gender,
-           age)|> 
+  filter(admission_type == "Urgent") |> 
+  select(discharge_disposition, age) |> 
+  filter(discharge_disposition %in% top_8_discharge_dispositions) |> 
+  group_by(discharge_disposition, age) |> 
   summarize(n = n(),.groups = 'keep') |> 
   drop_na(discharge_disposition) |>
   ggplot(
@@ -213,6 +232,7 @@ data |>
                   fill = age)
   ) +
   geom_col(position = "dodge") +
+  scale_x_discrete(labels = function(x) str_wrap(x, width = 45)) +
   labs(
     x = "Discharge disposition",
     y = "Count",
@@ -223,22 +243,26 @@ data |>
     theme(
       axis.text.x = element_text(angle = 60, hjust =1)
     )
-
 ```
 
 ### For elective admission type
 
 ```{r, fig.width=8, fig.height=6}
+top_8_discharge_dispositions <- data |>
+  filter(admission_type == "Elective") |> 
+  group_by(discharge_disposition)|> 
+  summarize(n = n()) |> 
+  arrange(desc(n)) |> 
+  head(8) |> 
+  select(discharge_disposition) |> 
+  pull()
+
 data |>
-  filter(gender != "Unknown/Invalid",
-         !discharge_disposition %in% c("NULL",
-                                       "Not Available",
-                                       "Not Mapped"),
-         admission_type == "Elective") |> 
-  group_by(discharge_disposition,
-           gender,
-           age)|> 
-  summarize(n = n(),.groups = 'keep') |>
+  filter(admission_type == "Elective") |> 
+  select(discharge_disposition, age) |> 
+  filter(discharge_disposition %in% top_8_discharge_dispositions) |> 
+  group_by(discharge_disposition, age) |> 
+  summarize(n = n(),.groups = 'keep') |> 
   drop_na(discharge_disposition) |>
   ggplot(
     mapping = aes(x = discharge_disposition,
@@ -246,6 +270,7 @@ data |>
                   fill = age)
   ) +
   geom_col(position = "dodge") +
+  scale_x_discrete(labels = function(x) str_wrap(x, width = 45)) +
   labs(
     x = "Discharge disposition",
     y = "Count",
@@ -256,7 +281,6 @@ data |>
     theme(
       axis.text.x = element_text(angle = 60, hjust =1)
     )
-
 ```
 
 ## Number of visits per patient
