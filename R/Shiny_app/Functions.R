@@ -1,26 +1,15 @@
 library(shiny)
 
 # Function to load and preprocess the dataset
-load_data <- function(file_path) {
+load_data <- function() {
   # Check if the file exists
+  file_path <- here("data/03_dat_aug_shiny.csv")
   if (!file.exists(file_path)) {
     stop("Error: File not found.")
   }
   
   # Load the CSV file
-  data <- read.csv(file_path, stringsAsFactors = FALSE) 
-  
-  # Ensure medication columns are treated as binary
-  medication_columns <- c(
-    "Metformin", "Repaglinide", "Nateglinide", "Chlorpropamide",
-    "Glimepiride", "Acetohexamide", "Glipizide", "Glyburide",
-    "Tolbutamide", "Pioglitazone", "Rosiglitazone", "Acarbose",
-    "Miglitol", "Troglitazone", "Tolazamide", "Examide",
-    "Sitagliptin", "Insulin", "Glyburide-Metformin", 
-    "Glipizide-Metformin", "Glimepiride-Pioglitazone",
-    "Metformin-Rosiglitazone", "Metformin-Pioglitazone"
-  )
-  data[medication_columns] <- lapply(data[medication_columns], as.integer)
+  data <- read_csv(file_path)
   
   return(data)
 }
