@@ -7,48 +7,41 @@ editor: visual
 ## Load Data
 
 ```{r}
-quarto::quarto_render(input = "01_load.qmd",
-                      output_format = "html")
+quarto::quarto_render("01_load.qmd")
 ```
 
-## 34fr34fClean Data
+## Clean Data
 
 ```{r}
-quarto::quarto_render(input = "02_clean.qmd", 
-                      output_format = "html")
+quarto::quarto_render("02_clean.qmd")
 ```
 
 ## Augment Data
 
 ```{r}
-quarto::quarto_render(input = "03_augment.qmd", 
-                      output_format = "html")
+quarto::quarto_render("03_augment.qmd")
 ```
 
 ## Description
 
 ```{r}
-quarto::quarto_render(input = "04_description.qmd", 
-                      output_format = "html")
+quarto::quarto_render("04_description.qmd")
 ```
 
 ## Visualizations
 
 ```{r}
-quarto::quarto_render(input = "05_visualizations.qmd", 
-                      output_format = "html")
+quarto::quarto_render("05_visualizations.qmd")
 ```
 
 ## PCA analysis
 
 ```{r}
-quarto::quarto_render(input = "06_analysis_PCA.qmd",
-                      output_format = "html")
+quarto::quarto_render("06_analysis_PCA.qmd")
 ```
 
 ## Shiny
 
 ```{r}
-quarto::quarto_render(input = "07_shiny.qmd",
-                      output_format = "html")
+# quarto::quarto_render("07_shiny.qmd")
 ```
