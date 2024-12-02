@@ -11,6 +11,8 @@
 
 # Data
 data/
+R/Shiny_app/03_dat_aug.csv
+
 
 # Example code in package build process
 *-Ex.R
@@ -47,5 +49,5 @@ po/*~
 
 # RStudio Connect folder
 rsconnect/
-
 /.quarto/
+
