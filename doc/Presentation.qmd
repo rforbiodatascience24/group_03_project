@@ -13,21 +13,35 @@ editor: visual
 
 ## Introduction
 
+## Materials
+
+::: columns
+::: {.column width="60%"}
+**Raw**
+
 -   Diabetes data
-
-    -   101766 encounters
-
-    -   71518 patients
-
+    -   101766 encounters across 71518 patients
     -   Example columns: age, gender, race, diagnoses, admission and discharge
+-   IDs mapping
+-   ICD9 - International classification of diseases
+:::
 
--   ICD9
+::: {.column width="40%"}
+**Joining**
 
-    -   International classification of diseases
+-   Keep all diabetes data
+-   Values without translations are kept numbers
 
-## Materials and methods
+**Augmentation**
 
--   With the augmented data —\> examine tendencies
+-   Add nr_encounters
+-   Add time_in_hospital
+:::
+:::
+
+## Methods
+
+-   With the augmented data ---\> examine tendencies
 
 -   Finding patters for characteristics, diagnoses
 
