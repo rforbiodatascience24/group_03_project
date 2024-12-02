@@ -92,7 +92,7 @@ ggplot(plot_data, aes(x = race, y = count, fill = gender)) +
   ) +
   geom_text(
     data = plot_data |> filter(count <= 4000), 
-    aes(label = count, color = text_color), 
+    aes(label = count, color = text_color, vjust = -3), 
     position = position_dodge2(width = 0.8), 
     size = 4
   ) +
